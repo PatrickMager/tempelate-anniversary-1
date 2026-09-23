@@ -1,0 +1,3822 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Anniversary, Sayangku! ❤️</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+
+          fontFamily: {
+            cute: ["Quicksand", "sans-serif"],
+          },
+
+          colors: {
+            lovePink: "#ff7fa8",
+            softPink: "#ffd6e5",
+            peach: "#ffd9c7",
+            lavender: "#e6ddff",
+            warmYellow: "#fff0a8",
+          },
+
+          animation: {
+
+            float: "float 6s ease-in-out infinite",
+
+            floatSlow:
+              "floatSlow 9s ease-in-out infinite",
+
+            heartbeat:
+              "heartbeat 1.5s ease-in-out infinite",
+
+            wiggle:
+              "wiggle 2s ease-in-out infinite",
+
+            appear:
+              "appear .8s ease-out forwards",
+
+          },
+
+          keyframes: {
+
+            float: {
+
+              "0%, 100%": {
+                transform:
+                  "translateY(0) rotate(-5deg)",
+              },
+
+              "50%": {
+                transform:
+                  "translateY(-20px) rotate(5deg)",
+              },
+
+            },
+
+            floatSlow: {
+
+              "0%, 100%": {
+                transform:
+                  "translateY(0) translateX(0) rotate(0deg)",
+              },
+
+              "50%": {
+                transform:
+                  "translateY(-35px) translateX(15px) rotate(10deg)",
+              },
+
+            },
+
+            heartbeat: {
+
+              "0%, 100%": {
+                transform: "scale(1)",
+              },
+
+              "15%": {
+                transform: "scale(1.12)",
+              },
+
+              "30%": {
+                transform: "scale(1)",
+              },
+
+              "45%": {
+                transform: "scale(1.08)",
+              },
+
+            },
+
+            wiggle: {
+
+              "0%, 100%": {
+                transform: "rotate(-3deg)",
+              },
+
+              "50%": {
+                transform: "rotate(3deg)",
+              },
+
+            },
+
+            appear: {
+
+              "0%": {
+                opacity: "0",
+                transform:
+                  "translateY(20px)",
+              },
+
+              "100%": {
+                opacity: "1",
+                transform:
+                  "translateY(0)",
+              },
+
+            },
+
+          },
+
+        },
+      },
+    };
+  </script>
+
+
+  <style>
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+
+      font-family:
+        "Quicksand",
+        sans-serif;
+
+      overflow-x: hidden;
+
+    }
+
+
+    /* =========================
+       GLASS EFFECT
+    ========================== */
+
+    .glass {
+
+      background:
+        rgba(255, 255, 255, 0.62);
+
+      backdrop-filter:
+        blur(14px);
+
+      -webkit-backdrop-filter:
+        blur(14px);
+
+      border:
+        1px solid rgba(255, 255, 255, 0.7);
+
+    }
+
+
+    /* =========================
+       POLAROID
+    ========================== */
+
+    .polaroid {
+
+      box-shadow:
+        0 20px 50px
+        rgba(255, 105, 150, 0.18),
+
+        0 8px 20px
+        rgba(0, 0, 0, 0.08);
+
+    }
+
+
+    /* =========================
+       FLOATING HEART
+    ========================== */
+
+    .heart-particle {
+
+      position:
+        absolute;
+
+      bottom:
+        -50px;
+
+      opacity:
+        0;
+
+      pointer-events:
+        none;
+
+      animation:
+        rise linear infinite;
+
+    }
+
+
+    @keyframes rise {
+
+      0% {
+
+        transform:
+          translateY(0)
+          scale(.7)
+          rotate(0deg);
+
+        opacity:
+          0;
+
+      }
+
+      10% {
+
+        opacity:
+          .8;
+
+      }
+
+      80% {
+
+        opacity:
+          .65;
+
+      }
+
+      100% {
+
+        transform:
+          translateY(-110vh)
+          scale(1.25)
+          rotate(25deg);
+
+        opacity:
+          0;
+
+      }
+
+    }
+
+
+    /* =========================
+       TYPEWRITER
+    ========================== */
+
+    .typewriter {
+
+      border-right:
+        3px solid #ff7fa8;
+
+      white-space:
+        nowrap;
+
+      overflow:
+        hidden;
+
+      display:
+        inline-block;
+
+      animation:
+        cursor .7s step-end infinite;
+
+    }
+
+
+    @keyframes cursor {
+
+      50% {
+
+        border-color:
+          transparent;
+
+      }
+
+    }
+
+
+    /* =========================
+       ACCORDION
+    ========================== */
+
+    .accordion-content {
+
+      max-height:
+        0;
+
+      overflow:
+        hidden;
+
+      transition:
+        max-height .45s ease,
+        padding .3s ease;
+
+    }
+
+
+    .accordion-item.active
+    .accordion-content {
+
+      max-height:
+        250px;
+
+      padding-top:
+        12px;
+
+    }
+
+
+    .accordion-item.active
+    .arrow {
+
+      transform:
+        rotate(180deg);
+
+    }
+
+
+    /* =========================
+       SPARKLE
+    ========================== */
+
+    .sparkle {
+
+      animation:
+        sparkle 2s ease-in-out infinite;
+
+    }
+
+
+    @keyframes sparkle {
+
+      0%, 100% {
+
+        opacity:
+          .4;
+
+        transform:
+          scale(.8);
+
+      }
+
+      50% {
+
+        opacity:
+          1;
+
+        transform:
+          scale(1.15);
+
+      }
+
+    }
+
+
+    /* =========================
+       LOVE MODAL
+    ========================== */
+
+    .love-modal {
+
+      opacity:
+        0;
+
+      visibility:
+        hidden;
+
+      transition:
+        all .3s ease;
+
+    }
+
+
+    .love-modal.show {
+
+      opacity:
+        1;
+
+      visibility:
+        visible;
+
+    }
+
+
+    .love-modal-card {
+
+      transform:
+        translateY(20px)
+        scale(.95);
+
+      transition:
+        all .35s ease;
+
+    }
+
+
+    .love-modal.show
+    .love-modal-card {
+
+      transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+
+    /* =========================
+       GALLERY
+    ========================== */
+
+    .gallery-card {
+
+      transition:
+        transform .5s ease,
+        box-shadow .5s ease;
+
+    }
+
+
+    .gallery-card:hover {
+
+      box-shadow:
+        0 25px 45px
+        rgba(255, 105, 150, .20);
+
+    }
+
+
+    /* =========================
+       GALLERY LIGHTBOX
+    ========================== */
+
+    .gallery-modal {
+
+      opacity:
+        0;
+
+      visibility:
+        hidden;
+
+      transition:
+        all .3s ease;
+
+    }
+
+
+    .gallery-modal.show {
+
+      opacity:
+        1;
+
+      visibility:
+        visible;
+
+    }
+
+
+    .gallery-modal-card {
+
+      transform:
+        scale(.9);
+
+      transition:
+        transform .3s ease;
+
+    }
+
+
+    .gallery-modal.show
+    .gallery-modal-card {
+
+      transform:
+        scale(1);
+
+    }
+
+
+    /* =========================
+       IMAGE LOADING
+    ========================== */
+
+    img {
+
+      -webkit-user-drag:
+        none;
+
+    }
+
+  </style>
+
+</head>
+
+
+<body
+  class="
+    bg-gradient-to-br
+    from-pink-100
+    via-orange-50
+    to-purple-100
+    text-slate-700
+  "
+>
+
+
+  <!-- ==================================================
+       FLOATING HEART BACKGROUND
+  =================================================== -->
+
+  <div
+    id="heartContainer"
+    class="
+      fixed
+      inset-0
+      overflow-hidden
+      pointer-events-none
+      z-0
+    "
+  ></div>
+
+
+  <!-- Decorative blobs -->
+
+  <div
+    class="
+      fixed
+      -top-24
+      -left-24
+      w-72
+      h-72
+      bg-pink-200/40
+      rounded-full
+      blur-3xl
+      pointer-events-none
+    "
+  ></div>
+
+
+  <div
+    class="
+      fixed
+      top-1/3
+      -right-32
+      w-80
+      h-80
+      bg-purple-200/40
+      rounded-full
+      blur-3xl
+      pointer-events-none
+    "
+  ></div>
+
+
+  <div
+    class="
+      fixed
+      bottom-0
+      left-1/4
+      w-72
+      h-72
+      bg-yellow-200/30
+      rounded-full
+      blur-3xl
+      pointer-events-none
+    "
+  ></div>
+
+
+
+  <!-- ==================================================
+       HERO
+  =================================================== -->
+
+  <header
+    class="
+      relative
+      z-10
+      min-h-screen
+      flex
+      items-center
+      justify-center
+      px-5
+      py-16
+    "
+  >
+
+    <div
+      class="
+        max-w-5xl
+        mx-auto
+        text-center
+      "
+    >
+
+
+      <!-- Badge -->
+
+      <div
+        class="
+          inline-flex
+          items-center
+          gap-2
+          bg-white/70
+          backdrop-blur-md
+          px-5
+          py-2
+          rounded-full
+          shadow-sm
+          mb-7
+          animate-bounce
+        "
+      >
+
+        <span>💌</span>
+
+        <span
+          class="
+            text-sm
+            font-bold
+            text-pink-500
+          "
+        >
+          A Little Love Story
+        </span>
+
+        <span>💌</span>
+
+      </div>
+
+
+      <!-- Heart -->
+
+      <div
+        class="
+          text-6xl
+          md:text-8xl
+          mb-5
+          animate-heartbeat
+        "
+      >
+        💕
+      </div>
+
+
+      <!-- Title -->
+
+      <h1
+        class="
+          text-4xl
+          sm:text-5xl
+          md:text-7xl
+          font-bold
+          leading-tight
+          text-transparent
+          bg-clip-text
+          bg-gradient-to-r
+          from-pink-500
+          via-rose-500
+          to-purple-500
+        "
+      >
+
+        Happy Anniversary,
+
+        <br class="sm:hidden">
+
+        Sayangku! ❤️
+
+      </h1>
+
+
+      <!-- Typewriter -->
+
+      <div
+        class="
+          mt-7
+          min-h-[36px]
+          text-lg
+          sm:text-xl
+          md:text-2xl
+          font-semibold
+          text-pink-500
+        "
+      >
+
+        <span
+          id="typewriter"
+          class="typewriter"
+        ></span>
+
+      </div>
+
+
+      <!-- Description -->
+
+      <p
+        class="
+          max-w-2xl
+          mx-auto
+          mt-7
+          text-slate-600
+          leading-relaxed
+          text-base
+          sm:text-lg
+        "
+      >
+
+        Terima kasih sudah menjadi
+        rumah paling nyaman,
+        tempat pulang paling indah,
+        dan alasan kenapa hari-hariku
+        selalu terasa lebih manis. 🥹💕
+
+      </p>
+
+
+      <!-- Button -->
+
+      <a
+        href="#our-story"
+        class="
+          inline-flex
+          items-center
+          gap-2
+          mt-10
+          px-7
+          py-3.5
+          rounded-full
+          bg-pink-500
+          hover:bg-pink-600
+          text-white
+          font-bold
+          shadow-lg
+          shadow-pink-300/50
+          transition-all
+          duration-300
+          hover:-translate-y-1
+        "
+      >
+
+        Lihat Kisah Kita
+
+        <span>↓</span>
+
+      </a>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- ==================================================
+       MAIN
+  =================================================== -->
+
+  <main
+    id="our-story"
+    class="relative z-10"
+  >
+
+
+    <!-- ==================================================
+         MAIN PHOTO + LOVE COUNTER
+    =================================================== -->
+
+    <section
+      class="
+        px-5
+        py-20
+      "
+    >
+
+      <div
+        class="
+          max-w-6xl
+          mx-auto
+          grid
+          lg:grid-cols-2
+          gap-14
+          items-center
+        "
+      >
+
+
+        <!-- MAIN POLAROID -->
+
+        <div class="flex justify-center">
+
+          <div class="relative">
+
+
+            <!-- Sticker -->
+
+            <div
+              class="
+                absolute
+                -top-8
+                -left-8
+                z-20
+                text-4xl
+                rotate-[-15deg]
+                animate-wiggle
+              "
+            >
+              🌸
+            </div>
+
+
+            <div
+              class="
+                absolute
+                -top-7
+                -right-7
+                z-20
+                text-4xl
+                rotate-12
+                animate-bounce
+              "
+            >
+              👑
+            </div>
+
+
+            <div
+              class="
+                absolute
+                bottom-24
+                -right-10
+                z-20
+                text-3xl
+                animate-float
+              "
+            >
+              💗
+            </div>
+
+
+            <!-- Polaroid -->
+
+            <div
+              class="
+                bg-white
+                p-4
+                pb-7
+                rounded-2xl
+                polaroid
+                rotate-[-2deg]
+                max-w-sm
+              "
+            >
+
+              <div
+                class="
+                  aspect-[3/4]
+                  overflow-hidden
+                  rounded-2xl
+                  bg-pink-100
+                "
+              >
+
+                <img
+                  src="foto1.webp"
+                  alt="Foto pasangan tercinta"
+                  class="
+                    w-full
+                    h-full
+                    object-cover
+                  "
+                >
+
+              </div>
+
+
+              <div
+                class="
+                  text-center
+                  mt-5
+                "
+              >
+
+                <p
+                  class="
+                    text-xl
+                    font-bold
+                    text-pink-500
+                  "
+                >
+                  You & Me 💕
+                </p>
+
+
+                <p
+                  class="
+                    text-sm
+                    text-slate-500
+                    mt-1
+                  "
+                >
+                  Sejak hari itu,
+                  sampai selamanya...
+                </p>
+
+
+                <div
+                  class="
+                    mt-3
+                    inline-block
+                    bg-pink-100
+                    text-pink-500
+                    px-4
+                    py-1
+                    rounded-full
+                    text-xs
+                    font-bold
+                  "
+                >
+                  Forever & Always ♡
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- LOVE COUNTER -->
+
+        <div>
+
+          <div
+            class="
+              mb-3
+              text-pink-500
+              font-bold
+            "
+          >
+            ✨ OUR LITTLE UNIVERSE ✨
+          </div>
+
+
+          <h2
+            class="
+              text-3xl
+              md:text-5xl
+              font-bold
+              text-slate-800
+              leading-tight
+            "
+          >
+
+            Sudah sejauh ini kita
+
+            <span
+              class="text-pink-500"
+            >
+              bersama.
+            </span>
+
+            🥰
+
+          </h2>
+
+
+          <p
+            class="
+              mt-5
+              text-slate-600
+              leading-relaxed
+            "
+          >
+
+            Dari obrolan kecil sampai menjadi
+            bagian besar dalam hidup satu sama lain.
+            Dan ternyata, waktu terasa cepat
+            kalau dihabiskan bersamamu. 💗
+
+          </p>
+
+
+          <!--
+            GANTI TANGGAL DI SINI
+
+            Format:
+            YYYY-MM-DD
+
+            Contoh:
+            2024-02-14
+          -->
+
+          <div
+            id="loveCounter"
+            data-start-date="2024-02-14"
+            class="
+              grid
+              grid-cols-2
+              sm:grid-cols-4
+              gap-3
+              mt-8
+            "
+          >
+
+            <div
+              class="
+                glass
+                rounded-2xl
+                p-5
+                text-center
+                shadow-sm
+              "
+            >
+
+              <div
+                id="years"
+                class="
+                  text-3xl
+                  font-bold
+                  text-pink-500
+                "
+              >
+                0
+              </div>
+
+              <div
+                class="
+                  text-xs
+                  mt-1
+                  font-semibold
+                  text-slate-500
+                "
+              >
+                TAHUN
+              </div>
+
+            </div>
+
+
+            <div
+              class="
+                glass
+                rounded-2xl
+                p-5
+                text-center
+                shadow-sm
+              "
+            >
+
+              <div
+                id="months"
+                class="
+                  text-3xl
+                  font-bold
+                  text-purple-500
+                "
+              >
+                0
+              </div>
+
+              <div
+                class="
+                  text-xs
+                  mt-1
+                  font-semibold
+                  text-slate-500
+                "
+              >
+                BULAN
+              </div>
+
+            </div>
+
+
+            <div
+              class="
+                glass
+                rounded-2xl
+                p-5
+                text-center
+                shadow-sm
+              "
+            >
+
+              <div
+                id="days"
+                class="
+                  text-3xl
+                  font-bold
+                  text-orange-500
+                "
+              >
+                0
+              </div>
+
+              <div
+                class="
+                  text-xs
+                  mt-1
+                  font-semibold
+                  text-slate-500
+                "
+              >
+                HARI
+              </div>
+
+            </div>
+
+
+            <div
+              class="
+                glass
+                rounded-2xl
+                p-5
+                text-center
+                shadow-sm
+              "
+            >
+
+              <div
+                id="totalDays"
+                class="
+                  text-3xl
+                  font-bold
+                  text-rose-500
+                "
+              >
+                0
+              </div>
+
+              <div
+                class="
+                  text-xs
+                  mt-1
+                  font-semibold
+                  text-slate-500
+                "
+              >
+                TOTAL HARI
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Counter Message -->
+
+          <div
+            class="
+              mt-6
+              bg-gradient-to-r
+              from-pink-500
+              to-rose-400
+              text-white
+              rounded-2xl
+              p-5
+              shadow-lg
+              shadow-pink-200
+            "
+          >
+
+            <div
+              class="
+                flex
+                items-center
+                gap-4
+              "
+            >
+
+              <div
+                class="
+                  text-4xl
+                  animate-heartbeat
+                "
+              >
+                ❤️
+              </div>
+
+
+              <div>
+
+                <p
+                  class="
+                    font-bold
+                    text-lg
+                  "
+                >
+                  And still counting...
+                </p>
+
+
+                <p
+                  class="
+                    text-sm
+                    text-white/85
+                  "
+                >
+                  Semoga angka ini terus
+                  bertambah sampai rambut kita
+                  sama-sama putih. 🤍
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         GALLERY
+    =================================================== -->
+
+    <section
+      id="gallery"
+      class="
+        relative
+        z-10
+        px-5
+        py-24
+        overflow-hidden
+        bg-white/30
+      "
+    >
+
+
+      <!-- Background decoration -->
+
+      <div
+        class="
+          absolute
+          top-20
+          left-0
+          w-64
+          h-64
+          bg-pink-200/30
+          rounded-full
+          blur-3xl
+        "
+      ></div>
+
+
+      <div
+        class="
+          absolute
+          bottom-10
+          right-0
+          w-72
+          h-72
+          bg-purple-200/30
+          rounded-full
+          blur-3xl
+        "
+      ></div>
+
+
+
+      <div
+        class="
+          relative
+          max-w-6xl
+          mx-auto
+        "
+      >
+
+
+        <!-- Heading -->
+
+        <div
+          class="
+            text-center
+            mb-14
+          "
+        >
+
+          <div
+            class="
+              flex
+              justify-center
+              items-center
+              gap-3
+              text-3xl
+              mb-4
+            "
+          >
+
+            <span
+              class="animate-float"
+            >
+              🌸
+            </span>
+
+            <span>
+              📸
+            </span>
+
+            <span
+              class="animate-floatSlow"
+            >
+              💕
+            </span>
+
+          </div>
+
+
+          <p
+            class="
+              text-pink-500
+              font-bold
+              uppercase
+              tracking-[0.25em]
+              text-sm
+            "
+          >
+            Our Little Memories
+          </p>
+
+
+          <h2
+            class="
+              text-3xl
+              md:text-5xl
+              font-bold
+              text-slate-800
+              mt-3
+            "
+          >
+
+            Potongan kecil dari
+
+            <span
+              class="text-pink-500"
+            >
+              cerita kita
+            </span>
+
+            💗
+
+          </h2>
+
+
+          <p
+            class="
+              max-w-2xl
+              mx-auto
+              mt-5
+              text-slate-500
+              leading-relaxed
+            "
+          >
+
+            Karena ternyata kebahagiaan bukan cuma
+            tentang momen besar.
+
+            Kadang, foto random, jalan-jalan kecil,
+            makan bareng, dan ketawa tanpa alasan
+            justru menjadi kenangan yang paling kita rindukan.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             PHOTO GRID
+        ========================== -->
+
+        <div
+          class="
+            grid
+            grid-cols-2
+            md:grid-cols-4
+            gap-5
+            items-start
+          "
+        >
+
+
+          <!-- FOTO 2 -->
+
+          <div
+            class="
+              gallery-card
+              group
+              relative
+              bg-white
+              p-3
+              pb-5
+              rounded-2xl
+              shadow-lg
+              rotate-[-2deg]
+              hover:rotate-0
+              hover:-translate-y-2
+              transition-all
+              duration-500
+              cursor-pointer
+            "
+            onclick="
+              openGallery(
+                'foto2.webp',
+                'First date kita 💕'
+              )
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -top-5
+                -right-3
+                z-20
+                text-3xl
+                rotate-12
+              "
+            >
+              🌷
+            </div>
+
+
+            <div
+              class="
+                aspect-[4/5]
+                overflow-hidden
+                rounded-xl
+              "
+            >
+
+              <img
+                src="foto2.webp"
+                alt="Kenangan first date"
+                class="
+                  w-full
+                  h-full
+                  object-cover
+                  group-hover:scale-110
+                  transition-transform
+                  duration-700
+                "
+              >
+
+            </div>
+
+
+            <p
+              class="
+                text-center
+                font-bold
+                text-pink-500
+                mt-4
+                text-sm
+              "
+            >
+              First Date 💕
+            </p>
+
+          </div>
+
+
+
+          <!-- FOTO 3 -->
+
+          <div
+            class="
+              gallery-card
+              group
+              relative
+              bg-white
+              p-3
+              pb-5
+              rounded-2xl
+              shadow-lg
+              rotate-[3deg]
+              hover:rotate-0
+              hover:-translate-y-2
+              transition-all
+              duration-500
+              cursor-pointer
+              md:mt-10
+            "
+            onclick="
+              openGallery(
+                'foto3.webp',
+                'Senyum favoritku 🥰'
+              )
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -top-4
+                -left-4
+                z-20
+                text-3xl
+                animate-wiggle
+              "
+            >
+              🎀
+            </div>
+
+
+            <div
+              class="
+                aspect-[3/4]
+                overflow-hidden
+                rounded-xl
+              "
+            >
+
+              <img
+                src="foto3.webp"
+                alt="Kenangan bersama"
+                class="
+                  w-full
+                  h-full
+                  object-cover
+                  group-hover:scale-110
+                  transition-transform
+                  duration-700
+                "
+              >
+
+            </div>
+
+
+            <p
+              class="
+                text-center
+                font-bold
+                text-purple-500
+                mt-4
+                text-sm
+              "
+            >
+              Senyum Favoritku 🥰
+            </p>
+
+          </div>
+
+
+
+          <!-- FOTO 4 -->
+
+          <div
+            class="
+              gallery-card
+              group
+              relative
+              bg-white
+              p-3
+              pb-5
+              rounded-2xl
+              shadow-lg
+              rotate-[-3deg]
+              hover:rotate-0
+              hover:-translate-y-2
+              transition-all
+              duration-500
+              cursor-pointer
+            "
+            onclick="
+              openGallery(
+                'foto4.webp',
+                'Petualangan kecil kita 🌸'
+              )
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -top-5
+                right-3
+                z-20
+                text-3xl
+              "
+            >
+              ✨
+            </div>
+
+
+            <div
+              class="
+                aspect-[4/5]
+                overflow-hidden
+                rounded-xl
+              "
+            >
+
+              <img
+                src="foto4.webp"
+                alt="Petualangan bersama"
+                class="
+                  w-full
+                  h-full
+                  object-cover
+                  group-hover:scale-110
+                  transition-transform
+                  duration-700
+                "
+              >
+
+            </div>
+
+
+            <p
+              class="
+                text-center
+                font-bold
+                text-orange-500
+                mt-4
+                text-sm
+              "
+            >
+              Little Adventure 🌸
+            </p>
+
+          </div>
+
+
+
+          <!-- FOTO 5 -->
+
+          <div
+            class="
+              gallery-card
+              group
+              relative
+              bg-white
+              p-3
+              pb-5
+              rounded-2xl
+              shadow-lg
+              rotate-[2deg]
+              hover:rotate-0
+              hover:-translate-y-2
+              transition-all
+              duration-500
+              cursor-pointer
+              md:mt-14
+            "
+            onclick="
+              openGallery(
+                'foto5.webp',
+                'Satu frame, sejuta cerita 💗'
+              )
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -top-6
+                -right-4
+                z-20
+                text-3xl
+              "
+            >
+              👑
+            </div>
+
+
+            <div
+              class="
+                aspect-[3/4]
+                overflow-hidden
+                rounded-xl
+              "
+            >
+
+              <img
+                src="foto5.webp"
+                alt="Foto romantis pasangan"
+                class="
+                  w-full
+                  h-full
+                  object-cover
+                  group-hover:scale-110
+                  transition-transform
+                  duration-700
+                "
+              >
+
+            </div>
+
+
+            <p
+              class="
+                text-center
+                font-bold
+                text-rose-500
+                mt-4
+                text-sm
+              "
+            >
+              Us & Forever 💗
+            </p>
+
+          </div>
+
+
+
+          <!-- FOTO 6 -->
+
+          <div
+            class="
+              gallery-card
+              group
+              relative
+              bg-white
+              p-3
+              pb-5
+              rounded-2xl
+              shadow-lg
+              rotate-[2deg]
+              hover:rotate-0
+              hover:-translate-y-2
+              transition-all
+              duration-500
+              cursor-pointer
+            "
+            onclick="
+              openGallery(
+                'foto6.webp',
+                'Hari biasa yang jadi istimewa 🌷'
+              )
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -top-4
+                -left-3
+                z-20
+                text-3xl
+              "
+            >
+              🌼
+            </div>
+
+
+            <div
+              class="
+                aspect-[4/5]
+                overflow-hidden
+                rounded-xl
+              "
+            >
+
+              <img
+                src="foto6.webp"
+                alt="Kenangan manis"
+                class="
+                  w-full
+                  h-full
+                  object-cover
+                  group-hover:scale-110
+                  transition-transform
+                  duration-700
+                "
+              >
+
+            </div>
+
+
+            <p
+              class="
+                text-center
+                font-bold
+                text-pink-500
+                mt-4
+                text-sm
+              "
+            >
+              Just Us 🌷
+            </p>
+
+          </div>
+
+
+
+          <!-- FOTO 7 -->
+
+          <div
+            class="
+              gallery-card
+              group
+              relative
+              bg-white
+              p-3
+              pb-5
+              rounded-2xl
+              shadow-lg
+              rotate-[-3deg]
+              hover:rotate-0
+              hover:-translate-y-2
+              transition-all
+              duration-500
+              cursor-pointer
+              md:mt-12
+            "
+            onclick="
+              openGallery(
+                'foto7.webp',
+                'Momen yang ingin kuulang 💕'
+              )
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -top-5
+                -right-3
+                z-20
+                text-3xl
+              "
+            >
+              💌
+            </div>
+
+
+            <div
+              class="
+                aspect-[3/4]
+                overflow-hidden
+                rounded-xl
+              "
+            >
+
+              <img
+                src="foto7.webp"
+                alt="Momen romantis"
+                class="
+                  w-full
+                  h-full
+                  object-cover
+                  group-hover:scale-110
+                  transition-transform
+                  duration-700
+                "
+              >
+
+            </div>
+
+
+            <p
+              class="
+                text-center
+                font-bold
+                text-purple-500
+                mt-4
+                text-sm
+              "
+            >
+              One More Time 💕
+            </p>
+
+          </div>
+
+
+
+          <!-- FOTO 8 -->
+
+          <div
+            class="
+              gallery-card
+              group
+              relative
+              bg-white
+              p-3
+              pb-5
+              rounded-2xl
+              shadow-lg
+              rotate-[3deg]
+              hover:rotate-0
+              hover:-translate-y-2
+              transition-all
+              duration-500
+              cursor-pointer
+            "
+            onclick="
+              openGallery(
+                'foto8.webp',
+                'Dan masih banyak cerita lainnya... 🥹'
+              )
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -top-5
+                left-4
+                z-20
+                text-3xl
+                animate-bounce
+              "
+            >
+              💖
+            </div>
+
+
+            <div
+              class="
+                aspect-[4/5]
+                overflow-hidden
+                rounded-xl
+              "
+            >
+
+              <img
+                src="foto8.webp"
+                alt="Kenangan bersama"
+                class="
+                  w-full
+                  h-full
+                  object-cover
+                  group-hover:scale-110
+                  transition-transform
+                  duration-700
+                "
+              >
+
+            </div>
+
+
+            <p
+              class="
+                text-center
+                font-bold
+                text-pink-500
+                mt-4
+                text-sm
+              "
+            >
+              To Be Continued... 💖
+            </p>
+
+          </div>
+
+
+
+          <!-- CLOSING CARD -->
+
+          <div
+            class="
+              relative
+              flex
+              flex-col
+              items-center
+              justify-center
+              min-h-[240px]
+              bg-gradient-to-br
+              from-pink-100
+              to-purple-100
+              rounded-2xl
+              border-2
+              border-dashed
+              border-pink-300
+              p-6
+              text-center
+              rotate-[-1deg]
+              md:mt-8
+            "
+          >
+
+            <div
+              class="
+                text-5xl
+                animate-heartbeat
+              "
+            >
+              💕
+            </div>
+
+
+            <p
+              class="
+                font-bold
+                text-pink-500
+                mt-4
+              "
+            >
+              And our story
+
+              <br>
+
+              is still going...
+            </p>
+
+
+            <p
+              class="
+                text-xs
+                text-slate-500
+                mt-2
+              "
+            >
+              Banyak foto lagi yang
+              belum masuk sini. 😆
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Gallery hint -->
+
+        <div
+          class="
+            text-center
+            mt-14
+          "
+        >
+
+          <div
+            class="
+              inline-flex
+              items-center
+              gap-2
+              bg-white/70
+              backdrop-blur-md
+              px-5
+              py-3
+              rounded-full
+              shadow-sm
+            "
+          >
+
+            <span>📷</span>
+
+            <span
+              class="
+                text-sm
+                font-semibold
+                text-slate-500
+              "
+            >
+              Klik foto untuk melihat
+              kenangan lebih besar
+            </span>
+
+            <span>💕</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         LOVE NOTES
+    =================================================== -->
+
+    <section
+      class="
+        px-5
+        py-20
+      "
+    >
+
+      <div
+        class="
+          max-w-4xl
+          mx-auto
+        "
+      >
+
+
+        <!-- Heading -->
+
+        <div
+          class="
+            text-center
+            mb-12
+          "
+        >
+
+          <span
+            class="text-4xl"
+          >
+            💌
+          </span>
+
+
+          <h2
+            class="
+              text-3xl
+              md:text-5xl
+              font-bold
+              mt-4
+              text-slate-800
+            "
+          >
+
+            Alasan Kenapa Aku
+
+            <span
+              class="text-pink-500"
+            >
+              Sayang Kamu
+            </span>
+
+          </h2>
+
+
+          <p
+            class="
+              mt-4
+              text-slate-500
+            "
+          >
+            Klik satu-satu ya...
+            jangan dibuka semuanya sekaligus. 😚
+          </p>
+
+        </div>
+
+
+
+        <!-- ACCORDIONS -->
+
+        <div
+          class="space-y-4"
+        >
+
+
+          <!-- NOTE 1 -->
+
+          <div
+            class="
+              accordion-item
+              glass
+              rounded-2xl
+              shadow-sm
+              overflow-hidden
+            "
+          >
+
+            <button
+              class="
+                accordion-button
+                w-full
+                p-5
+                flex
+                items-center
+                justify-between
+                text-left
+              "
+            >
+
+              <div
+                class="
+                  flex
+                  items-center
+                  gap-4
+                "
+              >
+
+                <span
+                  class="text-3xl"
+                >
+                  🌷
+                </span>
+
+
+                <div>
+
+                  <h3
+                    class="
+                      font-bold
+                      text-slate-800
+                    "
+                  >
+                    Karena kamu selalu membuatku tersenyum
+                  </h3>
+
+
+                  <p
+                    class="
+                      text-xs
+                      text-slate-500
+                      mt-1
+                    "
+                  >
+                    Klik untuk membuka surat kecil...
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="
+                  arrow
+                  text-pink-500
+                  transition-transform
+                  duration-300
+                  text-xl
+                "
+              >
+                ↓
+              </span>
+
+            </button>
+
+
+            <div
+              class="
+                accordion-content
+                px-5
+                pb-0
+              "
+            >
+
+              <p
+                class="
+                  text-slate-600
+                  leading-relaxed
+                  pl-14
+                  pb-5
+                "
+              >
+
+                Bahkan di hari yang paling melelahkan,
+                satu chat darimu bisa tiba-tiba membuat
+                semuanya terasa lebih ringan.
+
+                Senyummu benar-benar punya
+                kekuatan super. 🥹💕
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- NOTE 2 -->
+
+          <div
+            class="
+              accordion-item
+              glass
+              rounded-2xl
+              shadow-sm
+              overflow-hidden
+            "
+          >
+
+            <button
+              class="
+                accordion-button
+                w-full
+                p-5
+                flex
+                items-center
+                justify-between
+                text-left
+              "
+            >
+
+              <div
+                class="
+                  flex
+                  items-center
+                  gap-4
+                "
+              >
+
+                <span
+                  class="text-3xl"
+                >
+                  🧸
+                </span>
+
+
+                <div>
+
+                  <h3
+                    class="
+                      font-bold
+                      text-slate-800
+                    "
+                  >
+                    Karena kamu adalah tempat ternyamanku
+                  </h3>
+
+
+                  <p
+                    class="
+                      text-xs
+                      text-slate-500
+                      mt-1
+                    "
+                  >
+                    Ada pesan rahasia di sini...
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="
+                  arrow
+                  text-pink-500
+                  transition-transform
+                  duration-300
+                  text-xl
+                "
+              >
+                ↓
+              </span>
+
+            </button>
+
+
+            <div
+              class="
+                accordion-content
+                px-5
+                pb-0
+              "
+            >
+
+              <p
+                class="
+                  text-slate-600
+                  leading-relaxed
+                  pl-14
+                  pb-5
+                "
+              >
+
+                Aku nggak butuh tempat yang sempurna.
+                Aku cuma butuh tempat di mana aku bisa
+                menjadi diriku sendiri.
+
+                Dan entah kenapa, tempat itu selalu
+                terasa seperti kamu. 🫶
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- NOTE 3 -->
+
+          <div
+            class="
+              accordion-item
+              glass
+              rounded-2xl
+              shadow-sm
+              overflow-hidden
+            "
+          >
+
+            <button
+              class="
+                accordion-button
+                w-full
+                p-5
+                flex
+                items-center
+                justify-between
+                text-left
+              "
+            >
+
+              <div
+                class="
+                  flex
+                  items-center
+                  gap-4
+                "
+              >
+
+                <span
+                  class="text-3xl"
+                >
+                  🌙
+                </span>
+
+
+                <div>
+
+                  <h3
+                    class="
+                      font-bold
+                      text-slate-800
+                    "
+                  >
+                    Karena aku ingin terus memilihmu
+                  </h3>
+
+
+                  <p
+                    class="
+                      text-xs
+                      text-slate-500
+                      mt-1
+                    "
+                  >
+                    Satu lagi...
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="
+                  arrow
+                  text-pink-500
+                  transition-transform
+                  duration-300
+                  text-xl
+                "
+              >
+                ↓
+              </span>
+
+            </button>
+
+
+            <div
+              class="
+                accordion-content
+                px-5
+                pb-0
+              "
+            >
+
+              <p
+                class="
+                  text-slate-600
+                  leading-relaxed
+                  pl-14
+                  pb-5
+                "
+              >
+
+                Kalau hidup memberiku kesempatan
+                untuk mengulang semuanya,
+
+                aku tetap akan mencari kamu,
+                memilih kamu, dan jatuh cinta
+                kepadamu lagi.
+
+                Berkali-kali. ❤️
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- NOTE 4 -->
+
+          <div
+            class="
+              accordion-item
+              glass
+              rounded-2xl
+              shadow-sm
+              overflow-hidden
+            "
+          >
+
+            <button
+              class="
+                accordion-button
+                w-full
+                p-5
+                flex
+                items-center
+                justify-between
+                text-left
+              "
+            >
+
+              <div
+                class="
+                  flex
+                  items-center
+                  gap-4
+                "
+              >
+
+                <span
+                  class="text-3xl"
+                >
+                  🍓
+                </span>
+
+
+                <div>
+
+                  <h3
+                    class="
+                      font-bold
+                      text-slate-800
+                    "
+                  >
+                    Karena kamu adalah favoritku
+                  </h3>
+
+
+                  <p
+                    class="
+                      text-xs
+                      text-slate-500
+                      mt-1
+                    "
+                  >
+                    Yang terakhir...
+                    janji. 😆
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="
+                  arrow
+                  text-pink-500
+                  transition-transform
+                  duration-300
+                  text-xl
+                "
+              >
+                ↓
+              </span>
+
+            </button>
+
+
+            <div
+              class="
+                accordion-content
+                px-5
+                pb-0
+              "
+            >
+
+              <p
+                class="
+                  text-slate-600
+                  leading-relaxed
+                  pl-14
+                  pb-5
+                "
+              >
+
+                Dari sekian banyak orang di dunia ini,
+                tetap kamu yang paling aku tunggu pesannya,
+
+                paling aku cari kabarnya,
+                dan paling ingin aku peluk.
+
+                I love you, favoritku. 🥰
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         GOMBAL INTERACTIVE
+    =================================================== -->
+
+    <section
+      class="
+        px-5
+        py-24
+      "
+    >
+
+      <div
+        class="
+          max-w-4xl
+          mx-auto
+        "
+      >
+
+        <div
+          class="
+            relative
+            overflow-hidden
+            rounded-[2rem]
+            bg-gradient-to-br
+            from-pink-500
+            via-rose-400
+            to-purple-500
+            p-8
+            md:p-14
+            text-white
+            shadow-2xl
+          "
+        >
+
+
+          <!-- Decorations -->
+
+          <div
+            class="
+              absolute
+              top-5
+              left-8
+              text-3xl
+              sparkle
+            "
+          >
+            ✨
+          </div>
+
+
+          <div
+            class="
+              absolute
+              top-12
+              right-10
+              text-4xl
+              animate-float
+            "
+          >
+            💗
+          </div>
+
+
+          <div
+            class="
+              absolute
+              bottom-8
+              left-10
+              text-3xl
+              animate-floatSlow
+            "
+          >
+            🌸
+          </div>
+
+
+          <div
+            class="
+              absolute
+              bottom-5
+              right-8
+              text-3xl
+              sparkle
+            "
+          >
+            ✨
+          </div>
+
+
+
+          <div
+            class="
+              relative
+              text-center
+            "
+          >
+
+            <div
+              class="
+                text-6xl
+                animate-heartbeat
+                mb-5
+              "
+            >
+              🥰
+            </div>
+
+
+            <p
+              class="
+                text-sm
+                uppercase
+                tracking-[.3em]
+                font-bold
+                text-white/75
+              "
+            >
+              Pertanyaan paling penting hari ini
+            </p>
+
+
+            <h2
+              class="
+                text-3xl
+                md:text-5xl
+                font-bold
+                mt-4
+              "
+            >
+              Apakah kamu sayang aku selamanya?
+            </h2>
+
+
+            <p
+              class="
+                mt-5
+                text-white/85
+              "
+            >
+              Jawab dengan jujur ya...
+              aku sudah menyiapkan konsekuensinya. 😏
+            </p>
+
+
+            <div
+              class="
+                flex
+                flex-col
+                sm:flex-row
+                justify-center
+                gap-4
+                mt-9
+              "
+            >
+
+              <button
+                onclick="showLoveMessage('sayang')"
+                class="
+                  px-7
+                  py-4
+                  bg-white
+                  text-pink-500
+                  rounded-2xl
+                  font-bold
+                  shadow-lg
+                  hover:scale-105
+                  active:scale-95
+                  transition-all
+                "
+              >
+                Sayang Banget ❤️
+              </button>
+
+
+              <button
+                onclick="showLoveMessage('polpolan')"
+                class="
+                  px-7
+                  py-4
+                  bg-pink-900/20
+                  border
+                  border-white/30
+                  text-white
+                  rounded-2xl
+                  font-bold
+                  hover:bg-white/20
+                  hover:scale-105
+                  active:scale-95
+                  transition-all
+                "
+              >
+                Sayang Pol-polan 🥰
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         FINAL MESSAGE
+    =================================================== -->
+
+    <section
+      class="
+        px-5
+        pb-24
+      "
+    >
+
+      <div
+        class="
+          max-w-3xl
+          mx-auto
+          text-center
+        "
+      >
+
+        <div
+          class="
+            text-5xl
+            mb-5
+            animate-heartbeat
+          "
+        >
+          💕
+        </div>
+
+
+        <h2
+          class="
+            text-3xl
+            md:text-5xl
+            font-bold
+            text-slate-800
+          "
+        >
+
+          Untuk kamu,
+
+          <span
+            class="text-pink-500"
+          >
+            selamanya.
+          </span>
+
+        </h2>
+
+
+        <p
+          class="
+            mt-6
+            text-slate-600
+            leading-relaxed
+            text-lg
+          "
+        >
+
+          Terima kasih sudah hadir di hidupku.
+          Terima kasih untuk setiap tawa, pelukan,
+          perhatian, kesabaran, dan semua momen kecil
+          yang akhirnya menjadi kenangan paling besar
+          dalam hidupku.
+
+        </p>
+
+
+        <p
+          class="
+            mt-6
+            font-bold
+            text-xl
+            text-pink-500
+          "
+        >
+
+          I love you today.
+
+          <br>
+
+          I love you tomorrow.
+
+          <br>
+
+          And I will keep choosing you. ❤️
+
+        </p>
+
+
+        <div
+          class="
+            mt-10
+            text-3xl
+          "
+        >
+          🌷 💕 🌸 💗 🌷
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ==================================================
+       FOOTER
+  =================================================== -->
+
+  <footer
+    class="
+      relative
+      z-10
+      py-8
+      text-center
+      bg-white/40
+      border-t
+      border-white/60
+    "
+  >
+
+    <p
+      class="
+        text-sm
+        text-slate-500
+      "
+    >
+
+      Made with
+
+      <span
+        class="
+          text-pink-500
+          animate-heartbeat
+          inline-block
+        "
+      >
+        ♥
+      </span>
+
+      for my favorite person.
+
+    </p>
+
+  </footer>
+
+
+
+  <!-- ==================================================
+       LOVE MODAL
+  =================================================== -->
+
+  <div
+    id="loveModal"
+    class="
+      love-modal
+      fixed
+      inset-0
+      z-[110]
+      flex
+      items-center
+      justify-center
+      px-5
+      bg-slate-900/40
+      backdrop-blur-sm
+    "
+  >
+
+    <div
+      class="
+        love-modal-card
+        w-full
+        max-w-md
+        bg-white
+        rounded-[2rem]
+        p-8
+        text-center
+        shadow-2xl
+      "
+    >
+
+      <div
+        id="modalEmoji"
+        class="
+          text-6xl
+          mb-5
+        "
+      >
+        💕
+      </div>
+
+
+      <h3
+        id="modalTitle"
+        class="
+          text-2xl
+          font-bold
+          text-pink-500
+        "
+      >
+        Awww! 🥹
+      </h3>
+
+
+      <p
+        id="modalMessage"
+        class="
+          mt-4
+          text-slate-600
+          leading-relaxed
+        "
+      ></p>
+
+
+      <button
+        onclick="closeLoveMessage()"
+        class="
+          mt-7
+          px-7
+          py-3
+          rounded-full
+          bg-pink-500
+          hover:bg-pink-600
+          text-white
+          font-bold
+          transition
+        "
+      >
+        Peluk virtual dulu 🤗
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       GALLERY LIGHTBOX
+  =================================================== -->
+
+  <div
+    id="galleryModal"
+    class="
+      gallery-modal
+      fixed
+      inset-0
+      z-[100]
+      bg-slate-950/80
+      backdrop-blur-md
+      flex
+      items-center
+      justify-center
+      p-5
+    "
+    onclick="closeGallery(event)"
+  >
+
+    <div
+      id="galleryModalCard"
+      class="
+        gallery-modal-card
+        relative
+        max-w-4xl
+        w-full
+      "
+    >
+
+
+      <!-- Close button -->
+
+      <button
+        onclick="closeGallery()"
+        class="
+          absolute
+          -top-4
+          -right-4
+          z-20
+          w-11
+          h-11
+          rounded-full
+          bg-white
+          text-pink-500
+          shadow-lg
+          font-bold
+          text-xl
+          hover:scale-110
+          transition
+        "
+      >
+        ×
+      </button>
+
+
+
+      <!-- Image card -->
+
+      <div
+        class="
+          bg-white
+          rounded-3xl
+          p-3
+          shadow-2xl
+        "
+      >
+
+        <div
+          class="
+            max-h-[75vh]
+            overflow-hidden
+            rounded-2xl
+            bg-pink-50
+          "
+        >
+
+          <img
+            id="galleryModalImage"
+            src=""
+            alt="Gallery kenangan"
+            class="
+              w-full
+              max-h-[75vh]
+              object-contain
+              mx-auto
+            "
+          >
+
+        </div>
+
+
+        <div
+          class="
+            text-center
+            py-5
+          "
+        >
+
+          <p
+            id="galleryModalCaption"
+            class="
+              font-bold
+              text-xl
+              text-pink-500
+            "
+          ></p>
+
+
+          <p
+            class="
+              text-xs
+              text-slate-400
+              mt-1
+            "
+          >
+            A little piece of our story. 💕
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       JAVASCRIPT
+  =================================================== -->
+
+  <script>
+
+
+    /* ==================================================
+       TYPEWRITER
+    =================================================== */
+
+    const phrases = [
+
+      "Kamu adalah rumahku. 🏡❤️",
+
+      "Terima kasih sudah memilihku. 🥹",
+
+      "Aku jatuh cinta padamu, lagi dan lagi. 💕",
+
+      "Bersamamu adalah favoritku. 🌷",
+
+      "Forever sounds good if it's with you. 💗"
+
+    ];
+
+
+    const typewriter =
+      document.getElementById("typewriter");
+
+
+    let phraseIndex = 0;
+
+    let characterIndex = 0;
+
+    let deleting = false;
+
+
+    function typeEffect() {
+
+      const currentPhrase =
+        phrases[phraseIndex];
+
+
+      if (!deleting) {
+
+        typewriter.textContent =
+          currentPhrase.substring(
+            0,
+            characterIndex + 1
+          );
+
+
+        characterIndex++;
+
+
+        if (
+          characterIndex ===
+          currentPhrase.length
+        ) {
+
+          deleting = true;
+
+          setTimeout(
+            typeEffect,
+            1800
+          );
+
+          return;
+
+        }
+
+      } else {
+
+        typewriter.textContent =
+          currentPhrase.substring(
+            0,
+            characterIndex - 1
+          );
+
+
+        characterIndex--;
+
+
+        if (characterIndex === 0) {
+
+          deleting = false;
+
+          phraseIndex =
+            (phraseIndex + 1)
+            % phrases.length;
+
+        }
+
+      }
+
+
+      setTimeout(
+        typeEffect,
+        deleting ? 45 : 75
+      );
+
+    }
+
+
+    typeEffect();
+
+
+
+    /* ==================================================
+       FLOATING HEARTS
+    =================================================== */
+
+    const heartContainer =
+      document.getElementById(
+        "heartContainer"
+      );
+
+
+    const heartSymbols = [
+
+      "❤️",
+      "💕",
+      "💗",
+      "💖",
+      "💘",
+      "💝",
+      "🌸",
+      "✨"
+
+    ];
+
+
+    function createHeart() {
+
+      const heart =
+        document.createElement("div");
+
+
+      heart.className =
+        "heart-particle";
+
+
+      heart.textContent =
+        heartSymbols[
+          Math.floor(
+            Math.random() *
+            heartSymbols.length
+          )
+        ];
+
+
+      heart.style.left =
+        Math.random() * 100 + "%";
+
+
+      heart.style.fontSize =
+        (Math.random() * 18 + 12)
+        + "px";
+
+
+      heart.style.animationDuration =
+        (Math.random() * 7 + 7)
+        + "s";
+
+
+      heart.style.animationDelay =
+        Math.random() * 3
+        + "s";
+
+
+      heartContainer.appendChild(
+        heart
+      );
+
+
+      setTimeout(
+        () => heart.remove(),
+        16000
+      );
+
+    }
+
+
+    setInterval(
+      createHeart,
+      650
+    );
+
+
+    for (
+      let i = 0;
+      i < 12;
+      i++
+    ) {
+
+      createHeart();
+
+    }
+
+
+
+    /* ==================================================
+       LOVE COUNTER
+    =================================================== */
+
+    const counter =
+      document.getElementById(
+        "loveCounter"
+      );
+
+
+    const startDate =
+      new Date(
+        counter.dataset.startDate
+        + "T00:00:00"
+      );
+
+
+    function calculateLoveTime() {
+
+      const now =
+        new Date();
+
+
+      const diff =
+        now.getTime()
+        -
+        startDate.getTime();
+
+
+      const totalDays =
+        Math.max(
+
+          0,
+
+          Math.floor(
+
+            diff /
+            (
+              1000 *
+              60 *
+              60 *
+              24
+            )
+
+          )
+
+        );
+
+
+      let years =
+        now.getFullYear()
+        -
+        startDate.getFullYear();
+
+
+      let months =
+        now.getMonth()
+        -
+        startDate.getMonth();
+
+
+      let days =
+        now.getDate()
+        -
+        startDate.getDate();
+
+
+      if (days < 0) {
+
+        months--;
+
+
+        const previousMonth =
+          new Date(
+
+            now.getFullYear(),
+
+            now.getMonth(),
+
+            0
+
+          );
+
+
+        days +=
+          previousMonth.getDate();
+
+      }
+
+
+      if (months < 0) {
+
+        years--;
+
+        months += 12;
+
+      }
+
+
+      document.getElementById(
+        "years"
+      ).textContent =
+        years;
+
+
+      document.getElementById(
+        "months"
+      ).textContent =
+        months;
+
+
+      document.getElementById(
+        "days"
+      ).textContent =
+        days;
+
+
+      document.getElementById(
+        "totalDays"
+      ).textContent =
+        totalDays.toLocaleString(
+          "id-ID"
+        );
+
+    }
+
+
+    calculateLoveTime();
+
+
+    setInterval(
+      calculateLoveTime,
+      60 * 60 * 1000
+    );
+
+
+
+    /* ==================================================
+       ACCORDION
+    =================================================== */
+
+    const accordionButtons =
+      document.querySelectorAll(
+        ".accordion-button"
+      );
+
+
+    accordionButtons.forEach(
+      button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const item =
+              button.closest(
+                ".accordion-item"
+              );
+
+
+            const isActive =
+              item.classList.contains(
+                "active"
+              );
+
+
+            document
+              .querySelectorAll(
+                ".accordion-item"
+              )
+              .forEach(
+                otherItem => {
+
+                  otherItem.classList.remove(
+                    "active"
+                  );
+
+                }
+              );
+
+
+            if (!isActive) {
+
+              item.classList.add(
+                "active"
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+
+    /* ==================================================
+       LOVE MESSAGE MODAL
+    =================================================== */
+
+    const loveModal =
+      document.getElementById(
+        "loveModal"
+      );
+
+
+    const modalEmoji =
+      document.getElementById(
+        "modalEmoji"
+      );
+
+
+    const modalTitle =
+      document.getElementById(
+        "modalTitle"
+      );
+
+
+    const modalMessage =
+      document.getElementById(
+        "modalMessage"
+      );
+
+
+    function showLoveMessage(type) {
+
+
+      if (
+        type === "sayang"
+      ) {
+
+        modalEmoji.textContent =
+          "🥹❤️";
+
+
+        modalTitle.textContent =
+          "Aku tahu kamu sayang!";
+
+
+        modalMessage.textContent =
+          "Tapi masalahnya... aku sayang kamu jauh lebih banyak. Jadi sekarang kamu resmi tidak boleh kabur dari aku. 😤💕";
+
+      }
+
+
+      else {
+
+        modalEmoji.textContent =
+          "💖🥰";
+
+
+        modalTitle.textContent =
+          "POL-POLAN?!";
+
+
+        modalMessage.textContent =
+          "Waduh, kalau begitu aku harus membalasnya dengan sayang pol-polan juga! Bersiaplah menerima cinta, pelukan, dan gombalan tanpa batas. 🤭💗";
+
+      }
+
+
+      loveModal.classList.add(
+        "show"
+      );
+
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+
+    function closeLoveMessage() {
+
+      loveModal.classList.remove(
+        "show"
+      );
+
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+
+    loveModal.addEventListener(
+      "click",
+      event => {
+
+        if (
+          event.target ===
+          loveModal
+        ) {
+
+          closeLoveMessage();
+
+        }
+
+      }
+    );
+
+
+
+    /* ==================================================
+       GALLERY LIGHTBOX
+    =================================================== */
+
+    const galleryModal =
+      document.getElementById(
+        "galleryModal"
+      );
+
+
+    const galleryModalCard =
+      document.getElementById(
+        "galleryModalCard"
+      );
+
+
+    const galleryModalImage =
+      document.getElementById(
+        "galleryModalImage"
+      );
+
+
+    const galleryModalCaption =
+      document.getElementById(
+        "galleryModalCaption"
+      );
+
+
+
+    function openGallery(
+      image,
+      caption
+    ) {
+
+      galleryModalImage.src =
+        image;
+
+
+      galleryModalCaption.textContent =
+        caption;
+
+
+      galleryModal.classList.add(
+        "show"
+      );
+
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+
+    function closeGallery(event) {
+
+      if (
+        event &&
+        event.target !==
+        galleryModal
+      ) {
+
+        return;
+
+      }
+
+
+      galleryModal.classList.remove(
+        "show"
+      );
+
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+
+    /* ==================================================
+       KEYBOARD CONTROLS
+    =================================================== */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          closeLoveMessage();
+
+          galleryModal.classList.remove(
+            "show"
+          );
+
+          document.body.style.overflow =
+            "";
+
+        }
+
+      }
+    );
+
+
+  </script>
+
+</body>
+</html>
+```
