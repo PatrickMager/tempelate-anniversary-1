@@ -1,11 +1,10 @@
-```html
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Happy Anniversary, Sayangku! ❤️</title>
+  <title>Happy anniversary, My Favorite Human! 💘</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -144,6 +143,8 @@
 
     html {
       scroll-behavior: smooth;
+      min-height: 100%;
+      background: #fff9ef;
     }
 
 
@@ -154,7 +155,119 @@
         sans-serif;
 
       overflow-x: hidden;
+      min-height: 100%;
+      width: 100%;
+      margin: 0;
+      -webkit-text-size-adjust: 100%;
 
+    }
+
+    /* =========================
+       FULLSCREEN / RESPONSIVE
+    ========================== */
+
+    .hero-fullscreen {
+      min-height: 100svh;
+      min-height: 100dvh;
+      min-height: 100vh;
+      padding-top: clamp(2rem, 5dvh, 5rem);
+      padding-bottom: clamp(2rem, 5dvh, 5rem);
+      padding-left: max(1.25rem, env(safe-area-inset-left));
+      padding-right: max(1.25rem, env(safe-area-inset-right));
+      box-sizing: border-box;
+    }
+
+    .hero-content {
+      width: min(100%, 1280px);
+      max-height: calc(100dvh - 2rem);
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 6vw, 6rem);
+      line-height: .94;
+      text-wrap: balance;
+      max-width: 1250px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-description {
+      width: min(100%, 760px);
+    }
+
+    @media (max-height: 900px) and (min-width: 640px) {
+      .hero-content {
+        transform: scale(.92);
+        transform-origin: center;
+      }
+    }
+
+    @media (max-height: 760px) and (min-width: 640px) {
+      .hero-fullscreen {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+      }
+
+      .hero-content {
+        transform: scale(.88);
+        transform-origin: center;
+      }
+    }
+
+    @media (max-height: 650px) and (min-width: 640px) {
+      .hero-content {
+        transform: scale(.78);
+      }
+    }
+
+    @media (max-width: 639px) {
+      .hero-fullscreen {
+        padding-top: max(1.25rem, env(safe-area-inset-top));
+        padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+      }
+
+      .hero-content {
+        max-height: none;
+      }
+
+      .hero-title {
+        font-size: clamp(2.55rem, 12vw, 4.6rem);
+        line-height: .96;
+      }
+
+      .hero-description {
+        font-size: .95rem;
+      }
+    }
+
+    @media (max-height: 700px) and (max-width: 639px) {
+      .hero-fullscreen {
+        align-items: flex-start;
+        padding-top: max(.9rem, env(safe-area-inset-top));
+        padding-bottom: max(.9rem, env(safe-area-inset-bottom));
+      }
+
+      .hero-content {
+        transform: scale(.9);
+        transform-origin: top center;
+      }
+    }
+
+    @media (max-height: 580px) and (max-width: 639px) {
+      .hero-content {
+        transform: scale(.78);
+      }
+    }
+
+    @media (orientation: landscape) and (max-height: 520px) {
+      .hero-fullscreen {
+        align-items: flex-start;
+      }
+
+      .hero-content {
+        transform: scale(.72);
+        transform-origin: top center;
+      }
     }
 
 
@@ -452,6 +565,23 @@
        GALLERY LIGHTBOX
     ========================== */
 
+    /* The lightbox must remain clickable even though decorative
+       body-level divs are made pointer-events:none elsewhere. */
+    #galleryModal {
+      pointer-events: auto !important;
+    }
+
+    #galleryModal * {
+      pointer-events: auto;
+    }
+
+    #galleryModal button {
+      position: absolute;
+      z-index: 2147483646 !important;
+      pointer-events: auto !important;
+      touch-action: manipulation;
+    }
+
     .gallery-modal {
 
       opacity:
@@ -508,7 +638,620 @@
 
     }
 
-  </style>
+
+    /* =========================
+       GEN Z POLISH
+    ========================== */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: .16;
+      background-image: radial-gradient(rgba(255,255,255,.9) 1px, transparent 1px);
+      background-size: 18px 18px;
+      mix-blend-mode: soft-light;
+    }
+
+    .genz-glow {
+      text-shadow: 0 0 18px rgba(255,105,150,.22), 0 0 40px rgba(167,139,250,.16);
+    }
+
+    .genz-pill {
+      border: 1px solid rgba(255,255,255,.8);
+      box-shadow: 0 8px 30px rgba(236,72,153,.10), inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    .hero-orbit {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border: 1px dashed rgba(236,72,153,.20);
+      border-radius: 999px;
+      animation: orbit 18s linear infinite;
+    }
+
+    @keyframes orbit { to { transform: rotate(360deg); } }
+
+    .tiny-label {
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: .68rem;
+      font-weight: 800;
+    }
+
+    @supports not (height: 100dvh) {
+      .hero-fullscreen {
+        min-height: 100vh;
+      }
+    }
+
+
+
+    /* ==================================================
+       CUSTOM PC CURSOR — LIGHTWEIGHT
+    ================================================== */
+
+    @media (pointer: fine) {
+      /* Hide the native arrow/hand cursor everywhere on mouse devices.
+         This also overrides Tailwind's cursor-pointer class. */
+      html, body, *, *::before, *::after {
+        cursor: none !important;
+      }
+
+      #customCursor {
+        position: fixed;
+        left: 0; top: 0;
+        width: 18px; height: 18px;
+        border: 2px solid #ec4899;
+        border-radius: 50%;
+        background: rgba(255,255,255,.08);
+        pointer-events: none !important;
+        z-index: 2147483647 !important;
+        opacity: 0;
+        transform: translate3d(-100px,-100px,0) translate(-50%,-50%);
+        will-change: transform;
+        display: block !important;
+      }
+
+      #customCursor::after {
+        content: '';
+        position: absolute;
+        width: 4px; height: 4px;
+        left: 50%; top: 50%;
+        transform: translate(-50%,-50%);
+        border-radius: 50%;
+        background: #ec4899;
+      }
+    }
+
+    @media (pointer: coarse) {
+      #customCursor {
+        display: none !important;
+      }
+    }
+
+
+
+    /* ==================================================
+       LARGE SCREEN WIDTH FIX
+       Use the real viewport width instead of the old
+       Tailwind max-width containers on desktop.
+    ================================================== */
+    @media (min-width: 1024px) {
+      main > section {
+        padding-left: clamp(2rem, 4vw, 4.5rem) !important;
+        padding-right: clamp(2rem, 4vw, 4.5rem) !important;
+      }
+
+      main > section > div {
+        width: 100% !important;
+        max-width: none !important;
+      }
+
+      /* Story / photo-dump outer containers */
+      main .max-w-6xl {
+        width: 100% !important;
+        max-width: 1500px !important;
+      }
+
+      /* Love notes and interactive card */
+      main .max-w-4xl {
+        width: 100% !important;
+        max-width: 1250px !important;
+      }
+
+      /* Final message */
+      main .max-w-3xl {
+        width: 100% !important;
+        max-width: 1100px !important;
+      }
+
+      /* Keep descriptive paragraphs readable rather than narrow. */
+      main .max-w-2xl {
+        width: min(100%, 1000px) !important;
+        max-width: 1000px !important;
+      }
+
+      /* Photo dump gets the available horizontal space. */
+      main .gallery-grid {
+        width: 100% !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: clamp(1rem, 1.8vw, 2rem) !important;
+      }
+
+      /* Story becomes genuinely wider on large monitors. */
+      main .lg\:grid-cols-2 {
+        width: 100% !important;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      main > section {
+        padding-left: clamp(3rem, 5vw, 6rem) !important;
+        padding-right: clamp(3rem, 5vw, 6rem) !important;
+      }
+
+      main .max-w-6xl {
+        max-width: 1550px !important;
+      }
+
+      main .max-w-4xl {
+        max-width: 1350px !important;
+      }
+
+      main .max-w-3xl {
+        max-width: 1150px !important;
+      }
+    }
+
+    @media (min-width: 1800px) {
+      main .max-w-6xl,
+      main .max-w-4xl {
+        max-width: 1700px !important;
+      }
+
+      main .max-w-3xl {
+        max-width: 1250px !important;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      /* Return to the existing responsive widths below desktop. */
+      main .max-w-6xl,
+      main .max-w-4xl,
+      main .max-w-3xl {
+        width: 100%;
+      }
+    }
+
+    /* ==================================================
+       UNIVERSAL RESPONSIVE SYSTEM
+       Adapts the entire page to desktop, laptop,
+       tablet, mobile portrait and mobile landscape.
+    ================================================== */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    body {
+      overflow-x: hidden;
+      overflow-wrap: break-word;
+    }
+
+    img,
+    video,
+    svg,
+    canvas {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      max-width: 100%;
+    }
+
+    button {
+      touch-action: manipulation;
+    }
+
+    main,
+    header,
+    footer,
+    section {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    /* Prevent decorative elements from creating horizontal overflow. */
+    .heart-particle,
+    .hero-orbit,
+    body > div:not(#heartContainer) {
+      pointer-events: none;
+    }
+
+    /* Main sections scale their spacing with the viewport. */
+    main > section {
+      padding-left: clamp(1rem, 4vw, 5rem);
+      padding-right: clamp(1rem, 4vw, 5rem);
+    }
+
+    main > section > div {
+      width: 100%;
+      max-width: 1152px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Large screens: use more breathing room. */
+    @media (min-width: 1280px) {
+      main > section {
+        padding-left: clamp(2rem, 5vw, 6rem);
+        padding-right: clamp(2rem, 5vw, 6rem);
+      }
+    }
+
+    /* Tablet / small laptop */
+    @media (max-width: 1023px) {
+      .hero-content {
+        width: min(100%, 920px);
+      }
+
+      .hero-orbit {
+        width: 230px;
+        height: 230px;
+      }
+
+      main > section {
+        padding-top: clamp(3.5rem, 8vw, 5rem);
+        padding-bottom: clamp(3.5rem, 8vw, 5rem);
+      }
+
+      .gallery-card {
+        transform: none !important;
+      }
+
+      .gallery-card:hover {
+        transform: translateY(-4px) !important;
+      }
+    }
+
+    /* Phones */
+    @media (max-width: 767px) {
+      .hero-fullscreen {
+        min-height: 100svh;
+        min-height: 100dvh;
+        min-height: 100vh;
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+      }
+
+      .hero-content {
+        width: 100%;
+        max-width: 680px;
+      }
+
+      .hero-orbit {
+        width: min(62vw, 230px);
+        height: min(62vw, 230px);
+      }
+
+      .tiny-label {
+        font-size: .58rem;
+        letter-spacing: .14em;
+      }
+
+      .hero-description {
+        max-width: 94vw;
+      }
+
+      /* Main photo */
+      .polaroid {
+        width: min(100%, 370px);
+        max-width: 92vw;
+      }
+
+      /* Counter stays readable without becoming too wide. */
+      .counter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      /* Gallery */
+      .gallery-card {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .gallery-card p {
+        overflow-wrap: anywhere;
+      }
+
+      /* Accordion */
+      .accordion-button {
+        min-width: 0;
+      }
+
+      .accordion-button > span {
+        min-width: 0;
+      }
+
+      /* Final CTA buttons */
+      .love-question-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .love-question-buttons button {
+        width: 100%;
+      }
+
+      /* Fullscreen modals */
+      .love-modal {
+        padding:
+          max(1rem, env(safe-area-inset-top))
+          max(1rem, env(safe-area-inset-right))
+          max(1rem, env(safe-area-inset-bottom))
+          max(1rem, env(safe-area-inset-left));
+      }
+
+      .love-modal-card {
+        width: min(100%, 420px);
+        max-height: 90dvh;
+        overflow-y: auto;
+      }
+
+      .gallery-modal {
+        padding:
+          max(.75rem, env(safe-area-inset-top))
+          max(.75rem, env(safe-area-inset-right))
+          max(.75rem, env(safe-area-inset-bottom))
+          max(.75rem, env(safe-area-inset-left));
+      }
+
+      .gallery-modal-card {
+        width: min(100%, 920px);
+        max-width: 100%;
+        max-height: 94dvh;
+        overflow-y: auto;
+      }
+
+      .gallery-modal-card img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: 72dvh;
+        object-fit: contain;
+      }
+    }
+
+    /* Very small phones */
+    @media (max-width: 479px) {
+      .hero-fullscreen {
+        padding-top: max(.8rem, env(safe-area-inset-top));
+        padding-bottom: max(.8rem, env(safe-area-inset-bottom));
+      }
+
+      .hero-content {
+        transform: none !important;
+      }
+
+      .hero-title {
+        font-size: clamp(2.35rem, 12.5vw, 3.8rem);
+      }
+
+      .hero-content .genz-pill {
+        font-size: .65rem;
+        padding-left: .65rem;
+        padding-right: .65rem;
+      }
+
+      main > section {
+        padding-top: 3.25rem;
+        padding-bottom: 3.25rem;
+      }
+
+      .polaroid {
+        max-width: 88vw;
+        padding: .75rem;
+        padding-bottom: 1.15rem;
+      }
+
+      .polaroid .text-xl {
+        font-size: 1rem;
+        line-height: 1.35;
+      }
+
+      .polaroid .text-sm {
+        font-size: .72rem;
+      }
+
+      /* One-column gallery on narrow phones prevents cramped cards. */
+      main .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-card {
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .gallery-card.md\:mt-10,
+      .gallery-card.md\:mt-12,
+      .gallery-card.md\:mt-14 {
+        margin-top: 0 !important;
+      }
+
+      .counter-grid {
+        gap: .65rem;
+      }
+
+      .counter-grid > div {
+        padding: .85rem .5rem;
+      }
+
+      .accordion-button {
+        padding: .9rem 1rem;
+      }
+
+      .accordion-button .text-3xl {
+        font-size: 1.5rem;
+      }
+
+      .love-question-buttons {
+        gap: .75rem;
+      }
+
+      .love-question-buttons button {
+        padding: .8rem 1rem;
+      }
+    }
+
+    /* Mobile landscape: preserve usable vertical space. */
+    @media (orientation: landscape) and (max-height: 600px) {
+      .hero-fullscreen {
+        min-height: 100svh;
+        min-height: 100dvh;
+        align-items: flex-start;
+        padding-top: max(.65rem, env(safe-area-inset-top));
+        padding-bottom: max(.65rem, env(safe-area-inset-bottom));
+      }
+
+      .hero-content {
+        transform: scale(.82);
+        transform-origin: top center;
+      }
+
+      .hero-title {
+        font-size: clamp(2.4rem, 7vw, 4.5rem);
+      }
+
+      .hero-content .hero-orbit {
+        width: 180px;
+        height: 180px;
+      }
+
+      main > section {
+        padding-top: 2.75rem;
+        padding-bottom: 2.75rem;
+      }
+    }
+
+    /* Extra-short laptop screens */
+    @media (min-width: 768px) and (max-height: 820px) {
+      .hero-content {
+        transform: scale(.88);
+        transform-origin: center;
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 5.4vw, 5.4rem);
+      }
+    }
+
+    @media (min-width: 768px) and (max-height: 680px) {
+      .hero-content {
+        transform: scale(.76);
+      }
+    }
+
+    /* Avoid hover-only interactions on touch devices. */
+    @media (hover: none) {
+      .gallery-card:hover {
+        transform: none !important;
+      }
+
+      .gallery-card:hover img {
+        transform: none !important;
+      }
+    }
+
+    /* Accessibility: preserve layout when motion is disabled. */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-content {
+        transform: none !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+  
+    /* Fullscreen UI */
+    #fullscreenButton {
+      position: fixed;
+      right: max(1rem, env(safe-area-inset-right));
+      bottom: max(1rem, env(safe-area-inset-bottom));
+      z-index: 9998;
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.78);
+      color: #db2777;
+      border: 1px solid rgba(236,72,153,.18);
+      box-shadow: 0 10px 30px rgba(190,24,93,.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+
+    #fullscreenButton:hover {
+      transform: translateY(-3px) scale(1.04);
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 14px 36px rgba(190,24,93,.22);
+    }
+
+    #fullscreenButton:active {
+      transform: scale(.94);
+    }
+
+    #fullscreenButton svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    body.is-fullscreen #fullscreenButton {
+      background: rgba(255,255,255,.9);
+    }
+
+    @media (max-width: 639px) {
+      #fullscreenButton {
+        width: 44px;
+        height: 44px;
+        right: max(.75rem, env(safe-area-inset-right));
+        bottom: max(.75rem, env(safe-area-inset-bottom));
+      }
+    }
+
+    @media print {
+      #fullscreenButton,
+      #customCursor {
+        display: none !important;
+      }
+    }
+
+</style>
 
 </head>
 
@@ -516,13 +1259,35 @@
 <body
   class="
     bg-gradient-to-br
-    from-pink-100
-    via-orange-50
-    to-purple-100
+    from-[#fff0f7]
+    via-[#fff9ef]
+    to-[#eee9ff]
     text-slate-700
   "
 >
 
+
+  <!-- Fullscreen control -->
+  <button
+    id="fullscreenButton"
+    type="button"
+    aria-label="Enter fullscreen"
+    title="Fullscreen (F)"
+  >
+    <svg id="fullscreenEnterIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+      <path d="M16 3h3a2 2 0 0 1 2 2v3"></path>
+      <path d="M21 16v3a2 2 0 0 1-2 2h-3"></path>
+      <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
+    </svg>
+    <svg id="fullscreenExitIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+      <path d="M9 3v6H3"></path>
+      <path d="M15 3v6h6"></path>
+      <path d="M9 21v-6H3"></path>
+      <path d="M15 21v-6h6"></path>
+    </svg>
+  </button>
+  <div id="customCursor" aria-hidden="true"></div>
 
   <!-- ==================================================
        FLOATING HEART BACKGROUND
@@ -594,24 +1359,34 @@
 
   <header
     class="
+      hero-fullscreen
       relative
       z-10
-      min-h-screen
       flex
       items-center
       justify-center
-      px-5
-      py-16
+      overflow-hidden
     "
   >
 
     <div
       class="
-        max-w-5xl
+        hero-content
+        relative
         mx-auto
         text-center
+        flex
+        flex-col
+        items-center
+        justify-center
       "
     >
+
+      <div class="hero-orbit hidden sm:block left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+
+      <div class="tiny-label text-pink-500/70 mb-4">
+        01 — the soft launch of us
+      </div>
 
 
       <!-- Badge -->
@@ -627,7 +1402,7 @@
           py-2
           rounded-full
           shadow-sm
-          mb-7
+          mb-5
           animate-bounce
         "
       >
@@ -641,7 +1416,7 @@
             text-pink-500
           "
         >
-          A Little Love Story
+          a tiny love archive ✦
         </span>
 
         <span>💌</span>
@@ -654,8 +1429,8 @@
       <div
         class="
           text-6xl
-          md:text-8xl
-          mb-5
+          md:text-7xl
+          mb-3
           animate-heartbeat
         "
       >
@@ -667,11 +1442,11 @@
 
       <h1
         class="
-          text-4xl
-          sm:text-5xl
-          md:text-7xl
-          font-bold
+          hero-title
+          font-black
+          tracking-[-0.04em]
           leading-tight
+          genz-glow
           text-transparent
           bg-clip-text
           bg-gradient-to-r
@@ -681,11 +1456,11 @@
         "
       >
 
-        Happy Anniversary,
+        Happy anniversary,
 
         <br class="sm:hidden">
 
-        Sayangku! ❤️
+        my favorite human. 💘
 
       </h1>
 
@@ -694,8 +1469,8 @@
 
       <div
         class="
-          mt-7
-          min-h-[36px]
+          mt-4
+          min-h-[32px]
           text-lg
           sm:text-xl
           md:text-2xl
@@ -716,9 +1491,9 @@
 
       <p
         class="
-          max-w-2xl
+          hero-description
           mx-auto
-          mt-7
+          mt-4
           text-slate-600
           leading-relaxed
           text-base
@@ -726,11 +1501,9 @@
         "
       >
 
-        Terima kasih sudah menjadi
-        rumah paling nyaman,
-        tempat pulang paling indah,
-        dan alasan kenapa hari-hariku
-        selalu terasa lebih manis. 🥹💕
+        You somehow became my safest place,
+        my favorite notification,
+        and the plot twist I never saw coming. 🥹💗
 
       </p>
 
@@ -743,23 +1516,24 @@
           inline-flex
           items-center
           gap-2
-          mt-10
+          mt-6
           px-7
           py-3.5
           rounded-full
-          bg-pink-500
+          bg-slate-900
           hover:bg-pink-600
           text-white
           font-bold
-          shadow-lg
-          shadow-pink-300/50
+          shadow-xl
+          shadow-pink-300/30
+          hover:shadow-pink-300/50
           transition-all
           duration-300
           hover:-translate-y-1
         "
       >
 
-        Lihat Kisah Kita
+        enter our little universe ✦
 
         <span>↓</span>
 
@@ -882,7 +1656,7 @@
 
                 <img
                   src="foto1.webp"
-                  alt="Foto pasangan tercinta"
+                  alt="Our favorite photo"
                   class="
                     w-full
                     h-full
@@ -907,7 +1681,7 @@
                     text-pink-500
                   "
                 >
-                  You & Me 💕
+                  you + me = elite duo 💕
                 </p>
 
 
@@ -918,8 +1692,8 @@
                     mt-1
                   "
                 >
-                  Sejak hari itu,
-                  sampai selamanya...
+                  since that day,
+                  still us, still obsessed...
                 </p>
 
 
@@ -960,7 +1734,7 @@
               font-bold
             "
           >
-            ✨ OUR LITTLE UNIVERSE ✨
+            ✦ OUR LITTLE UNIVERSE ✦
           </div>
 
 
@@ -974,12 +1748,12 @@
             "
           >
 
-            Sudah sejauh ini kita
+            wait... we really made it this far
 
             <span
               class="text-pink-500"
             >
-              bersama.
+              together. 🫶
             </span>
 
             🥰
@@ -995,10 +1769,10 @@
             "
           >
 
-            Dari obrolan kecil sampai menjadi
-            bagian besar dalam hidup satu sama lain.
-            Dan ternyata, waktu terasa cepat
-            kalau dihabiskan bersamamu. 💗
+            From random chats to becoming
+            a whole chapter of each other’s lives.
+            Time really said “speedrun” when
+            I started spending it with you. 💗
 
           </p>
 
@@ -1054,7 +1828,7 @@
                   text-slate-500
                 "
               >
-                TAHUN
+                YEARS
               </div>
 
             </div>
@@ -1089,7 +1863,7 @@
                   text-slate-500
                 "
               >
-                BULAN
+                MONTHS
               </div>
 
             </div>
@@ -1124,7 +1898,7 @@
                   text-slate-500
                 "
               >
-                HARI
+                DAYS
               </div>
 
             </div>
@@ -1159,7 +1933,7 @@
                   text-slate-500
                 "
               >
-                TOTAL HARI
+                TOTAL DAYS
               </div>
 
             </div>
@@ -1209,7 +1983,7 @@
                     text-lg
                   "
                 >
-                  And still counting...
+                  still counting, btw...
                 </p>
 
 
@@ -1219,9 +1993,9 @@
                     text-white/85
                   "
                 >
-                  Semoga angka ini terus
-                  bertambah sampai rambut kita
-                  sama-sama putih. 🤍
+                  Here’s to more days,
+                  more inside jokes,
+                  and matching old-person energy someday. 🤍
                 </p>
 
               </div>
@@ -1343,7 +2117,7 @@
               text-sm
             "
           >
-            Our Little Memories
+            the photo dump ✦
           </p>
 
 
@@ -1357,12 +2131,12 @@
             "
           >
 
-            Potongan kecil dari
+            tiny screenshots of
 
             <span
               class="text-pink-500"
             >
-              cerita kita
+              our lore
             </span>
 
             💗
@@ -1380,12 +2154,12 @@
             "
           >
 
-            Karena ternyata kebahagiaan bukan cuma
-            tentang momen besar.
+            Because the best parts are rarely
+            the cinematic, perfectly planned moments.
 
-            Kadang, foto random, jalan-jalan kecil,
-            makan bareng, dan ketawa tanpa alasan
-            justru menjadi kenangan yang paling kita rindukan.
+            Sometimes it’s random pics, tiny adventures,
+            late snacks, dumb jokes, and laughing
+            for absolutely no reason. That’s our lore.
 
           </p>
 
@@ -1399,6 +2173,7 @@
 
         <div
           class="
+            gallery-grid
             grid
             grid-cols-2
             md:grid-cols-4
@@ -1459,7 +2234,7 @@
 
               <img
                 src="foto2.webp"
-                alt="Kenangan first date"
+                alt="Our first date"
                 class="
                   w-full
                   h-full
@@ -1482,7 +2257,7 @@
                 text-sm
               "
             >
-              First Date 💕
+              first date energy 💕
             </p>
 
           </div>
@@ -1541,7 +2316,7 @@
 
               <img
                 src="foto3.webp"
-                alt="Kenangan bersama"
+                alt="A favorite memory"
                 class="
                   w-full
                   h-full
@@ -1564,7 +2339,7 @@
                 text-sm
               "
             >
-              Senyum Favoritku 🥰
+              that smile >>> 🥰
             </p>
 
           </div>
@@ -1621,7 +2396,7 @@
 
               <img
                 src="foto4.webp"
-                alt="Petualangan bersama"
+                alt="A little adventure"
                 class="
                   w-full
                   h-full
@@ -1644,7 +2419,7 @@
                 text-sm
               "
             >
-              Little Adventure 🌸
+              tiny adventure 🌸
             </p>
 
           </div>
@@ -1702,7 +2477,7 @@
 
               <img
                 src="foto5.webp"
-                alt="Foto romantis pasangan"
+                alt="A romantic memory"
                 class="
                   w-full
                   h-full
@@ -1725,7 +2500,7 @@
                 text-sm
               "
             >
-              Us & Forever 💗
+              us, no expiration date 💗
             </p>
 
           </div>
@@ -1782,7 +2557,7 @@
 
               <img
                 src="foto6.webp"
-                alt="Kenangan manis"
+                alt="A sweet memory"
                 class="
                   w-full
                   h-full
@@ -1805,7 +2580,7 @@
                 text-sm
               "
             >
-              Just Us 🌷
+              just us being us 🌷
             </p>
 
           </div>
@@ -1863,7 +2638,7 @@
 
               <img
                 src="foto7.webp"
-                alt="Momen romantis"
+                alt="A romantic moment"
                 class="
                   w-full
                   h-full
@@ -1886,7 +2661,7 @@
                 text-sm
               "
             >
-              One More Time 💕
+              run it back? 💕
             </p>
 
           </div>
@@ -1915,7 +2690,7 @@
             onclick="
               openGallery(
                 'foto8.webp',
-                'Dan masih banyak cerita lainnya... 🥹'
+                'There’s so much more lore... 🥹'
               )
             "
           >
@@ -1944,7 +2719,7 @@
 
               <img
                 src="foto8.webp"
-                alt="Kenangan bersama"
+                alt="A favorite memory"
                 class="
                   w-full
                   h-full
@@ -1967,7 +2742,7 @@
                 text-sm
               "
             >
-              To Be Continued... 💖
+              to be continued... obviously 💖
             </p>
 
           </div>
@@ -2030,8 +2805,8 @@
                 mt-2
               "
             >
-              Banyak foto lagi yang
-              belum masuk sini. 😆
+              There are way too many
+              memories for one page. 😆
             </p>
 
           </div>
@@ -2072,8 +2847,7 @@
                 text-slate-500
               "
             >
-              Klik foto untuk melihat
-              kenangan lebih besar
+              tap a pic to unlock the full lore
             </span>
 
             <span>💕</span>
@@ -2133,12 +2907,12 @@
             "
           >
 
-            Alasan Kenapa Aku
+            reasons why I
 
             <span
               class="text-pink-500"
             >
-              Sayang Kamu
+              am so down bad for you 💌
             </span>
 
           </h2>
@@ -2150,8 +2924,8 @@
               text-slate-500
             "
           >
-            Klik satu-satu ya...
-            jangan dibuka semuanya sekaligus. 😚
+            tap these one by one...
+            don’t speedrun the love letters. 😚
           </p>
 
         </div>
@@ -2212,7 +2986,7 @@
                       text-slate-800
                     "
                   >
-                    Karena kamu selalu membuatku tersenyum
+                    you make my brain go :))
                   </h3>
 
 
@@ -2223,7 +2997,7 @@
                       mt-1
                     "
                   >
-                    Klik untuk membuka surat kecil...
+                    tap for a tiny love letter...
                   </p>
 
                 </div>
@@ -2263,12 +3037,11 @@
                 "
               >
 
-                Bahkan di hari yang paling melelahkan,
-                satu chat darimu bisa tiba-tiba membuat
-                semuanya terasa lebih ringan.
+                Even on the most chaotic days,
+                one text from you can reset my whole mood.
 
-                Senyummu benar-benar punya
-                kekuatan super. 🥹💕
+                Your smile is honestly
+                a cheat code. 🥹💕
 
               </p>
 
@@ -2325,7 +3098,7 @@
                       text-slate-800
                     "
                   >
-                    Karena kamu adalah tempat ternyamanku
+                    you feel like home, no cap
                   </h3>
 
 
@@ -2336,7 +3109,7 @@
                       mt-1
                     "
                   >
-                    Ada pesan rahasia di sini...
+                    secret message unlocked...
                   </p>
 
                 </div>
@@ -2376,12 +3149,11 @@
                 "
               >
 
-                Aku nggak butuh tempat yang sempurna.
-                Aku cuma butuh tempat di mana aku bisa
-                menjadi diriku sendiri.
+                I don’t need a perfect place.
+                I just need somewhere I can be fully me.
 
-                Dan entah kenapa, tempat itu selalu
-                terasa seperti kamu. 🫶
+                Somehow, that place
+                keeps looking a lot like you. 🫶
 
               </p>
 
@@ -2438,7 +3210,7 @@
                       text-slate-800
                     "
                   >
-                    Karena aku ingin terus memilihmu
+                    I’d still choose you, every time
                   </h3>
 
 
@@ -2449,7 +3221,7 @@
                       mt-1
                     "
                   >
-                    Satu lagi...
+                    one more...
                   </p>
 
                 </div>
@@ -2489,14 +3261,13 @@
                 "
               >
 
-                Kalau hidup memberiku kesempatan
-                untuk mengulang semuanya,
+                If I got to replay this whole life,
 
-                aku tetap akan mencari kamu,
-                memilih kamu, dan jatuh cinta
-                kepadamu lagi.
+                I’d still find you,
+                still choose you,
+                and still fall for you.
 
-                Berkali-kali. ❤️
+                Every single time. ❤️
 
               </p>
 
@@ -2553,7 +3324,7 @@
                       text-slate-800
                     "
                   >
-                    Karena kamu adalah favoritku
+                    you’re literally my favorite
                   </h3>
 
 
@@ -2564,8 +3335,8 @@
                       mt-1
                     "
                   >
-                    Yang terakhir...
-                    janji. 😆
+                    last one...
+                    promise. 😆
                   </p>
 
                 </div>
@@ -2605,13 +3376,13 @@
                 "
               >
 
-                Dari sekian banyak orang di dunia ini,
-                tetap kamu yang paling aku tunggu pesannya,
+                Out of everyone on this planet,
+                you’re still the notification I wait for,
 
-                paling aku cari kabarnya,
-                dan paling ingin aku peluk.
+                the person I wanna hear from,
+                and the one I wanna hug the most.
 
-                I love you, favoritku. 🥰
+                I love you, favorite human. 🥰
 
               </p>
 
@@ -2744,7 +3515,7 @@
                 text-white/75
               "
             >
-              Pertanyaan paling penting hari ini
+              the most important question, obviously
             </p>
 
 
@@ -2756,7 +3527,7 @@
                 mt-4
               "
             >
-              Apakah kamu sayang aku selamanya?
+              are you gonna love me forever?
             </h2>
 
 
@@ -2766,8 +3537,8 @@
                 text-white/85
               "
             >
-              Jawab dengan jujur ya...
-              aku sudah menyiapkan konsekuensinya. 😏
+              be honest...
+              I already prepared the consequences. 😏
             </p>
 
 
@@ -2797,7 +3568,7 @@
                   transition-all
                 "
               >
-                Sayang Banget ❤️
+                DUH, OBVIOUSLY ❤️
               </button>
 
 
@@ -2818,7 +3589,7 @@
                   transition-all
                 "
               >
-                Sayang Pol-polan 🥰
+                DOWN BAD FR 🥰
               </button>
 
             </div>
@@ -2872,12 +3643,12 @@
           "
         >
 
-          Untuk kamu,
+          for you,
 
           <span
             class="text-pink-500"
           >
-            selamanya.
+            always.
           </span>
 
         </h2>
@@ -2892,11 +3663,10 @@
           "
         >
 
-          Terima kasih sudah hadir di hidupku.
-          Terima kasih untuk setiap tawa, pelukan,
-          perhatian, kesabaran, dan semua momen kecil
-          yang akhirnya menjadi kenangan paling besar
-          dalam hidupku.
+          Thanks for existing in my little corner of the universe.
+          Thanks for the laughs, hugs, patience,
+          random moments, and all the tiny things
+          that somehow became my favorite memories.
 
         </p>
 
@@ -2963,7 +3733,7 @@
       "
     >
 
-      Made with
+      made with
 
       <span
         class="
@@ -2975,7 +3745,7 @@
         ♥
       </span>
 
-      for my favorite person.
+      for my favorite human. ♡
 
     </p>
 
@@ -3035,7 +3805,7 @@
           text-pink-500
         "
       >
-        Awww! 🥹
+        STOPPP. 🥹
       </h3>
 
 
@@ -3063,7 +3833,7 @@
           transition
         "
       >
-        Peluk virtual dulu 🤗
+        okay, come here. virtual hug 🤗
       </button>
 
     </div>
@@ -3107,7 +3877,9 @@
       <!-- Close button -->
 
       <button
-        onclick="closeGallery()"
+        type="button"
+        id="galleryCloseButton"
+        aria-label="Close gallery"
         class="
           absolute
           -top-4
@@ -3189,7 +3961,7 @@
               mt-1
             "
           >
-            A little piece of our story. 💕
+            a tiny piece of our lore. 💕
           </p>
 
         </div>
@@ -3215,13 +3987,13 @@
 
     const phrases = [
 
-      "Kamu adalah rumahku. 🏡❤️",
+      "you feel like home. 🏡❤️",
 
-      "Terima kasih sudah memilihku. 🥹",
+      "thanks for choosing me, btw. 🥹",
 
-      "Aku jatuh cinta padamu, lagi dan lagi. 💕",
+      "still falling for you. like, every day. 💕",
 
-      "Bersamamu adalah favoritku. 🌷",
+      "being with you is my favorite thing. 🌷",
 
       "Forever sounds good if it's with you. 💗"
 
@@ -3640,11 +4412,11 @@
 
 
         modalTitle.textContent =
-          "Aku tahu kamu sayang!";
+          "I KNEW IT. you love me! 🥹";
 
 
         modalMessage.textContent =
-          "Tapi masalahnya... aku sayang kamu jauh lebih banyak. Jadi sekarang kamu resmi tidak boleh kabur dari aku. 😤💕";
+          "Plot twist: I love you way more. So yeah... you’re kinda stuck with me now. 😤💕";
 
       }
 
@@ -3656,11 +4428,11 @@
 
 
         modalTitle.textContent =
-          "POL-POLAN?!";
+          "DOWN BAD FR?!";
 
 
         modalMessage.textContent =
-          "Waduh, kalau begitu aku harus membalasnya dengan sayang pol-polan juga! Bersiaplah menerima cinta, pelukan, dan gombalan tanpa batas. 🤭💗";
+          "Oh you’re DOWN bad? Cute. I’m matching that energy with unlimited love, hugs, and cringe flirting. 🤭💗";
 
       }
 
@@ -3736,6 +4508,22 @@
         "galleryModalCaption"
       );
 
+    const galleryCloseButton =
+      document.getElementById(
+        "galleryCloseButton"
+      );
+
+    // Use a real event listener so the close button
+    // does not depend on inline onclick/bubbling behavior.
+    galleryCloseButton.addEventListener(
+      "click",
+      event => {
+        event.preventDefault();
+        event.stopPropagation();
+        closeGallery();
+      }
+    );
+
 
 
     function openGallery(
@@ -3765,24 +4553,19 @@
 
     function closeGallery(event) {
 
+      // Close only when:
+      // 1) the close button is clicked, or
+      // 2) the dark backdrop itself is clicked.
       if (
         event &&
-        event.target !==
-        galleryModal
+        event.target !== galleryModal &&
+        event.target !== galleryCloseButton
       ) {
-
         return;
-
       }
 
-
-      galleryModal.classList.remove(
-        "show"
-      );
-
-
-      document.body.style.overflow =
-        "";
+      galleryModal.classList.remove("show");
+      document.body.style.overflow = "";
 
     }
 
@@ -3815,8 +4598,223 @@
     );
 
 
-  </script>
+  
+
+    /* ==================================================
+       CUSTOM CURSOR — PC ONLY
+       Native cursor is hidden only when a real mouse is present.
+    ================================================== */
+
+    /* ==================================================
+       CUSTOM CURSOR — PC ONLY
+       Lightweight: one requestAnimationFrame + transform only.
+    ================================================== */
+
+    (() => {
+      const cursor = document.getElementById("customCursor");
+      if (!cursor) return;
+
+      const finePointer = window.matchMedia("(pointer: fine)");
+      if (!finePointer.matches) {
+        cursor.style.display = "none";
+        return;
+      }
+
+      let x = -100, y = -100;
+      let raf = 0;
+      let visible = false;
+      let scale = 1;
+
+      function render() {
+        cursor.style.transform =
+          `translate3d(${x}px,${y}px,0) translate(-50%,-50%) scale(${scale})`;
+        raf = 0;
+      }
+
+      function schedule() {
+        if (!raf) raf = requestAnimationFrame(render);
+      }
+
+      window.addEventListener("mousemove", event => {
+        x = event.clientX;
+        y = event.clientY;
+        if (!visible) {
+          visible = true;
+          cursor.style.opacity = "1";
+        }
+        schedule();
+      }, { passive: true });
+
+      window.addEventListener("mouseleave", () => {
+        visible = false;
+        cursor.style.opacity = "0";
+      }, { passive: true });
+
+      document.addEventListener("mouseover", event => {
+        if (event.target?.closest?.("a,button,[role='button'],input,textarea,select,summary")) {
+          scale = 1.35;
+          schedule();
+        }
+      }, { passive: true });
+
+      document.addEventListener("mouseout", event => {
+        if (event.target?.closest?.("a,button,[role='button'],input,textarea,select,summary")) {
+          scale = 1;
+          schedule();
+        }
+      }, { passive: true });
+
+      window.addEventListener("mousedown", () => { scale = .75; schedule(); }, { passive: true });
+      window.addEventListener("mouseup", () => { scale = 1; schedule(); }, { passive: true });
+    })();
+
+
+    /* ==================================================
+       FULLSCREEN — BUTTON + F KEY
+       F / KeyF toggles fullscreen.
+       Esc exits through the browser.
+    ================================================== */
+
+    (() => {
+      "use strict";
+
+      const button = document.getElementById("fullscreenButton");
+      const enterIcon = document.getElementById("fullscreenEnterIcon");
+      const exitIcon = document.getElementById("fullscreenExitIcon");
+
+      if (!button) return;
+
+      const getFullscreenElement = () =>
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        null;
+
+      const isFullscreen = () => !!getFullscreenElement();
+
+      const updateFullscreenUI = () => {
+        const active = isFullscreen();
+
+        document.body.classList.toggle("is-fullscreen", active);
+
+        if (enterIcon) {
+          enterIcon.style.display = active ? "none" : "block";
+        }
+
+        if (exitIcon) {
+          exitIcon.style.display = active ? "block" : "none";
+        }
+
+        button.setAttribute(
+          "aria-label",
+          active ? "Exit fullscreen" : "Enter fullscreen"
+        );
+
+        button.setAttribute(
+          "title",
+          active ? "Exit fullscreen (F)" : "Fullscreen (F)"
+        );
+      };
+
+      const enterFullscreen = () => {
+        const element = document.documentElement;
+
+        try {
+          if (element.requestFullscreen) {
+            return element.requestFullscreen({
+              navigationUI: "hide"
+            });
+          }
+
+          if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+            return Promise.resolve();
+          }
+
+          alert("Fullscreen is not supported by this browser.");
+          return Promise.reject(new Error("Fullscreen API not supported."));
+        } catch (error) {
+          console.warn("Could not enter fullscreen:", error);
+          return Promise.reject(error);
+        }
+      };
+
+      const exitFullscreen = () => {
+        try {
+          if (document.exitFullscreen) {
+            return document.exitFullscreen();
+          }
+
+          if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+            return Promise.resolve();
+          }
+
+          return Promise.resolve();
+        } catch (error) {
+          console.warn("Could not exit fullscreen:", error);
+          return Promise.reject(error);
+        }
+      };
+
+      const toggleFullscreen = () => {
+        if (isFullscreen()) {
+          exitFullscreen().catch(() => {});
+        } else {
+          enterFullscreen().catch((error) => {
+            console.warn(
+              "Fullscreen was blocked by the browser. Use the fullscreen button or check browser permissions.",
+              error
+            );
+          });
+        }
+      };
+
+      /* Button click is a direct user gesture. */
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        toggleFullscreen();
+      });
+
+      /*
+       * Keyboard shortcut:
+       * event.code === "KeyF" is more reliable than event.key
+       * across keyboard layouts and Caps Lock states.
+       */
+      const handleFullscreenKey = (event) => {
+        const tag = event.target?.tagName?.toLowerCase();
+
+        const typing =
+          tag === "input" ||
+          tag === "textarea" ||
+          tag === "select" ||
+          event.target?.isContentEditable;
+
+        if (typing) return;
+
+        if (event.code === "KeyF" && !event.ctrlKey && !event.altKey && !event.metaKey) {
+          event.preventDefault();
+          event.stopPropagation();
+          toggleFullscreen();
+        }
+      };
+
+      window.addEventListener("keydown", handleFullscreenKey, true);
+
+      /* Keep the icon synchronized when fullscreen changes. */
+      document.addEventListener("fullscreenchange", updateFullscreenUI);
+      document.addEventListener("webkitfullscreenchange", updateFullscreenUI);
+
+      /* Browser Esc exits fullscreen; this updates our button state. */
+      window.addEventListener("keyup", (event) => {
+        if (event.code === "Escape") {
+          setTimeout(updateFullscreenUI, 50);
+        }
+      });
+
+      updateFullscreenUI();
+    })();
+
+</script>
 
 </body>
 </html>
-```
