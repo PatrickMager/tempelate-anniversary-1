@@ -1,1 +1,4711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 
+  <title>Happy anniversary, My Favorite Human! 💘</title>
+  <meta name="theme-color" content="#fdf2f8">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font — swap prevents invisible text while font loads -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+
+          fontFamily: {
+            cute: ["Quicksand", "sans-serif"],
+          },
+
+          colors: {
+            lovePink: "#ff7fa8",
+            softPink: "#ffd6e5",
+            peach: "#ffd9c7",
+            lavender: "#e6ddff",
+            warmYellow: "#fff0a8",
+          },
+
+          animation: {
+
+            float: "float 6s ease-in-out infinite",
+
+            floatSlow:
+              "floatSlow 9s ease-in-out infinite",
+
+            heartbeat:
+              "heartbeat 1.5s ease-in-out infinite",
+
+            wiggle:
+              "wiggle 2s ease-in-out infinite",
+
+          },
+
+          keyframes: {
+
+            float: {
+
+              "0%, 100%": {
+                transform:
+                  "translateY(0) rotate(-5deg)",
+              },
+
+              "50%": {
+                transform:
+                  "translateY(-20px) rotate(5deg)",
+              },
+
+            },
+
+            floatSlow: {
+
+              "0%, 100%": {
+                transform:
+                  "translateY(0) translateX(0) rotate(0deg)",
+              },
+
+              "50%": {
+                transform:
+                  "translateY(-35px) translateX(15px) rotate(10deg)",
+              },
+
+            },
+
+            heartbeat: {
+
+              "0%, 100%": {
+                transform: "scale(1)",
+              },
+
+              "15%": {
+                transform: "scale(1.12)",
+              },
+
+              "30%": {
+                transform: "scale(1)",
+              },
+
+              "45%": {
+                transform: "scale(1.08)",
+              },
+
+            },
+
+            wiggle: {
+
+              "0%, 100%": {
+                transform: "rotate(-3deg)",
+              },
+
+              "50%": {
+                transform: "rotate(3deg)",
+              },
+
+            },
+
+          },
+
+        },
+      },
+    };
+  </script>
+
+
+  <style>
+
+    html {
+      scroll-behavior: smooth;
+      min-height: 100%;
+      background: #fff9ef;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      overflow-x: clip;
+      touch-action: pan-y;
+    }
+
+
+    body {
+
+      font-family:
+        "Quicksand",
+        sans-serif;
+
+      min-height: 100%;
+      width: 100%;
+      max-width: 100vw;
+      margin: 0;
+      position: relative;
+      overflow-x: hidden;
+      overflow-x: clip;
+      overflow-wrap: break-word;
+      -webkit-text-size-adjust: 100%;
+      touch-action: pan-y;
+
+    }
+
+    /* =========================
+       FULLSCREEN / RESPONSIVE
+    ========================== */
+
+    .hero-fullscreen {
+      min-height: 100svh;
+      min-height: 100dvh;
+      min-height: 100vh;
+      padding-top: clamp(2rem, 5dvh, 5rem);
+      padding-bottom: clamp(2rem, 5dvh, 5rem);
+      padding-left: max(1.25rem, env(safe-area-inset-left));
+      padding-right: max(1.25rem, env(safe-area-inset-right));
+      box-sizing: border-box;
+    }
+
+    .hero-content {
+      width: min(100%, 1280px);
+      max-height: calc(100dvh - 2rem);
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 6vw, 6rem);
+      line-height: .94;
+      text-wrap: balance;
+      max-width: 1250px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-description {
+      width: min(100%, 760px);
+    }
+
+    @media (max-height: 900px) and (min-width: 640px) {
+      .hero-content {
+        transform: scale(.92);
+        transform-origin: center;
+      }
+    }
+
+    @media (max-height: 760px) and (min-width: 640px) {
+      .hero-fullscreen {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+      }
+
+      .hero-content {
+        transform: scale(.88);
+        transform-origin: center;
+      }
+    }
+
+    @media (max-height: 650px) and (min-width: 640px) {
+      .hero-content {
+        transform: scale(.78);
+      }
+    }
+
+    @media (max-width: 639px) {
+      .hero-fullscreen {
+        padding-top: max(1.25rem, env(safe-area-inset-top));
+        padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+      }
+
+      .hero-content {
+        max-height: none;
+      }
+
+      .hero-title {
+        font-size: clamp(2.55rem, 12vw, 4.6rem);
+        line-height: .96;
+      }
+
+      .hero-description {
+        font-size: .95rem;
+      }
+    }
+
+    @media (max-height: 700px) and (max-width: 639px) {
+      .hero-fullscreen {
+        align-items: flex-start;
+        padding-top: max(.9rem, env(safe-area-inset-top));
+        padding-bottom: max(.9rem, env(safe-area-inset-bottom));
+      }
+
+      .hero-content {
+        transform: scale(.9);
+        transform-origin: top center;
+      }
+    }
+
+    @media (max-height: 580px) and (max-width: 639px) {
+      .hero-content {
+        transform: scale(.78);
+      }
+    }
+
+    @media (orientation: landscape) and (max-height: 520px) {
+      .hero-fullscreen {
+        align-items: flex-start;
+      }
+
+      .hero-content {
+        transform: scale(.72);
+        transform-origin: top center;
+      }
+    }
+
+
+    /* =========================
+       GLASS EFFECT — OPTIMIZED
+    ========================== */
+
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 18px rgba(255, 105, 150, 0.08);
+    }
+
+    @supports (backdrop-filter: blur(8px)) {
+      .glass {
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+    }
+
+    /* On mobile (<= 768px), disable backdrop-filter completely.
+       Clean semi-transparent background looks identical and delivers locked 60 FPS without GPU lag */
+    @media (max-width: 768px) {
+      .glass {
+        background: rgba(255, 255, 255, 0.88) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+    }
+
+
+    /* =========================
+       POLAROID
+    ========================== */
+
+    .polaroid {
+      box-shadow:
+        0 14px 34px rgba(255, 105, 150, 0.14),
+        0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    @media (max-width: 639px) {
+      .polaroid {
+        box-shadow: 0 8px 22px rgba(255, 105, 150, 0.12) !important;
+      }
+    }
+
+
+    /* =========================
+       HIGH-PERFORMANCE GRADIENT BLOBS
+       Replaces heavy 64px Gaussian blur filters with native GPU radial gradients
+    ========================== */
+    .soft-blob-pink {
+      background: radial-gradient(circle, rgba(251, 207, 232, 0.5) 0%, rgba(251, 207, 232, 0) 70%);
+    }
+
+    .soft-blob-purple {
+      background: radial-gradient(circle, rgba(233, 213, 255, 0.5) 0%, rgba(233, 213, 255, 0) 70%);
+    }
+
+    .soft-blob-yellow {
+      background: radial-gradient(circle, rgba(254, 240, 138, 0.4) 0%, rgba(254, 240, 138, 0) 70%);
+    }
+
+
+    /* =========================
+       CONTENT VISIBILITY (OFF-SCREEN OPTIMIZATION)
+       Tells browser engine to skip rendering off-screen sections until scrolled near
+    ========================== */
+    .cv-section {
+      content-visibility: auto;
+      contain-intrinsic-size: 0 500px;
+    }
+
+
+    /* =========================
+       FLOATING HEART
+    ========================== */
+
+    .heart-particle {
+      position: absolute;
+      bottom: -50px;
+      opacity: 0;
+      pointer-events: none;
+      will-change: transform, opacity;
+      transform: translate3d(0, 0, 0);
+      contain: layout style paint;
+      animation: rise linear infinite;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translate3d(0, 0, 0) scale(.7) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: .8;
+      }
+      80% {
+        opacity: .65;
+      }
+      100% {
+        transform: translate3d(0, -110vh, 0) scale(1.25) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+    /* =========================
+       TYPEWRITER
+    ========================== */
+
+    .typewriter {
+      border-right: 3px solid #ff7fa8;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      max-width: 100%;
+      vertical-align: bottom;
+      animation: cursor .7s step-end infinite;
+    }
+
+
+    @keyframes cursor {
+
+      50% {
+
+        border-color:
+          transparent;
+
+      }
+
+    }
+
+
+    /* =========================
+       ACCORDION
+    ========================== */
+
+    .accordion-content {
+
+      max-height:
+        0;
+
+      overflow:
+        hidden;
+
+      transition:
+        max-height .45s ease,
+        padding .3s ease;
+
+    }
+
+
+    .accordion-item.active
+    .accordion-content {
+
+      max-height:
+        500px;
+
+      padding-top:
+        12px;
+
+    }
+
+
+    .accordion-item.active
+    .arrow {
+
+      transform:
+        rotate(180deg);
+
+    }
+
+
+    /* =========================
+       SPARKLE
+    ========================== */
+
+    .sparkle {
+
+      animation:
+        sparkle 2s ease-in-out infinite;
+
+    }
+
+
+    @keyframes sparkle {
+
+      0%, 100% {
+
+        opacity:
+          .4;
+
+        transform:
+          scale(.8);
+
+      }
+
+      50% {
+
+        opacity:
+          1;
+
+        transform:
+          scale(1.15);
+
+      }
+
+    }
+
+
+    /* =========================
+       LOVE MODAL
+    ========================== */
+
+    .love-modal {
+
+      opacity:
+        0;
+
+      visibility:
+        hidden;
+
+      transition:
+        all .3s ease;
+
+    }
+
+
+    .love-modal.show {
+
+      opacity:
+        1;
+
+      visibility:
+        visible;
+
+    }
+
+    /* Ensure modal and all children are always clickable */
+    #loveModal {
+      pointer-events: auto !important;
+    }
+
+    #loveModal * {
+      pointer-events: auto;
+    }
+
+
+    .love-modal-card {
+
+      transform:
+        translateY(20px)
+        scale(.95);
+
+      transition:
+        all .35s ease;
+
+    }
+
+
+    .love-modal.show
+    .love-modal-card {
+
+      transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+
+    /* =========================
+       GALLERY
+    ========================== */
+
+    .gallery-card {
+      transition:
+        transform .5s ease,
+        box-shadow .5s ease;
+      will-change: transform;
+    }
+
+    /* Abstract playful tilt for 4 gallery cards (all screens) */
+    .gallery-card:nth-child(1) {
+      transform: rotate(-1.8deg);
+    }
+    .gallery-card:nth-child(2) {
+      transform: rotate(2deg);
+    }
+    .gallery-card:nth-child(3) {
+      transform: rotate(-2deg);
+    }
+    .gallery-card:nth-child(4) {
+      transform: rotate(1.8deg);
+    }
+
+    .gallery-card:hover {
+      transform: rotate(0deg) translateY(-6px) !important;
+      box-shadow:
+        0 25px 45px
+        rgba(255, 105, 150, .20);
+    }
+
+
+    /* ==================================================
+       PHOTO DUMP (4 PHOTOS: 1 ROW ON DESKTOP)
+    ================================================== */
+    @media (min-width: 768px) {
+      main .gallery-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: clamp(1.25rem, 2vw, 2rem) !important;
+        max-width: 1440px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .gallery-card {
+        grid-column: span 1 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+
+    /* =========================
+       GALLERY LIGHTBOX
+    ========================== */
+
+    /* The lightbox must remain clickable even though decorative
+       body-level divs are made pointer-events:none elsewhere. */
+    #galleryModal {
+      pointer-events: auto !important;
+    }
+
+    #galleryModal * {
+      pointer-events: auto;
+    }
+
+    #galleryModal button {
+      position: absolute;
+      z-index: 2147483646 !important;
+      pointer-events: auto !important;
+      touch-action: manipulation;
+    }
+
+    .gallery-modal {
+
+      opacity:
+        0;
+
+      visibility:
+        hidden;
+
+      transition:
+        all .3s ease;
+
+    }
+
+
+    .gallery-modal.show {
+
+      opacity:
+        1;
+
+      visibility:
+        visible;
+
+    }
+
+
+    .gallery-modal-card {
+      width: min(100%, 480px);
+      max-width: min(92vw, 480px);
+      transform: scale(.92);
+      transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-modal.show .gallery-modal-card {
+      transform: scale(1);
+    }
+
+
+    /* =========================
+       IMAGE LOADING
+    ========================== */
+
+    img {
+
+      -webkit-user-drag:
+        none;
+
+    }
+
+
+    /* =========================
+       GEN Z POLISH
+    ========================== */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: .12;
+      background-image: radial-gradient(rgba(255,255,255,.9) 1px, transparent 1px);
+      background-size: 22px 22px;
+      will-change: auto;
+    }
+
+    .genz-glow {
+      text-shadow: 0 0 18px rgba(255,105,150,.22), 0 0 40px rgba(167,139,250,.16);
+    }
+
+    .genz-pill {
+      border: 1px solid rgba(255,255,255,.8);
+      box-shadow: 0 8px 30px rgba(236,72,153,.10), inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    .hero-orbit {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border: 1px dashed rgba(236,72,153,.20);
+      border-radius: 999px;
+      animation: orbit 18s linear infinite;
+    }
+
+    @keyframes orbit { to { transform: rotate(360deg); } }
+
+    .tiny-label {
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: .68rem;
+      font-weight: 800;
+    }
+
+    @supports not (height: 100dvh) {
+      .hero-fullscreen {
+        min-height: 100vh;
+      }
+    }
+
+
+
+    /* ==================================================
+       CUSTOM PC CURSOR — LIGHTWEIGHT
+    ================================================== */
+
+    @media (pointer: fine) {
+      /* Hide the native arrow/hand cursor everywhere on mouse devices.
+         This also overrides Tailwind's cursor-pointer class. */
+      html, body, *, *::before, *::after {
+        cursor: none !important;
+      }
+
+      #customCursor {
+        position: fixed;
+        left: 0; top: 0;
+        width: 18px; height: 18px;
+        border: 2px solid #ec4899;
+        border-radius: 50%;
+        background: rgba(255,255,255,.08);
+        pointer-events: none !important;
+        z-index: 2147483647 !important;
+        opacity: 0;
+        transition: opacity .15s ease;
+        transform: translate3d(-100px,-100px,0) translate(-50%,-50%);
+        will-change: transform;
+        display: block !important;
+      }
+
+      #customCursor::after {
+        content: '';
+        position: absolute;
+        width: 4px; height: 4px;
+        left: 50%; top: 50%;
+        transform: translate(-50%,-50%);
+        border-radius: 50%;
+        background: #ec4899;
+      }
+    }
+
+    @media (pointer: coarse) {
+      #customCursor {
+        display: none !important;
+      }
+    }
+
+
+
+    /* ==================================================
+       LARGE SCREEN WIDTH FIX
+       Use the real viewport width instead of the old
+       Tailwind max-width containers on desktop.
+    ================================================== */
+    @media (min-width: 1024px) {
+      main > section {
+        padding-left: clamp(2rem, 4vw, 4.5rem) !important;
+        padding-right: clamp(2rem, 4vw, 4.5rem) !important;
+      }
+
+      main > section > div {
+        width: 100% !important;
+        max-width: none !important;
+      }
+
+      /* Story / photo-dump outer containers */
+      main .max-w-6xl {
+        width: 100% !important;
+        max-width: 1500px !important;
+      }
+
+      /* Love notes and interactive card */
+      main .max-w-4xl {
+        width: 100% !important;
+        max-width: 1250px !important;
+      }
+
+      /* Final message */
+      main .max-w-3xl {
+        width: 100% !important;
+        max-width: 1100px !important;
+      }
+
+      /* Keep descriptive paragraphs readable rather than narrow. */
+      main .max-w-2xl {
+        width: min(100%, 1000px) !important;
+        max-width: 1000px !important;
+      }
+
+      /* Photo dump gets the available horizontal space: 4 photos in 1 row */
+      main .gallery-grid {
+        width: 100% !important;
+        max-width: 1440px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: clamp(1.25rem, 2vw, 2rem) !important;
+      }
+
+      /* Story becomes genuinely wider on large monitors. */
+      main .lg\:grid-cols-2 {
+        width: 100% !important;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      main > section {
+        padding-left: clamp(3rem, 5vw, 6rem) !important;
+        padding-right: clamp(3rem, 5vw, 6rem) !important;
+      }
+
+      main .max-w-6xl {
+        max-width: 1550px !important;
+      }
+
+      main .gallery-grid {
+        max-width: 1520px !important;
+      }
+
+      main .max-w-4xl {
+        max-width: 1350px !important;
+      }
+
+      main .max-w-3xl {
+        max-width: 1150px !important;
+      }
+    }
+
+    @media (min-width: 1800px) {
+      main .max-w-6xl,
+      main .max-w-4xl {
+        max-width: 1700px !important;
+      }
+
+      main .max-w-3xl {
+        max-width: 1250px !important;
+      }
+    }
+
+
+
+    /* ==================================================
+       UNIVERSAL RESPONSIVE SYSTEM
+       Adapts the entire page to desktop, laptop,
+       tablet, mobile portrait and mobile landscape.
+    ================================================== */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      max-width: 100vw;
+      min-width: 0;
+      overflow-x: hidden;
+      overflow-x: clip;
+      touch-action: pan-y;
+    }
+
+    body {
+      overflow-wrap: break-word;
+      position: relative;
+    }
+
+    img,
+    video,
+    svg,
+    canvas {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      max-width: 100%;
+    }
+
+    button {
+      touch-action: manipulation;
+    }
+
+    main,
+    header,
+    footer,
+    section {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    /* === Performance: let the browser skip layout/paint work for decorative elements === */
+    .heart-particle {
+      contain: layout style paint;
+    }
+
+    /* Prevent decorative elements from blocking user interactions or creating horizontal overflow. */
+    #decorativeBlobs,
+    #heartContainer,
+    .heart-particle,
+    .hero-orbit {
+      pointer-events: none;
+    }
+
+    #loveModal.show,
+    #galleryModal.show {
+      pointer-events: auto !important;
+    }
+
+    #loveModal.show *,
+    #galleryModal.show * {
+      pointer-events: auto;
+    }
+
+    /* Main sections scale their spacing with the viewport. */
+    main > section {
+      padding-left: clamp(1rem, 4vw, 5rem);
+      padding-right: clamp(1rem, 4vw, 5rem);
+    }
+
+    main > section > div {
+      width: 100%;
+      max-width: 1152px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Large screens: use more breathing room. */
+    @media (min-width: 1280px) {
+      main > section {
+        padding-left: clamp(2rem, 5vw, 6rem);
+        padding-right: clamp(2rem, 5vw, 6rem);
+      }
+    }
+
+    /* Tablet / small laptop */
+    @media (max-width: 1023px) {
+      main .max-w-6xl,
+      main .max-w-4xl,
+      main .max-w-3xl {
+        width: 100%;
+      }
+
+      .hero-content {
+        width: min(100%, 920px);
+      }
+
+      .hero-orbit {
+        width: 230px;
+        height: 230px;
+      }
+
+      main > section {
+        padding-top: clamp(1.75rem, 3.5vw, 2.5rem);
+        padding-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+      }
+    }
+
+    /* Phones */
+    @media (max-width: 767px) {
+      .hero-fullscreen {
+        min-height: 100svh;
+        min-height: 100dvh;
+        min-height: 100vh;
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+      }
+
+      .hero-content {
+        width: 100%;
+        max-width: 680px;
+      }
+
+      .hero-orbit {
+        width: min(62vw, 230px);
+        height: min(62vw, 230px);
+      }
+
+      .tiny-label {
+        font-size: .58rem;
+        letter-spacing: .14em;
+      }
+
+      .hero-description {
+        max-width: 94vw;
+      }
+
+      /* Main photo */
+      .polaroid {
+        width: min(100%, 370px);
+        max-width: 92vw;
+      }
+
+      /* Counter stays readable without becoming too wide. */
+      .counter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      /* Gallery: 2 photos per row on mobile */
+      main .gallery-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: clamp(0.75rem, 2.5vw, 1.25rem) !important;
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .gallery-card {
+        grid-column: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-top: 0 !important;
+      }
+
+      .gallery-card p {
+        overflow-wrap: anywhere;
+      }
+
+      /* Accordion */
+      .accordion-button {
+        min-width: 0;
+      }
+
+      .accordion-button > span {
+        min-width: 0;
+      }
+
+      /* Final CTA buttons */
+      .love-question-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .love-question-buttons button {
+        width: 100%;
+      }
+
+      /* Fullscreen modals */
+      .love-modal {
+        padding:
+          max(1rem, env(safe-area-inset-top))
+          max(1rem, env(safe-area-inset-right))
+          max(1rem, env(safe-area-inset-bottom))
+          max(1rem, env(safe-area-inset-left));
+      }
+
+      .love-modal-card {
+        width: min(100%, 420px);
+        max-height: 90dvh;
+        overflow-y: auto;
+      }
+
+      .gallery-modal {
+        padding:
+          max(.75rem, env(safe-area-inset-top))
+          max(.75rem, env(safe-area-inset-right))
+          max(.75rem, env(safe-area-inset-bottom))
+          max(.75rem, env(safe-area-inset-left));
+      }
+
+      .gallery-modal-card {
+        width: min(100%, 480px);
+        max-width: min(92vw, 480px);
+        max-height: 92dvh;
+        overflow: visible;
+      }
+
+      .gallery-modal-card img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: 62dvh;
+        object-fit: contain;
+      }
+    }
+
+    /* Very small phones */
+    @media (max-width: 479px) {
+      .hero-fullscreen {
+        padding-top: max(.8rem, env(safe-area-inset-top));
+        padding-bottom: max(.8rem, env(safe-area-inset-bottom));
+      }
+
+      .hero-content {
+        transform: none !important;
+      }
+
+      .hero-title {
+        font-size: clamp(2.35rem, 12.5vw, 3.8rem);
+      }
+
+      .hero-content .genz-pill {
+        font-size: .65rem;
+        padding-left: .65rem;
+        padding-right: .65rem;
+      }
+
+      main > section {
+        padding-top: 1.75rem;
+        padding-bottom: 1.75rem;
+      }
+
+      .polaroid {
+        max-width: 88vw;
+        padding: .75rem;
+        padding-bottom: 1.15rem;
+      }
+
+      .polaroid .text-xl {
+        font-size: 1rem;
+        line-height: 1.35;
+      }
+
+      .polaroid .text-sm {
+        font-size: .72rem;
+      }
+
+      /* Gallery stays 2 photos per row on small phones */
+      main .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 0.75rem !important;
+      }
+
+      .gallery-card {
+        max-width: 100% !important;
+      }
+
+      .counter-grid {
+        gap: .65rem;
+      }
+
+      .counter-grid > div {
+        padding: .85rem .5rem;
+      }
+
+      .accordion-button {
+        padding: .9rem 1rem;
+      }
+
+      .accordion-button .text-3xl {
+        font-size: 1.5rem;
+      }
+
+      .love-question-buttons {
+        gap: .75rem;
+      }
+
+      .love-question-buttons button {
+        padding: .8rem 1rem;
+      }
+    }
+
+    /* Mobile landscape: preserve usable vertical space. */
+    @media (orientation: landscape) and (max-height: 600px) {
+      .hero-fullscreen {
+        min-height: 100svh;
+        min-height: 100dvh;
+        align-items: flex-start;
+        padding-top: max(.65rem, env(safe-area-inset-top));
+        padding-bottom: max(.65rem, env(safe-area-inset-bottom));
+      }
+
+      .hero-content {
+        transform: scale(.82);
+        transform-origin: top center;
+      }
+
+      .hero-title {
+        font-size: clamp(2.4rem, 7vw, 4.5rem);
+      }
+
+      .hero-content .hero-orbit {
+        width: 180px;
+        height: 180px;
+      }
+
+      main > section {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+      }
+    }
+
+    /* Extra-short laptop screens */
+    @media (min-width: 768px) and (max-height: 820px) {
+      .hero-content {
+        transform: scale(.88);
+        transform-origin: center;
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 5.4vw, 5.4rem);
+      }
+    }
+
+    @media (min-width: 768px) and (max-height: 680px) {
+      .hero-content {
+        transform: scale(.76);
+      }
+    }
+
+    /* Avoid unwanted hover shift on touch devices. */
+    @media (hover: none) {
+      .gallery-card:hover img {
+        transform: none !important;
+      }
+    }
+
+    /* Accessibility: preserve layout when motion is disabled. */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-content {
+        transform: none !important;
+      }
+
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ==================================================
+       LOW-SPEC DEVICE OPTIMIZATIONS
+       Disable expensive effects on devices with limited GPU:
+       - backdrop-filter (blur) triggers GPU compositing per frame
+       - complex box-shadows cause repaint on scroll
+       - fixed background blobs cause constant compositing
+    ================================================== */
+
+    /* Mobile optimization: eliminates expensive GPU blurs and compositing layers */
+    @media (max-width: 768px) {
+      .glass {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.88) !important;
+      }
+
+      .backdrop-blur-md,
+      .backdrop-blur-sm {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      #fullscreenButton {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.92) !important;
+      }
+
+      body::before {
+        display: none !important;  /* Remove dot overlay — expensive on low-end */
+      }
+
+      .hero-orbit {
+        display: none !important;  /* Remove orbit animation ring */
+      }
+
+      /* Simpler shadows */
+      .polaroid {
+        box-shadow: 0 8px 20px rgba(255, 105, 150, 0.12) !important;
+      }
+
+      .sparkle {
+        animation: none !important;
+        opacity: .6;
+      }
+    }
+
+    /* Save battery: stop decorative animations when page not visible */
+    @media (prefers-reduced-data: reduce) {
+      .heart-particle,
+      .animate-bounce,
+      .animate-float,
+      .animate-floatSlow,
+      .sparkle {
+        animation: none !important;
+      }
+    }
+
+    /* Fullscreen background fix: eliminates black screen during fullscreen transitions */
+    :fullscreen,
+    :-webkit-full-screen {
+      background-color: #fff9ef !important;
+    }
+
+    ::backdrop,
+    ::-webkit-backdrop {
+      background-color: #fff9ef !important;
+    }
+
+    #fullscreenButton {
+      position: fixed;
+      right: max(1rem, env(safe-area-inset-right));
+      bottom: max(1rem, env(safe-area-inset-bottom));
+      z-index: 9998;
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.78);
+      color: #db2777;
+      border: 1px solid rgba(236,72,153,.18);
+      box-shadow: 0 10px 30px rgba(190,24,93,.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+
+    #fullscreenButton:hover {
+      transform: translateY(-3px) scale(1.04);
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 14px 36px rgba(190,24,93,.22);
+    }
+
+    #fullscreenButton:active {
+      transform: scale(.94);
+    }
+
+    #fullscreenButton svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    body.is-fullscreen #fullscreenButton {
+      background: rgba(255,255,255,.9);
+    }
+
+    @media (max-width: 639px) {
+      #fullscreenButton {
+        width: 44px;
+        height: 44px;
+        right: max(.75rem, env(safe-area-inset-right));
+        bottom: max(.75rem, env(safe-area-inset-bottom));
+      }
+    }
+
+    @media print {
+      #fullscreenButton,
+      #customCursor {
+        display: none !important;
+      }
+    }
+
+</style>
+
+</head>
+
+
+<body
+  class="
+    bg-gradient-to-br
+    from-[#fff0f7]
+    via-[#fff9ef]
+    to-[#eee9ff]
+    text-slate-700
+  "
+>
+
+
+  <!-- Fullscreen control -->
+  <button
+    id="fullscreenButton"
+    type="button"
+    aria-label="Enter fullscreen"
+    title="Fullscreen (F)"
+  >
+    <svg id="fullscreenEnterIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+      <path d="M16 3h3a2 2 0 0 1 2 2v3"></path>
+      <path d="M21 16v3a2 2 0 0 1-2 2h-3"></path>
+      <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
+    </svg>
+    <svg id="fullscreenExitIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+      <path d="M9 3v6H3"></path>
+      <path d="M15 3v6h6"></path>
+      <path d="M9 21v-6H3"></path>
+      <path d="M15 21v-6h6"></path>
+    </svg>
+  </button>
+  <div id="customCursor" aria-hidden="true"></div>
+
+  <!-- ==================================================
+       FLOATING HEART BACKGROUND
+  =================================================== -->
+
+  <div
+    id="heartContainer"
+    class="
+      fixed
+      inset-0
+      overflow-hidden
+      pointer-events-none
+      z-0
+    "
+  ></div>
+
+
+  <!-- Decorative background blobs (clipped within viewport to prevent mobile horizontal scroll & zoom bug) -->
+  <div id="decorativeBlobs" class="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+    <div class="absolute -top-20 -left-20 w-80 h-80 rounded-full soft-blob-pink"></div>
+    <div class="absolute top-1/3 -right-24 w-80 h-80 rounded-full soft-blob-purple"></div>
+    <div class="absolute -bottom-16 left-1/4 w-80 h-80 rounded-full soft-blob-yellow"></div>
+  </div>
+
+
+
+  <!-- ==================================================
+       HERO
+  =================================================== -->
+
+  <header
+    class="
+      hero-fullscreen
+      relative
+      z-10
+      flex
+      items-center
+      justify-center
+      overflow-hidden
+    "
+  >
+
+    <div
+      class="
+        hero-content
+        relative
+        mx-auto
+        text-center
+        flex
+        flex-col
+        items-center
+        justify-center
+      "
+    >
+
+      <div class="hero-orbit hidden sm:block left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+
+      <div class="tiny-label text-pink-500/70 mb-4">
+        01 — the soft launch of us
+      </div>
+
+
+      <!-- Badge -->
+
+      <div
+        class="
+          genz-pill
+          inline-flex
+          items-center
+          gap-2
+          bg-white/70
+          backdrop-blur-md
+          px-5
+          py-2
+          rounded-full
+          shadow-sm
+          mb-5
+          animate-bounce
+        "
+      >
+
+        <span>💌</span>
+
+        <span
+          class="
+            text-sm
+            font-bold
+            text-pink-500
+          "
+        >
+          a tiny love archive ✦
+        </span>
+
+        <span>💌</span>
+
+      </div>
+
+
+      <!-- Heart -->
+
+      <div
+        class="
+          text-6xl
+          md:text-7xl
+          mb-3
+          animate-heartbeat
+        "
+      >
+        💕
+      </div>
+
+
+      <!-- Title -->
+
+      <h1
+        class="
+          hero-title
+          font-black
+          tracking-[-0.04em]
+          leading-tight
+          genz-glow
+          text-transparent
+          bg-clip-text
+          bg-gradient-to-r
+          from-pink-500
+          via-rose-500
+          to-purple-500
+        "
+      >
+
+        Happy anniversary,
+
+        <br class="sm:hidden">
+
+        my favorite human. 💘
+
+      </h1>
+
+
+      <!-- Typewriter -->
+
+      <div
+        class="
+          mt-4
+          min-h-[32px]
+          max-w-full
+          overflow-hidden
+          px-2
+          text-lg
+          sm:text-xl
+          md:text-2xl
+          font-semibold
+          text-pink-500
+        "
+      >
+
+        <span
+          id="typewriter"
+          class="typewriter"
+        ></span>
+
+      </div>
+
+
+      <!-- Description -->
+
+      <p
+        class="
+          hero-description
+          mx-auto
+          mt-4
+          text-slate-600
+          leading-relaxed
+          text-base
+          sm:text-lg
+        "
+      >
+
+        You somehow became my safest place,
+        my favorite notification,
+        and the plot twist I never saw coming. 🥹💗
+
+      </p>
+
+
+      <!-- Button -->
+
+      <a
+        href="#our-story"
+        class="
+          inline-flex
+          items-center
+          gap-2
+          mt-6
+          px-7
+          py-3.5
+          rounded-full
+          bg-slate-900
+          hover:bg-pink-600
+          text-white
+          font-bold
+          shadow-xl
+          shadow-pink-300/30
+          hover:shadow-pink-300/50
+          transition-all
+          duration-300
+          hover:-translate-y-1
+        "
+      >
+
+        enter our little universe ✦
+
+        <span>↓</span>
+
+      </a>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- ==================================================
+       MAIN
+  =================================================== -->
+
+  <main
+    id="our-story"
+    class="relative z-10 w-full max-w-full overflow-hidden"
+  >
+
+
+    <!-- ==================================================
+         MAIN PHOTO + LOVE COUNTER
+    =================================================== -->
+
+    <section
+      class="
+        px-5
+        pt-12
+        pb-8
+        overflow-hidden
+      "
+    >
+
+      <div
+        class="
+          max-w-6xl
+          mx-auto
+          grid
+          lg:grid-cols-2
+          gap-14
+          items-center
+        "
+      >
+
+
+        <!-- MAIN POLAROID -->
+
+        <div class="flex justify-center">
+
+          <div class="relative">
+
+
+            <!-- Sticker -->
+
+            <div
+              class="
+                absolute
+                -top-6
+                -left-2
+                sm:-top-8
+                sm:-left-8
+                z-20
+                text-3xl
+                sm:text-4xl
+                rotate-[-15deg]
+                animate-wiggle
+              "
+            >
+              🌸
+            </div>
+
+
+            <div
+              class="
+                absolute
+                -top-6
+                -right-2
+                sm:-top-7
+                sm:-right-7
+                z-20
+                text-3xl
+                sm:text-4xl
+                rotate-12
+                animate-bounce
+              "
+            >
+              👑
+            </div>
+
+
+            <div
+              class="
+                absolute
+                bottom-20
+                -right-2
+                sm:bottom-24
+                sm:-right-10
+                z-20
+                text-2xl
+                sm:text-3xl
+                animate-float
+              "
+            >
+              💗
+            </div>
+
+
+            <!-- Polaroid -->
+
+            <div
+              class="
+                bg-white
+                p-4
+                pb-7
+                rounded-2xl
+                polaroid
+                rotate-[-2deg]
+                max-w-sm
+              "
+            >
+
+              <div
+                class="
+                  aspect-[3/4]
+                  overflow-hidden
+                  rounded-2xl
+                  bg-pink-100
+                "
+              >
+
+                <img
+                  src="foto1.webp"
+                  alt="Our favorite photo"
+                  loading="lazy"
+                  decoding="async"
+                  class="
+                    w-full
+                    h-full
+                    object-cover
+                  "
+                >
+
+              </div>
+
+
+              <div
+                class="
+                  text-center
+                  mt-5
+                "
+              >
+
+                <p
+                  class="
+                    text-xl
+                    font-bold
+                    text-pink-500
+                  "
+                >
+                  you + me = elite duo 💕
+                </p>
+
+
+                <p
+                  class="
+                    text-sm
+                    text-slate-500
+                    mt-1
+                  "
+                >
+                  since that day,
+                  still us, still obsessed...
+                </p>
+
+
+                <div
+                  class="
+                    mt-3
+                    inline-block
+                    bg-pink-100
+                    text-pink-500
+                    px-4
+                    py-1
+                    rounded-full
+                    text-xs
+                    font-bold
+                  "
+                >
+                  Forever & Always ♡
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- LOVE COUNTER -->
+
+        <div>
+
+          <div
+            class="
+              mb-3
+              text-pink-500
+              font-bold
+            "
+          >
+            ✦ OUR LITTLE UNIVERSE ✦
+          </div>
+
+
+          <h2
+            class="
+              text-3xl
+              md:text-5xl
+              font-bold
+              text-slate-800
+              leading-tight
+            "
+          >
+
+            wait... we really made it this far
+
+            <span
+              class="text-pink-500"
+            >
+              together. 🫶
+            </span>
+
+            🥰
+
+          </h2>
+
+
+          <p
+            class="
+              mt-5
+              text-slate-600
+              leading-relaxed
+            "
+          >
+
+            From random chats to becoming
+            a whole chapter of each other’s lives.
+            Time really said “speedrun” when
+            I started spending it with you. 💗
+
+          </p>
+
+
+          <!--
+            GANTI TANGGAL DI SINI
+
+            Format:
+            YYYY-MM-DD
+
+            Contoh:
+            2024-02-14
+          -->
+
+          <div
+            id="loveCounter"
+            data-start-date="2024-02-14"
+            class="
+              counter-grid
+              grid
+              grid-cols-2
+              sm:grid-cols-4
+              gap-3
+              mt-8
+            "
+          >
+
+            <div
+              class="
+                glass
+                rounded-2xl
+                p-5
+                text-center
+                shadow-sm
+              "
+            >
+
+              <div
+                id="years"
+                class="
+                  text-3xl
+                  font-bold
+                  text-pink-500
+                "
+              >
+                0
+              </div>
+
+              <div
+                class="
+                  text-xs
+                  mt-1
+                  font-semibold
+                  text-slate-500
+                "
+              >
+                YEARS
+              </div>
+
+            </div>
+
+
+            <div
+              class="
+                glass
+                rounded-2xl
+                p-5
+                text-center
+                shadow-sm
+              "
+            >
+
+              <div
+                id="months"
+                class="
+                  text-3xl
+                  font-bold
+                  text-purple-500
+                "
+              >
+                0
+              </div>
+
+              <div
+                class="
+                  text-xs
+                  mt-1
+                  font-semibold
+                  text-slate-500
+                "
+              >
+                MONTHS
+              </div>
+
+            </div>
+
+
+            <div
+              class="
+                glass
+                rounded-2xl
+                p-5
+                text-center
+                shadow-sm
+              "
+            >
+
+              <div
+                id="days"
+                class="
+                  text-3xl
+                  font-bold
+                  text-orange-500
+                "
+              >
+                0
+              </div>
+
+              <div
+                class="
+                  text-xs
+                  mt-1
+                  font-semibold
+                  text-slate-500
+                "
+              >
+                DAYS
+              </div>
+
+            </div>
+
+
+            <div
+              class="
+                glass
+                rounded-2xl
+                p-5
+                text-center
+                shadow-sm
+              "
+            >
+
+              <div
+                id="totalDays"
+                class="
+                  text-3xl
+                  font-bold
+                  text-rose-500
+                "
+              >
+                0
+              </div>
+
+              <div
+                class="
+                  text-xs
+                  mt-1
+                  font-semibold
+                  text-slate-500
+                "
+              >
+                TOTAL DAYS
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Counter Message -->
+
+          <div
+            class="
+              mt-6
+              bg-gradient-to-r
+              from-pink-500
+              to-rose-400
+              text-white
+              rounded-2xl
+              p-5
+              shadow-lg
+              shadow-pink-200
+            "
+          >
+
+            <div
+              class="
+                flex
+                items-center
+                gap-4
+              "
+            >
+
+              <div
+                class="
+                  text-4xl
+                  animate-heartbeat
+                "
+              >
+                ❤️
+              </div>
+
+
+              <div>
+
+                <p
+                  class="
+                    font-bold
+                    text-lg
+                  "
+                >
+                  still counting, btw...
+                </p>
+
+
+                <p
+                  class="
+                    text-sm
+                    text-white/85
+                  "
+                >
+                  Here’s to more days,
+                  more inside jokes,
+                  and matching old-person energy someday. 🤍
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         GALLERY
+    =================================================== -->
+
+    <section
+      id="gallery"
+      class="
+        cv-section
+        relative
+        z-10
+        px-5
+        pt-8
+        pb-8
+        overflow-hidden
+        bg-white/30
+      "
+    >
+
+
+      <!-- Background decoration -->
+
+      <div
+        class="
+          absolute
+          top-20
+          left-0
+          w-64
+          h-64
+          rounded-full
+          soft-blob-pink
+          pointer-events-none
+        "
+      ></div>
+
+
+      <div
+        class="
+          absolute
+          bottom-10
+          right-0
+          w-72
+          h-72
+          rounded-full
+          soft-blob-purple
+          pointer-events-none
+        "
+      ></div>
+
+
+
+      <div
+        class="
+          relative
+          max-w-7xl
+          mx-auto
+        "
+      >
+
+
+        <!-- Heading -->
+
+        <div
+          class="
+            text-center
+            mb-8
+          "
+        >
+
+          <div
+            class="
+              flex
+              justify-center
+              items-center
+              gap-3
+              text-3xl
+              mb-4
+            "
+          >
+
+            <span
+              class="animate-float"
+            >
+              🌸
+            </span>
+
+            <span>
+              📸
+            </span>
+
+            <span
+              class="animate-floatSlow"
+            >
+              💕
+            </span>
+
+          </div>
+
+
+          <p
+            class="
+              text-pink-500
+              font-bold
+              uppercase
+              tracking-[0.25em]
+              text-sm
+            "
+          >
+            the photo dump ✦
+          </p>
+
+
+          <h2
+            class="
+              text-3xl
+              md:text-5xl
+              font-bold
+              text-slate-800
+              mt-3
+            "
+          >
+
+            tiny screenshots of
+
+            <span
+              class="text-pink-500"
+            >
+              our lore
+            </span>
+
+            💗
+
+          </h2>
+
+
+          <p
+            class="
+              max-w-2xl
+              mx-auto
+              mt-5
+              text-slate-500
+              leading-relaxed
+            "
+          >
+
+            Because the best parts are rarely
+            the cinematic, perfectly planned moments.
+
+            Sometimes it’s random pics, tiny adventures,
+            late snacks, dumb jokes, and laughing
+            for absolutely no reason. That’s our lore.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             PHOTO GRID (4 PHOTOS: 1 ROW DESKTOP, 2 PER ROW MOBILE)
+        ========================== -->
+
+        <div
+          class="
+            gallery-grid
+            grid
+            grid-cols-2
+            md:grid-cols-4
+            gap-3
+            sm:gap-4
+            md:gap-6
+            items-start
+            max-w-[1440px]
+            mx-auto
+          "
+        >
+
+
+          <!-- FOTO 2 -->
+
+          <div
+            class="
+              gallery-card
+              group
+              relative
+              bg-white
+              p-2.5
+              sm:p-3
+              pb-4
+              sm:pb-5
+              rounded-2xl
+              shadow-lg
+              rotate-[-1.8deg]
+              hover:rotate-0
+              hover:-translate-y-2
+              transition-all
+              duration-500
+              cursor-pointer
+            "
+            onclick="
+              openGallery(
+                'foto2.webp',
+                'First date kita 💕'
+              )
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -top-3.5
+                -right-2
+                sm:-top-4
+                sm:-right-3
+                z-20
+                text-2xl
+                sm:text-3xl
+                rotate-12
+              "
+            >
+              🌷
+            </div>
+
+
+            <div
+              class="
+                aspect-[4/5]
+                overflow-hidden
+                rounded-xl
+              "
+            >
+
+              <img
+                src="foto2.webp"
+                alt="Our first date"
+                loading="lazy"
+                decoding="async"
+                class="
+                  w-full
+                  h-full
+                  object-cover
+                  group-hover:scale-110
+                  transition-transform
+                  duration-700
+                "
+              >
+
+            </div>
+
+
+            <p
+              class="
+                text-center
+                font-bold
+                text-pink-500
+                mt-2.5
+                sm:mt-4
+                text-xs
+                sm:text-sm
+              "
+            >
+              first date energy 💕
+            </p>
+
+          </div>
+
+
+
+          <!-- FOTO 3 -->
+
+          <div
+            class="
+              gallery-card
+              group
+              relative
+              bg-white
+              p-2.5
+              sm:p-3
+              pb-4
+              sm:pb-5
+              rounded-2xl
+              shadow-lg
+              rotate-[2deg]
+              hover:rotate-0
+              hover:-translate-y-2
+              transition-all
+              duration-500
+              cursor-pointer
+              md:mt-3
+            "
+            onclick="
+              openGallery(
+                'foto3.webp',
+                'Senyum favoritku 🥰'
+              )
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -top-3.5
+                -left-2
+                sm:-top-4
+                sm:-left-3
+                z-20
+                text-2xl
+                sm:text-3xl
+                animate-wiggle
+              "
+            >
+              🎀
+            </div>
+
+
+            <div
+              class="
+                aspect-[4/5]
+                overflow-hidden
+                rounded-xl
+              "
+            >
+
+              <img
+                src="foto3.webp"
+                alt="A favorite memory"
+                loading="lazy"
+                decoding="async"
+                class="
+                  w-full
+                  h-full
+                  object-cover
+                  group-hover:scale-110
+                  transition-transform
+                  duration-700
+                "
+              >
+
+            </div>
+
+
+            <p
+              class="
+                text-center
+                font-bold
+                text-purple-500
+                mt-2.5
+                sm:mt-4
+                text-xs
+                sm:text-sm
+              "
+            >
+              that smile >>> 🥰
+            </p>
+
+          </div>
+
+
+
+          <!-- FOTO 4 -->
+
+          <div
+            class="
+              gallery-card
+              group
+              relative
+              bg-white
+              p-2.5
+              sm:p-3
+              pb-4
+              sm:pb-5
+              rounded-2xl
+              shadow-lg
+              rotate-[-2deg]
+              hover:rotate-0
+              hover:-translate-y-2
+              transition-all
+              duration-500
+              cursor-pointer
+            "
+            onclick="
+              openGallery(
+                'foto4.webp',
+                'Petualangan kecil kita 🌸'
+              )
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -top-3.5
+                right-2
+                sm:-top-4
+                sm:right-3
+                z-20
+                text-2xl
+                sm:text-3xl
+              "
+            >
+              ✨
+            </div>
+
+
+            <div
+              class="
+                aspect-[4/5]
+                overflow-hidden
+                rounded-xl
+              "
+            >
+
+              <img
+                src="foto4.webp"
+                alt="A little adventure"
+                loading="lazy"
+                decoding="async"
+                class="
+                  w-full
+                  h-full
+                  object-cover
+                  group-hover:scale-110
+                  transition-transform
+                  duration-700
+                "
+              >
+
+            </div>
+
+
+            <p
+              class="
+                text-center
+                font-bold
+                text-orange-500
+                mt-2.5
+                sm:mt-4
+                text-xs
+                sm:text-sm
+              "
+            >
+              tiny adventure 🌸
+            </p>
+
+          </div>
+
+
+
+          <!-- FOTO 5 -->
+
+          <div
+            class="
+              gallery-card
+              group
+              relative
+              bg-white
+              p-2.5
+              sm:p-3
+              pb-4
+              sm:pb-5
+              rounded-2xl
+              shadow-lg
+              rotate-[1.8deg]
+              hover:rotate-0
+              hover:-translate-y-2
+              transition-all
+              duration-500
+              cursor-pointer
+              md:mt-3
+            "
+            onclick="
+              openGallery(
+                'foto5.webp',
+                'Satu frame, sejuta cerita 💗'
+              )
+            "
+          >
+
+            <div
+              class="
+                absolute
+                -top-4
+                -right-2
+                sm:-top-5
+                sm:-right-3
+                z-20
+                text-2xl
+                sm:text-3xl
+              "
+            >
+              👑
+            </div>
+
+
+            <div
+              class="
+                aspect-[4/5]
+                overflow-hidden
+                rounded-xl
+              "
+            >
+
+              <img
+                src="foto5.webp"
+                alt="A romantic memory"
+                loading="lazy"
+                decoding="async"
+                class="
+                  w-full
+                  h-full
+                  object-cover
+                  group-hover:scale-110
+                  transition-transform
+                  duration-700
+                "
+              >
+
+            </div>
+
+
+            <p
+              class="
+                text-center
+                font-bold
+                text-rose-500
+                mt-2.5
+                sm:mt-4
+                text-xs
+                sm:text-sm
+              "
+            >
+              us, no expiration date 💗
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Gallery hint -->
+
+        <div
+          class="
+            text-center
+            mt-6
+          "
+        >
+
+          <div
+            class="
+              inline-flex
+              items-center
+              gap-2
+              bg-white/70
+              backdrop-blur-md
+              px-5
+              py-3
+              rounded-full
+              shadow-sm
+            "
+          >
+
+            <span>📷</span>
+
+            <span
+              class="
+                text-sm
+                font-semibold
+                text-slate-500
+              "
+            >
+              tap a pic to unlock the full lore
+            </span>
+
+            <span>💕</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         LOVE NOTES
+    =================================================== -->
+
+    <section
+      class="
+        cv-section
+        overflow-hidden
+        px-5
+        pt-8
+        pb-8
+      "
+    >
+
+      <div
+        class="
+          max-w-4xl
+          mx-auto
+        "
+      >
+
+
+        <!-- Heading -->
+
+        <div
+          class="
+            text-center
+            mb-8
+          "
+        >
+
+          <span
+            class="text-4xl"
+          >
+            💌
+          </span>
+
+
+          <h2
+            class="
+              text-3xl
+              md:text-5xl
+              font-bold
+              mt-4
+              text-slate-800
+            "
+          >
+
+            reasons why I
+
+            <span
+              class="text-pink-500"
+            >
+              am so down bad for you 💌
+            </span>
+
+          </h2>
+
+
+          <p
+            class="
+              mt-4
+              text-slate-500
+            "
+          >
+            tap these one by one...
+            don’t speedrun the love letters. 😚
+          </p>
+
+        </div>
+
+
+
+        <!-- ACCORDIONS -->
+
+        <div
+          class="space-y-4"
+        >
+
+
+          <!-- NOTE 1 -->
+
+          <div
+            class="
+              accordion-item
+              glass
+              rounded-2xl
+              shadow-sm
+              overflow-hidden
+            "
+          >
+
+            <button
+              type="button"
+              class="
+                accordion-button
+                w-full
+                p-5
+                flex
+                items-center
+                justify-between
+                text-left
+              "
+            >
+
+              <div
+                class="
+                  flex
+                  items-center
+                  gap-4
+                "
+              >
+
+                <span
+                  class="text-3xl"
+                >
+                  🌷
+                </span>
+
+
+                <div>
+
+                  <h3
+                    class="
+                      font-bold
+                      text-slate-800
+                    "
+                  >
+                    you make my brain go :))
+                  </h3>
+
+
+                  <p
+                    class="
+                      text-xs
+                      text-slate-500
+                      mt-1
+                    "
+                  >
+                    tap for a tiny love letter...
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="
+                  arrow
+                  text-pink-500
+                  transition-transform
+                  duration-300
+                  text-xl
+                "
+              >
+                ↓
+              </span>
+
+            </button>
+
+
+            <div
+              class="
+                accordion-content
+                px-5
+                pb-0
+              "
+            >
+
+              <p
+                class="
+                  text-slate-600
+                  leading-relaxed
+                  pl-14
+                  pb-5
+                "
+              >
+
+                Even on the most chaotic days,
+                one text from you can reset my whole mood.
+
+                Your smile is honestly
+                a cheat code. 🥹💕
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- NOTE 2 -->
+
+          <div
+            class="
+              accordion-item
+              glass
+              rounded-2xl
+              shadow-sm
+              overflow-hidden
+            "
+          >
+
+            <button
+              type="button"
+              class="
+                accordion-button
+                w-full
+                p-5
+                flex
+                items-center
+                justify-between
+                text-left
+              "
+            >
+
+              <div
+                class="
+                  flex
+                  items-center
+                  gap-4
+                "
+              >
+
+                <span
+                  class="text-3xl"
+                >
+                  🧸
+                </span>
+
+
+                <div>
+
+                  <h3
+                    class="
+                      font-bold
+                      text-slate-800
+                    "
+                  >
+                    you feel like home, no cap
+                  </h3>
+
+
+                  <p
+                    class="
+                      text-xs
+                      text-slate-500
+                      mt-1
+                    "
+                  >
+                    secret message unlocked...
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="
+                  arrow
+                  text-pink-500
+                  transition-transform
+                  duration-300
+                  text-xl
+                "
+              >
+                ↓
+              </span>
+
+            </button>
+
+
+            <div
+              class="
+                accordion-content
+                px-5
+                pb-0
+              "
+            >
+
+              <p
+                class="
+                  text-slate-600
+                  leading-relaxed
+                  pl-14
+                  pb-5
+                "
+              >
+
+                I don’t need a perfect place.
+                I just need somewhere I can be fully me.
+
+                Somehow, that place
+                keeps looking a lot like you. 🫶
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- NOTE 3 -->
+
+          <div
+            class="
+              accordion-item
+              glass
+              rounded-2xl
+              shadow-sm
+              overflow-hidden
+            "
+          >
+
+            <button
+              type="button"
+              class="
+                accordion-button
+                w-full
+                p-5
+                flex
+                items-center
+                justify-between
+                text-left
+              "
+            >
+
+              <div
+                class="
+                  flex
+                  items-center
+                  gap-4
+                "
+              >
+
+                <span
+                  class="text-3xl"
+                >
+                  🌙
+                </span>
+
+
+                <div>
+
+                  <h3
+                    class="
+                      font-bold
+                      text-slate-800
+                    "
+                  >
+                    I’d still choose you, every time
+                  </h3>
+
+
+                  <p
+                    class="
+                      text-xs
+                      text-slate-500
+                      mt-1
+                    "
+                  >
+                    one more...
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="
+                  arrow
+                  text-pink-500
+                  transition-transform
+                  duration-300
+                  text-xl
+                "
+              >
+                ↓
+              </span>
+
+            </button>
+
+
+            <div
+              class="
+                accordion-content
+                px-5
+                pb-0
+              "
+            >
+
+              <p
+                class="
+                  text-slate-600
+                  leading-relaxed
+                  pl-14
+                  pb-5
+                "
+              >
+
+                If I got to replay this whole life,
+
+                I’d still find you,
+                still choose you,
+                and still fall for you.
+
+                Every single time. ❤️
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- NOTE 4 -->
+
+          <div
+            class="
+              accordion-item
+              glass
+              rounded-2xl
+              shadow-sm
+              overflow-hidden
+            "
+          >
+
+            <button
+              type="button"
+              class="
+                accordion-button
+                w-full
+                p-5
+                flex
+                items-center
+                justify-between
+                text-left
+              "
+            >
+
+              <div
+                class="
+                  flex
+                  items-center
+                  gap-4
+                "
+              >
+
+                <span
+                  class="text-3xl"
+                >
+                  🍓
+                </span>
+
+
+                <div>
+
+                  <h3
+                    class="
+                      font-bold
+                      text-slate-800
+                    "
+                  >
+                    you’re literally my favorite
+                  </h3>
+
+
+                  <p
+                    class="
+                      text-xs
+                      text-slate-500
+                      mt-1
+                    "
+                  >
+                    last one...
+                    promise. 😆
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="
+                  arrow
+                  text-pink-500
+                  transition-transform
+                  duration-300
+                  text-xl
+                "
+              >
+                ↓
+              </span>
+
+            </button>
+
+
+            <div
+              class="
+                accordion-content
+                px-5
+                pb-0
+              "
+            >
+
+              <p
+                class="
+                  text-slate-600
+                  leading-relaxed
+                  pl-14
+                  pb-5
+                "
+              >
+
+                Out of everyone on this planet,
+                you’re still the notification I wait for,
+
+                the person I wanna hear from,
+                and the one I wanna hug the most.
+
+                I love you, favorite human. 🥰
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         GOMBAL INTERACTIVE
+    =================================================== -->
+
+    <section
+      class="
+        cv-section
+        overflow-hidden
+        px-5
+        pt-8
+        pb-12
+      "
+    >
+
+      <div
+        class="
+          max-w-4xl
+          mx-auto
+        "
+      >
+
+        <div
+          class="
+            relative
+            overflow-hidden
+            rounded-[2rem]
+            bg-gradient-to-br
+            from-pink-500
+            via-rose-400
+            to-purple-500
+            p-8
+            md:p-14
+            text-white
+            shadow-2xl
+          "
+        >
+
+
+          <!-- Decorations -->
+
+          <div
+            class="
+              absolute
+              top-5
+              left-8
+              text-3xl
+              sparkle
+            "
+          >
+            ✨
+          </div>
+
+
+          <div
+            class="
+              absolute
+              top-12
+              right-10
+              text-4xl
+              animate-float
+            "
+          >
+            💗
+          </div>
+
+
+          <div
+            class="
+              absolute
+              bottom-8
+              left-10
+              text-3xl
+              animate-floatSlow
+            "
+          >
+            🌸
+          </div>
+
+
+          <div
+            class="
+              absolute
+              bottom-5
+              right-8
+              text-3xl
+              sparkle
+            "
+          >
+            ✨
+          </div>
+
+
+
+          <div
+            class="
+              relative
+              text-center
+            "
+          >
+
+            <div
+              class="
+                text-6xl
+                animate-heartbeat
+                mb-5
+              "
+            >
+              🥰
+            </div>
+
+
+            <p
+              class="
+                text-sm
+                uppercase
+                tracking-[.3em]
+                font-bold
+                text-white/75
+              "
+            >
+              the most important question, obviously
+            </p>
+
+
+            <h2
+              class="
+                text-3xl
+                md:text-5xl
+                font-bold
+                mt-4
+              "
+            >
+              are you gonna love me forever?
+            </h2>
+
+
+            <p
+              class="
+                mt-5
+                text-white/85
+              "
+            >
+              be honest...
+              I already prepared the consequences. 😏
+            </p>
+
+
+            <div
+              class="
+                love-question-buttons
+                flex
+                flex-col
+                sm:flex-row
+                justify-center
+                gap-4
+                mt-9
+              "
+            >
+
+              <button
+                onclick="showLoveMessage('sayang')"
+                class="
+                  px-7
+                  py-4
+                  bg-white
+                  text-pink-500
+                  rounded-2xl
+                  font-bold
+                  shadow-lg
+                  hover:scale-105
+                  active:scale-95
+                  transition-all
+                "
+              >
+                DUH, OBVIOUSLY ❤️
+              </button>
+
+
+              <button
+                onclick="showLoveMessage('polpolan')"
+                class="
+                  px-7
+                  py-4
+                  bg-pink-900/20
+                  border
+                  border-white/30
+                  text-white
+                  rounded-2xl
+                  font-bold
+                  hover:bg-white/20
+                  hover:scale-105
+                  active:scale-95
+                  transition-all
+                "
+              >
+                DOWN BAD FR 🥰
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         FINAL MESSAGE
+    =================================================== -->
+
+    <section
+      class="
+        cv-section
+        overflow-hidden
+        px-5
+        pb-16
+      "
+    >
+
+      <div
+        class="
+          max-w-3xl
+          mx-auto
+          text-center
+        "
+      >
+
+        <div
+          class="
+            text-5xl
+            mb-5
+            animate-heartbeat
+          "
+        >
+          💕
+        </div>
+
+
+        <h2
+          class="
+            text-3xl
+            md:text-5xl
+            font-bold
+            text-slate-800
+          "
+        >
+
+          for you,
+
+          <span
+            class="text-pink-500"
+          >
+            always.
+          </span>
+
+        </h2>
+
+
+        <p
+          class="
+            mt-6
+            text-slate-600
+            leading-relaxed
+            text-lg
+          "
+        >
+
+          Thanks for existing in my little corner of the universe.
+          Thanks for the laughs, hugs, patience,
+          random moments, and all the tiny things
+          that somehow became my favorite memories.
+
+        </p>
+
+
+        <p
+          class="
+            mt-6
+            font-bold
+            text-xl
+            text-pink-500
+          "
+        >
+
+          I love you today.
+
+          <br>
+
+          I love you tomorrow.
+
+          <br>
+
+          And I will keep choosing you. ❤️
+
+        </p>
+
+
+        <div
+          class="
+            mt-10
+            text-3xl
+          "
+        >
+          🌷 💕 🌸 💗 🌷
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ==================================================
+       FOOTER
+  =================================================== -->
+
+  <footer
+    class="
+      relative
+      z-10
+      py-8
+      text-center
+      bg-white/40
+      border-t
+      border-white/60
+    "
+  >
+
+    <p
+      class="
+        text-sm
+        text-slate-500
+      "
+    >
+
+      made with
+
+      <span
+        class="
+          text-pink-500
+          animate-heartbeat
+          inline-block
+        "
+      >
+        ♥
+      </span>
+
+      for my favorite human. ♡
+
+    </p>
+
+  </footer>
+
+
+
+  <!-- ==================================================
+       LOVE MODAL
+  =================================================== -->
+
+  <div
+    id="loveModal"
+    class="
+      love-modal
+      fixed
+      inset-0
+      z-[10000]
+      flex
+      items-center
+      justify-center
+      px-5
+      bg-slate-900/40
+      backdrop-blur-sm
+    "
+  >
+
+    <div
+      class="
+        love-modal-card
+        w-full
+        max-w-md
+        bg-white
+        rounded-[2rem]
+        p-8
+        text-center
+        shadow-2xl
+      "
+    >
+
+      <div
+        id="modalEmoji"
+        class="
+          text-6xl
+          mb-5
+        "
+      >
+        💕
+      </div>
+
+
+      <h3
+        id="modalTitle"
+        class="
+          text-2xl
+          font-bold
+          text-pink-500
+        "
+      >
+        STOPPP. 🥹
+      </h3>
+
+
+      <p
+        id="modalMessage"
+        class="
+          mt-4
+          text-slate-600
+          leading-relaxed
+        "
+      ></p>
+
+
+      <button
+        onclick="closeLoveMessage()"
+        class="
+          relative
+          z-10
+          mt-7
+          px-7
+          py-3
+          rounded-full
+          bg-pink-500
+          hover:bg-pink-600
+          text-white
+          font-bold
+          transition
+          active:scale-95
+        "
+        style="touch-action: manipulation;"
+      >
+        okay, come here. virtual hug 🤗
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       GALLERY LIGHTBOX
+  =================================================== -->
+
+  <div
+    id="galleryModal"
+    class="
+      gallery-modal
+      fixed
+      inset-0
+      z-[10000]
+      bg-slate-950/85
+      backdrop-blur-md
+      flex
+      items-center
+      justify-center
+      p-4
+      sm:p-6
+      overflow-y-auto
+    "
+    onclick="closeGallery(event)"
+  >
+
+    <div
+      id="galleryModalCard"
+      class="
+        gallery-modal-card
+        relative
+        w-full
+        max-w-[480px]
+        mx-auto
+        my-auto
+      "
+    >
+
+      <!-- Image card -->
+
+      <div
+        class="
+          relative
+          bg-white
+          rounded-3xl
+          p-3
+          sm:p-4
+          shadow-2xl
+        "
+      >
+
+        <!-- Close button (positioned cleanly inside top-right corner of card) -->
+
+        <button
+          type="button"
+          id="galleryCloseButton"
+          aria-label="Close gallery"
+          class="
+            absolute
+            top-3
+            right-3
+            sm:top-4
+            sm:right-4
+            z-30
+            w-10
+            h-10
+            rounded-full
+            bg-white/90
+            hover:bg-white
+            text-slate-700
+            hover:text-pink-600
+            shadow-md
+            backdrop-blur-md
+            flex
+            items-center
+            justify-center
+            transition-all
+            duration-200
+            hover:scale-110
+            active:scale-90
+            cursor-pointer
+          "
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+
+
+        <div
+          class="
+            w-full
+            max-h-[62vh]
+            sm:max-h-[68vh]
+            overflow-hidden
+            rounded-2xl
+            bg-pink-50/60
+            flex
+            items-center
+            justify-center
+          "
+        >
+
+          <img
+            id="galleryModalImage"
+            src=""
+            alt="Gallery kenangan"
+            class="
+              w-full
+              h-auto
+              max-h-[62vh]
+              sm:max-h-[68vh]
+              object-contain
+              mx-auto
+              rounded-2xl
+              block
+            "
+          >
+
+        </div>
+
+
+        <div
+          class="
+            text-center
+            pt-4
+            pb-2
+            px-2
+          "
+        >
+
+          <p
+            id="galleryModalCaption"
+            class="
+              font-bold
+              text-lg
+              sm:text-xl
+              text-pink-500
+            "
+          ></p>
+
+          <p
+            class="
+              text-xs
+              text-slate-400
+              mt-1
+            "
+          >
+            a tiny piece of our lore. 💕
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       JAVASCRIPT
+  =================================================== -->
+
+  <script>
+
+
+    /* ==================================================
+       TYPEWRITER
+    =================================================== */
+
+    const phrases = [
+
+      "you feel like home. 🏡❤️",
+
+      "thanks for choosing me, btw. 🥹",
+
+      "still falling for you. like, every day. 💕",
+
+      "being with you is my favorite thing. 🌷",
+
+      "Forever sounds good if it's with you. 💗"
+
+    ];
+
+
+    const typewriter =
+      document.getElementById("typewriter");
+
+
+    let phraseIndex = 0;
+
+    let characterIndex = 0;
+
+    let deleting = false;
+
+    let typewriterPaused = false;
+
+
+    function typeEffect() {
+
+      if (typewriterPaused || document.hidden) {
+        setTimeout(typeEffect, 200);
+        return;
+      }
+
+      const phraseChars = Array.from(phrases[phraseIndex]);
+
+      if (!deleting) {
+
+        characterIndex++;
+        typewriter.textContent = phraseChars.slice(0, characterIndex).join("");
+
+        if (characterIndex >= phraseChars.length) {
+
+          deleting = true;
+
+          setTimeout(
+            typeEffect,
+            2000
+          );
+
+          return;
+
+        }
+
+      } else {
+
+        characterIndex--;
+        typewriter.textContent = phraseChars.slice(0, characterIndex).join("");
+
+        if (characterIndex <= 0) {
+
+          deleting = false;
+          characterIndex = 0;
+
+          phraseIndex =
+            (phraseIndex + 1)
+            % phrases.length;
+
+        }
+
+      }
+
+      setTimeout(
+        typeEffect,
+        deleting ? 50 : 85
+      );
+
+    }
+
+
+    typeEffect();
+
+    /* Pause typewriter when hero is off-screen */
+    if ("IntersectionObserver" in window && typewriter) {
+      const typewriterObserver = new IntersectionObserver((entries) => {
+        typewriterPaused = !entries[0].isIntersecting;
+      }, { threshold: 0.1 });
+      typewriterObserver.observe(typewriter);
+    }
+
+
+
+    /* ==================================================
+       FLOATING HEARTS
+    =================================================== */
+
+    const heartContainer =
+      document.getElementById(
+        "heartContainer"
+      );
+
+
+    const heartSymbols = [
+
+      "❤️",
+      "💕",
+      "💗",
+      "💖",
+      "🌸",
+      "✨"
+
+    ];
+
+    /* Performance: adaptive cap for mobile & desktop, and pause during active scroll */
+    const isMobileDevice = window.innerWidth <= 768;
+    const MAX_HEARTS = isMobileDevice ? 4 : 6;
+    let heartCount = 0;
+    let isUserScrolling = false;
+    let scrollTimeout;
+
+    window.addEventListener("scroll", () => {
+      isUserScrolling = true;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isUserScrolling = false;
+      }, 150);
+    }, { passive: true });
+
+    function createHeart() {
+
+      if (document.hidden || isUserScrolling) return;
+      if (heartCount >= MAX_HEARTS) return;
+
+      const heart =
+        document.createElement("div");
+
+
+      heart.className =
+        "heart-particle";
+
+
+      heart.textContent =
+        heartSymbols[
+          Math.floor(
+            Math.random() *
+            heartSymbols.length
+          )
+        ];
+
+
+      /* Spawn safely inside viewport to avoid horizontal overflow */
+      heart.style.left =
+        (Math.random() * 85 + 5) + "%";
+
+
+      heart.style.fontSize =
+        (Math.random() * 14 + 14)
+        + "px";
+
+
+      const duration = Math.random() * 5 + 7;
+      heart.style.animationDuration =
+        duration + "s";
+
+
+      heart.style.animationDelay =
+        Math.random() * 1.5
+        + "s";
+
+      heartCount++;
+
+      heartContainer.appendChild(
+        heart
+      );
+
+
+      setTimeout(
+        () => {
+          heart.remove();
+          heartCount--;
+        },
+        (duration + 2) * 1000
+      );
+
+    }
+
+    /* Spawn rate adapted for battery and frame-rate */
+    let heartInterval = setInterval(
+      createHeart,
+      isMobileDevice ? 3200 : 2500
+    );
+
+    /* Pause hearts when tab is hidden */
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        clearInterval(heartInterval);
+      } else {
+        heartInterval = setInterval(createHeart, isMobileDevice ? 3200 : 2500);
+      }
+    });
+
+
+    for (
+      let i = 0;
+      i < (isMobileDevice ? 1 : 2);
+      i++
+    ) {
+
+      createHeart();
+
+    }
+
+
+    /* ==================================================
+       LOVE COUNTER
+    =================================================== */
+
+    const counter =
+      document.getElementById(
+        "loveCounter"
+      );
+
+
+    const dateParts = (counter?.dataset?.startDate || "2024-02-14").split("-");
+    const startDate = new Date(
+      parseInt(dateParts[0], 10),
+      parseInt(dateParts[1], 10) - 1,
+      parseInt(dateParts[2], 10)
+    );
+
+
+    function calculateLoveTime() {
+
+      const now =
+        new Date();
+
+
+      const diff =
+        now.getTime()
+        -
+        startDate.getTime();
+
+
+      const totalDays =
+        Math.max(
+
+          0,
+
+          Math.floor(
+
+            diff /
+            (
+              1000 *
+              60 *
+              60 *
+              24
+            )
+
+          )
+
+        );
+
+
+      let years =
+        now.getFullYear()
+        -
+        startDate.getFullYear();
+
+
+      let months =
+        now.getMonth()
+        -
+        startDate.getMonth();
+
+
+      let days =
+        now.getDate()
+        -
+        startDate.getDate();
+
+
+      if (days < 0) {
+
+        months--;
+
+
+        const previousMonth =
+          new Date(
+
+            now.getFullYear(),
+
+            now.getMonth(),
+
+            0
+
+          );
+
+
+        days +=
+          previousMonth.getDate();
+
+      }
+
+
+      if (months < 0) {
+
+        years--;
+
+        months += 12;
+
+      }
+
+
+      document.getElementById(
+        "years"
+      ).textContent =
+        years;
+
+
+      document.getElementById(
+        "months"
+      ).textContent =
+        months;
+
+
+      document.getElementById(
+        "days"
+      ).textContent =
+        days;
+
+
+      document.getElementById(
+        "totalDays"
+      ).textContent =
+        totalDays.toLocaleString(
+          "id-ID"
+        );
+
+    }
+
+
+    calculateLoveTime();
+
+
+    setInterval(
+      calculateLoveTime,
+      60 * 60 * 1000
+    );
+
+
+
+    /* ==================================================
+       ACCORDION
+    =================================================== */
+
+    const accordionButtons =
+      document.querySelectorAll(
+        ".accordion-button"
+      );
+
+
+    accordionButtons.forEach(
+      button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const item =
+              button.closest(
+                ".accordion-item"
+              );
+
+
+            const isActive =
+              item.classList.contains(
+                "active"
+              );
+
+
+            document
+              .querySelectorAll(
+                ".accordion-item"
+              )
+              .forEach(
+                otherItem => {
+
+                  otherItem.classList.remove(
+                    "active"
+                  );
+
+                }
+              );
+
+
+            if (!isActive) {
+
+              item.classList.add(
+                "active"
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+
+    /* ==================================================
+       LOVE MESSAGE MODAL
+    =================================================== */
+
+    const loveModal =
+      document.getElementById(
+        "loveModal"
+      );
+
+
+    const modalEmoji =
+      document.getElementById(
+        "modalEmoji"
+      );
+
+
+    const modalTitle =
+      document.getElementById(
+        "modalTitle"
+      );
+
+
+    const modalMessage =
+      document.getElementById(
+        "modalMessage"
+      );
+
+
+    function showLoveMessage(type) {
+
+
+      if (
+        type === "sayang"
+      ) {
+
+        modalEmoji.textContent =
+          "🥹❤️";
+
+
+        modalTitle.textContent =
+          "I KNEW IT. you love me! 🥹";
+
+
+        modalMessage.textContent =
+          "Plot twist: I love you way more. So yeah... you’re kinda stuck with me now. 😤💕";
+
+      }
+
+
+      else {
+
+        modalEmoji.textContent =
+          "💖🥰";
+
+
+        modalTitle.textContent =
+          "DOWN BAD FR?!";
+
+
+        modalMessage.textContent =
+          "Oh you’re DOWN bad? Cute. I’m matching that energy with unlimited love, hugs, and cringe flirting. 🤭💗";
+
+      }
+
+
+      loveModal.classList.add(
+        "show"
+      );
+
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+
+    function closeLoveMessage() {
+
+      loveModal.classList.remove(
+        "show"
+      );
+
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+
+    loveModal.addEventListener(
+      "click",
+      event => {
+
+        if (
+          event.target ===
+          loveModal
+        ) {
+
+          closeLoveMessage();
+
+        }
+
+      }
+    );
+
+
+
+    /* ==================================================
+       GALLERY LIGHTBOX
+    =================================================== */
+
+    const galleryModal =
+      document.getElementById(
+        "galleryModal"
+      );
+
+
+    const galleryModalCard =
+      document.getElementById(
+        "galleryModalCard"
+      );
+
+
+    const galleryModalImage =
+      document.getElementById(
+        "galleryModalImage"
+      );
+
+
+    const galleryModalCaption =
+      document.getElementById(
+        "galleryModalCaption"
+      );
+
+    const galleryCloseButton =
+      document.getElementById(
+        "galleryCloseButton"
+      );
+
+    // Use a real event listener so the close button
+    // does not depend on inline onclick/bubbling behavior.
+    galleryCloseButton.addEventListener(
+      "click",
+      event => {
+        event.preventDefault();
+        event.stopPropagation();
+        closeGallery();
+      }
+    );
+
+
+
+    function openGallery(
+      image,
+      caption
+    ) {
+
+      galleryModalImage.src =
+        image;
+
+
+      galleryModalCaption.textContent =
+        caption;
+
+
+      galleryModal.classList.add(
+        "show"
+      );
+
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+
+    function closeGallery(event) {
+
+      // Close only when:
+      // 1) the close button (or its icon) is clicked, or
+      // 2) the dark backdrop itself is clicked.
+      if (
+        event &&
+        event.target !== galleryModal &&
+        !galleryCloseButton.contains(event.target)
+      ) {
+        return;
+      }
+
+      galleryModal.classList.remove("show");
+      document.body.style.overflow = "";
+
+    }
+
+
+
+    /* ==================================================
+       KEYBOARD CONTROLS
+    =================================================== */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          closeLoveMessage();
+
+          galleryModal.classList.remove(
+            "show"
+          );
+
+          document.body.style.overflow =
+            "";
+
+        }
+
+      }
+    );
+
+
+  
+
+    /* ==================================================
+       CUSTOM CURSOR — PC ONLY
+       Lightweight: real-time mouse tracking + requestAnimationFrame
+    ================================================== */
+
+    (() => {
+      const cursor = document.getElementById("customCursor");
+      if (!cursor) return;
+
+      const finePointer = window.matchMedia("(pointer: fine)");
+      if (!finePointer.matches) {
+        cursor.style.display = "none";
+        return;
+      }
+
+      let x = -100, y = -100;
+      let raf = 0;
+      let visible = false;
+      let scale = 1;
+
+      function render() {
+        cursor.style.transform =
+          `translate3d(${x}px,${y}px,0) translate(-50%,-50%) scale(${scale})`;
+        raf = 0;
+      }
+
+      function schedule() {
+        if (!raf) raf = requestAnimationFrame(render);
+      }
+
+      window.addEventListener("mousemove", event => {
+        x = event.clientX;
+        y = event.clientY;
+        if (!visible) {
+          visible = true;
+          cursor.style.opacity = "1";
+        }
+        schedule();
+      }, { passive: true });
+
+      window.addEventListener("mouseleave", () => {
+        visible = false;
+        cursor.style.opacity = "0";
+      }, { passive: true });
+
+      document.addEventListener("mouseover", event => {
+        if (scale !== 1.35 && event.target?.closest?.("a,button,[role='button'],input,textarea,select,summary")) {
+          scale = 1.35;
+          schedule();
+        }
+      }, { passive: true });
+
+      document.addEventListener("mouseout", event => {
+        if (scale !== 1 && event.target?.closest?.("a,button,[role='button'],input,textarea,select,summary")) {
+          scale = 1;
+          schedule();
+        }
+      }, { passive: true });
+
+      window.addEventListener("mousedown", () => { scale = .75; schedule(); }, { passive: true });
+      window.addEventListener("mouseup", () => { scale = 1; schedule(); }, { passive: true });
+    })();
+
+
+    /* ==================================================
+       FULLSCREEN — BUTTON + F KEY
+       F / KeyF toggles fullscreen.
+       Esc exits through the browser.
+    ================================================== */
+
+    (() => {
+      "use strict";
+
+      const button = document.getElementById("fullscreenButton");
+      const enterIcon = document.getElementById("fullscreenEnterIcon");
+      const exitIcon = document.getElementById("fullscreenExitIcon");
+
+      if (!button) return;
+
+      const getFullscreenElement = () =>
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        null;
+
+      const isFullscreen = () => !!getFullscreenElement();
+
+      const updateFullscreenUI = () => {
+        const active = isFullscreen();
+
+        document.body.classList.toggle("is-fullscreen", active);
+
+        if (enterIcon) {
+          enterIcon.style.display = active ? "none" : "block";
+        }
+
+        if (exitIcon) {
+          exitIcon.style.display = active ? "block" : "none";
+        }
+
+        button.setAttribute(
+          "aria-label",
+          active ? "Exit fullscreen" : "Enter fullscreen"
+        );
+
+        button.setAttribute(
+          "title",
+          active ? "Exit fullscreen (F)" : "Fullscreen (F)"
+        );
+      };
+
+      const enterFullscreen = () => {
+        const element = document.documentElement;
+
+        try {
+          if (element.requestFullscreen) {
+            return element.requestFullscreen();
+          }
+
+          if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+            return Promise.resolve();
+          }
+
+          alert("Fullscreen is not supported by this browser.");
+          return Promise.reject(new Error("Fullscreen API not supported."));
+        } catch (error) {
+          console.warn("Could not enter fullscreen:", error);
+          return Promise.reject(error);
+        }
+      };
+
+      const exitFullscreen = () => {
+        try {
+          if (document.exitFullscreen) {
+            return document.exitFullscreen();
+          }
+
+          if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+            return Promise.resolve();
+          }
+
+          return Promise.resolve();
+        } catch (error) {
+          console.warn("Could not exit fullscreen:", error);
+          return Promise.reject(error);
+        }
+      };
+
+      const toggleFullscreen = () => {
+        if (isFullscreen()) {
+          exitFullscreen().catch(() => {});
+        } else {
+          enterFullscreen().catch((error) => {
+            console.warn(
+              "Fullscreen was blocked by the browser. Use the fullscreen button or check browser permissions.",
+              error
+            );
+          });
+        }
+      };
+
+      /* Button click is a direct user gesture. */
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        toggleFullscreen();
+      });
+
+      /*
+       * Keyboard shortcut:
+       * event.code === "KeyF" is more reliable than event.key
+       * across keyboard layouts and Caps Lock states.
+       */
+      const handleFullscreenKey = (event) => {
+        const tag = event.target?.tagName?.toLowerCase();
+
+        const typing =
+          tag === "input" ||
+          tag === "textarea" ||
+          tag === "select" ||
+          event.target?.isContentEditable;
+
+        if (typing) return;
+
+        if (event.code === "KeyF" && !event.ctrlKey && !event.altKey && !event.metaKey) {
+          event.preventDefault();
+          event.stopPropagation();
+          toggleFullscreen();
+        }
+      };
+
+      window.addEventListener("keydown", handleFullscreenKey, true);
+
+      /* Keep the icon synchronized when fullscreen changes. */
+      document.addEventListener("fullscreenchange", updateFullscreenUI);
+      document.addEventListener("webkitfullscreenchange", updateFullscreenUI);
+
+      /* Browser Esc exits fullscreen; this updates our button state. */
+      window.addEventListener("keyup", (event) => {
+        if (event.code === "Escape") {
+          setTimeout(updateFullscreenUI, 50);
+        }
+      });
+
+      updateFullscreenUI();
+    })();
+
+</script>
+
+</body>
+</html> 
