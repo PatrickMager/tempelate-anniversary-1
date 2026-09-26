@@ -8,20 +8,6 @@
   <meta name="theme-color" content="#fdf2f8">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
 
-  <script>
-    /* Hardware & Memory Detection for 2GB RAM / Low-Spec PC / Budget Mobile */
-    (function() {
-      try {
-        var mem = navigator.deviceMemory || 4;
-        var cores = navigator.hardwareConcurrency || 4;
-        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
-        if (mem <= 2 || cores <= 2 || (isMobile && (mem <= 4 || cores <= 4))) {
-          document.documentElement.classList.add("low-spec");
-        }
-      } catch(e) {}
-    })();
-  </script>
-
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -1253,89 +1239,7 @@
        - backdrop-filter (blur) triggers GPU compositing per frame
        - complex box-shadows cause repaint on scroll
        - fixed background blobs cause constant compositing
-    /* ==================================================
-       HARDWARE-AWARE LOW-SPEC MODE (<=2GB RAM / Low-Tier PC & Mobile)
-       Saves 70%+ CPU/GPU usage and eliminates memory spikes
     ================================================== */
-    html.low-spec {
-      scroll-behavior: auto !important; /* Instant crisp scrolling without momentum lag */
-    }
-
-    /* Restore native hardware cursor for low-spec PCs — 0ms latency */
-    html.low-spec,
-    html.low-spec *,
-    html.low-spec *::before,
-    html.low-spec *::after {
-      cursor: auto !important;
-    }
-
-    html.low-spec a,
-    html.low-spec button,
-    html.low-spec [role="button"],
-    html.low-spec input,
-    html.low-spec select,
-    html.low-spec textarea,
-    html.low-spec summary {
-      cursor: pointer !important;
-    }
-
-    html.low-spec #customCursor {
-      display: none !important;
-    }
-
-    /* Disable all backdrop-filter on low-spec PC & mobile */
-    html.low-spec .glass,
-    html.low-spec .backdrop-blur-md,
-    html.low-spec .backdrop-blur-sm,
-    html.low-spec #fullscreenButton {
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      background: rgba(255, 255, 255, 0.90) !important;
-    }
-
-    html.low-spec body::before {
-      display: none !important;
-    }
-
-    html.low-spec .hero-orbit {
-      display: none !important;
-    }
-
-    /* Pause 15 continuous infinite animations on low-spec to keep CPU idle */
-    html.low-spec .animate-float,
-    html.low-spec .animate-floatSlow,
-    html.low-spec .animate-wiggle,
-    html.low-spec .animate-bounce,
-    html.low-spec .sparkle {
-      animation: none !important;
-    }
-
-    html.low-spec .animate-heartbeat {
-      animation-duration: 3s !important;
-    }
-
-    /* Disable heavy hover image scales on low-spec */
-    html.low-spec .gallery-card img {
-      transition: none !important;
-      transform: none !important;
-    }
-
-    /* Lightweight shadows: save GPU fill-rate on low-end integrated graphics */
-    html.low-spec .polaroid,
-    html.low-spec .glass,
-    html.low-spec .love-modal-card,
-    html.low-spec .gallery-modal-card {
-      box-shadow: 0 4px 14px rgba(255, 105, 150, 0.10) !important;
-    }
-
-    /* Immersive Fullscreen Mode on Mobile: 0ms transition, 0% black screen */
-    html.is-fullscreen,
-    body.is-fullscreen {
-      width: 100% !important;
-      min-height: 100dvh !important;
-      min-height: 100svh !important;
-      background-color: #fff9ef !important;
-    }
 
     /* Mobile optimization: eliminates expensive GPU blurs and compositing layers */
     @media (max-width: 768px) {
@@ -1834,8 +1738,6 @@
                 <img
                   src="foto1.webp"
                   alt="Our favorite photo"
-                  width="1179"
-                  height="1539"
                   loading="lazy"
                   decoding="async"
                   class="
@@ -2428,8 +2330,6 @@
               <img
                 src="foto2.webp"
                 alt="Our first date"
-                width="1200"
-                height="1600"
                 loading="lazy"
                 decoding="async"
                 class="
@@ -2521,8 +2421,6 @@
               <img
                 src="foto3.webp"
                 alt="A favorite memory"
-                width="1200"
-                height="1600"
                 loading="lazy"
                 decoding="async"
                 class="
@@ -2612,8 +2510,6 @@
               <img
                 src="foto4.webp"
                 alt="A little adventure"
-                width="474"
-                height="590"
                 loading="lazy"
                 decoding="async"
                 class="
@@ -2704,8 +2600,6 @@
               <img
                 src="foto5.webp"
                 alt="A romantic memory"
-                width="1080"
-                height="1350"
                 loading="lazy"
                 decoding="async"
                 class="
@@ -4058,8 +3952,7 @@
 
 
     /* ==================================================
-       FLOATING HEARTS — ZERO-ALLOCATION PARTICLE POOL
-       Eliminates Garbage Collection (GC) jank for 2GB RAM devices
+       FLOATING HEARTS
     =================================================== */
 
     const heartContainer =
@@ -4067,29 +3960,22 @@
         "heartContainer"
       );
 
+
     const heartSymbols = [
+
       "❤️",
       "💕",
       "💗",
       "💖",
       "🌸",
       "✨"
+
     ];
 
-    const isLowSpecHardware = document.documentElement.classList.contains("low-spec");
-    const POOL_SIZE = isLowSpecHardware ? 3 : 5;
-    const heartPool = [];
-
-    if (heartContainer) {
-      for (let i = 0; i < POOL_SIZE; i++) {
-        const el = document.createElement("div");
-        el.className = "heart-particle";
-        el.style.display = "none";
-        heartContainer.appendChild(el);
-        heartPool.push({ el, active: false, timer: null });
-      }
-    }
-
+    /* Performance: adaptive cap for mobile & desktop, and pause during active scroll */
+    const isMobileDevice = window.innerWidth <= 768;
+    const MAX_HEARTS = isMobileDevice ? 4 : 6;
+    let heartCount = 0;
     let isUserScrolling = false;
     let scrollTimeout;
 
@@ -4098,17 +3984,21 @@
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         isUserScrolling = false;
-      }, 180);
+      }, 150);
     }, { passive: true });
 
     function createHeart() {
-      if (document.hidden || isUserScrolling || !heartContainer) return;
 
-      const item = heartPool.find(p => !p.active);
-      if (!item) return;
+      if (document.hidden || isUserScrolling) return;
+      if (heartCount >= MAX_HEARTS) return;
 
-      item.active = true;
-      const heart = item.el;
+      const heart =
+        document.createElement("div");
+
+
+      heart.className =
+        "heart-particle";
+
 
       heart.textContent =
         heartSymbols[
@@ -4118,30 +4008,47 @@
           )
         ];
 
-      /* Spawn safely within viewport (10% to 85%) to avoid horizontal scroll */
+
+      /* Spawn safely inside viewport to avoid horizontal overflow */
       heart.style.left =
-        (Math.random() * 75 + 10) + "%";
+        (Math.random() * 85 + 5) + "%";
+
 
       heart.style.fontSize =
-        (Math.random() * 12 + 14) + "px";
+        (Math.random() * 14 + 14)
+        + "px";
 
-      const duration = Math.random() * 4 + 7;
-      heart.style.display = "block";
-      heart.style.animation = "none";
-      void heart.offsetWidth; // Trigger reflow once to reset CSS animation
-      heart.style.animation = `rise ${duration}s linear 1 forwards`;
 
-      clearTimeout(item.timer);
-      item.timer = setTimeout(() => {
-        heart.style.display = "none";
-        item.active = false;
-      }, duration * 1000);
+      const duration = Math.random() * 5 + 7;
+      heart.style.animationDuration =
+        duration + "s";
+
+
+      heart.style.animationDelay =
+        Math.random() * 1.5
+        + "s";
+
+      heartCount++;
+
+      heartContainer.appendChild(
+        heart
+      );
+
+
+      setTimeout(
+        () => {
+          heart.remove();
+          heartCount--;
+        },
+        (duration + 2) * 1000
+      );
+
     }
 
-    const spawnIntervalMs = isLowSpecHardware ? 3800 : 2500;
+    /* Spawn rate adapted for battery and frame-rate */
     let heartInterval = setInterval(
       createHeart,
-      spawnIntervalMs
+      isMobileDevice ? 3200 : 2500
     );
 
     /* Pause hearts when tab is hidden */
@@ -4149,12 +4056,20 @@
       if (document.hidden) {
         clearInterval(heartInterval);
       } else {
-        heartInterval = setInterval(createHeart, spawnIntervalMs);
+        heartInterval = setInterval(createHeart, isMobileDevice ? 3200 : 2500);
       }
     });
 
-    /* Seed initial heart */
-    createHeart();
+
+    for (
+      let i = 0;
+      i < (isMobileDevice ? 1 : 2);
+      i++
+    ) {
+
+      createHeart();
+
+    }
 
 
     /* ==================================================
@@ -4550,13 +4465,6 @@
       galleryModal.classList.remove("show");
       document.body.style.overflow = "";
 
-      // Free GPU/RAM memory on 2GB RAM devices by clearing image buffer after transition
-      setTimeout(() => {
-        if (!galleryModal.classList.contains("show")) {
-          galleryModalImage.src = "";
-        }
-      }, 300);
-
     }
 
 
@@ -4591,7 +4499,7 @@
   
 
     /* ==================================================
-       CUSTOM CURSOR — PC ONLY (Bypassed on Low-Spec / 2GB RAM)
+       CUSTOM CURSOR — PC ONLY
        Lightweight: real-time mouse tracking + requestAnimationFrame
     ================================================== */
 
@@ -4600,7 +4508,7 @@
       if (!cursor) return;
 
       const finePointer = window.matchMedia("(pointer: fine)");
-      if (!finePointer.matches || document.documentElement.classList.contains("low-spec")) {
+      if (!finePointer.matches) {
         cursor.style.display = "none";
         return;
       }
@@ -4655,10 +4563,9 @@
 
 
     /* ==================================================
-       ADAPTIVE FULLSCREEN
-       - Mobile: Seamless Immersive App Mode (0ms transition, 0% black screen)
-       - Desktop: HTML5 Native Fullscreen API + 'F' key
-       - Press & hold on mobile (700ms) enables Native OS Fullscreen if desired
+       FULLSCREEN — BUTTON + F KEY
+       F / KeyF toggles fullscreen.
+       Esc exits through the browser.
     ================================================== */
 
     (() => {
@@ -4670,27 +4577,17 @@
 
       if (!button) return;
 
-      const isMobileDevice =
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-        (window.innerWidth <= 768 && ("ontouchstart" in window || navigator.maxTouchPoints > 0));
-
-      let mobileFullscreenActive = false;
-
-      const getNativeFullscreenElement = () =>
+      const getFullscreenElement = () =>
         document.fullscreenElement ||
         document.webkitFullscreenElement ||
         null;
 
-      const isFullscreenActive = () => {
-        if (isMobileDevice) return mobileFullscreenActive;
-        return !!getNativeFullscreenElement();
-      };
+      const isFullscreen = () => !!getFullscreenElement();
 
       const updateFullscreenUI = () => {
-        const active = isFullscreenActive();
+        const active = isFullscreen();
 
         document.body.classList.toggle("is-fullscreen", active);
-        document.documentElement.classList.toggle("is-fullscreen", active);
 
         if (enterIcon) {
           enterIcon.style.display = active ? "none" : "block";
@@ -4711,36 +4608,7 @@
         );
       };
 
-      /* Mobile: Seamless Immersive Mode (Zero Black Screen, Zero Latency) */
-      const toggleMobileFullscreen = () => {
-        mobileFullscreenActive = !mobileFullscreenActive;
-        updateFullscreenUI();
-
-        if (mobileFullscreenActive) {
-          try {
-            history.pushState({ immersiveFullscreen: true }, "");
-          } catch (e) {}
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        } else {
-          try {
-            if (history.state?.immersiveFullscreen) {
-              history.back();
-            }
-          } catch (e) {}
-        }
-      };
-
-      if (isMobileDevice) {
-        window.addEventListener("popstate", () => {
-          if (mobileFullscreenActive) {
-            mobileFullscreenActive = false;
-            updateFullscreenUI();
-          }
-        });
-      }
-
-      /* Desktop: Standard HTML5 Fullscreen API */
-      const enterDesktopFullscreen = () => {
+      const enterFullscreen = () => {
         const element = document.documentElement;
 
         try {
@@ -4753,15 +4621,15 @@
             return Promise.resolve();
           }
 
-          toggleMobileFullscreen();
-          return Promise.resolve();
+          alert("Fullscreen is not supported by this browser.");
+          return Promise.reject(new Error("Fullscreen API not supported."));
         } catch (error) {
-          toggleMobileFullscreen();
-          return Promise.resolve();
+          console.warn("Could not enter fullscreen:", error);
+          return Promise.reject(error);
         }
       };
 
-      const exitDesktopFullscreen = () => {
+      const exitFullscreen = () => {
         try {
           if (document.exitFullscreen) {
             return document.exitFullscreen();
@@ -4774,54 +4642,35 @@
 
           return Promise.resolve();
         } catch (error) {
-          return Promise.resolve();
+          console.warn("Could not exit fullscreen:", error);
+          return Promise.reject(error);
         }
       };
 
       const toggleFullscreen = () => {
-        if (isMobileDevice) {
-          toggleMobileFullscreen();
-          return;
-        }
-
-        if (isFullscreenActive()) {
-          exitDesktopFullscreen().catch(() => {});
+        if (isFullscreen()) {
+          exitFullscreen().catch(() => {});
         } else {
-          enterDesktopFullscreen().catch(() => {
-            toggleMobileFullscreen();
+          enterFullscreen().catch((error) => {
+            console.warn(
+              "Fullscreen was blocked by the browser. Use the fullscreen button or check browser permissions.",
+              error
+            );
           });
         }
       };
 
-      /* Button click: instant gesture */
+      /* Button click is a direct user gesture. */
       button.addEventListener("click", (event) => {
         event.preventDefault();
         toggleFullscreen();
       });
 
-      /* Long press on mobile (press & hold for 700ms) allows native OS fullscreen if desired */
-      if (isMobileDevice) {
-        let pressTimer = null;
-        button.addEventListener("touchstart", () => {
-          pressTimer = setTimeout(() => {
-            try {
-              if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-              }
-            } catch (e) {}
-          }, 700);
-        }, { passive: true });
-
-        button.addEventListener("touchend", () => {
-          clearTimeout(pressTimer);
-        }, { passive: true });
-
-        button.addEventListener("touchcancel", () => {
-          clearTimeout(pressTimer);
-        }, { passive: true });
-      }
-
-      /* Keyboard shortcut (Desktop): KeyF */
+      /*
+       * Keyboard shortcut:
+       * event.code === "KeyF" is more reliable than event.key
+       * across keyboard layouts and Caps Lock states.
+       */
       const handleFullscreenKey = (event) => {
         const tag = event.target?.tagName?.toLowerCase();
 
@@ -4842,23 +4691,14 @@
 
       window.addEventListener("keydown", handleFullscreenKey, true);
 
-      /* Synchronize state if desktop native fullscreen triggers */
-      document.addEventListener("fullscreenchange", () => {
-        if (!isMobileDevice) updateFullscreenUI();
-      });
-      document.addEventListener("webkitfullscreenchange", () => {
-        if (!isMobileDevice) updateFullscreenUI();
-      });
+      /* Keep the icon synchronized when fullscreen changes. */
+      document.addEventListener("fullscreenchange", updateFullscreenUI);
+      document.addEventListener("webkitfullscreenchange", updateFullscreenUI);
 
-      /* Browser Esc exits fullscreen */
+      /* Browser Esc exits fullscreen; this updates our button state. */
       window.addEventListener("keyup", (event) => {
         if (event.code === "Escape") {
-          if (isMobileDevice && mobileFullscreenActive) {
-            mobileFullscreenActive = false;
-            updateFullscreenUI();
-          } else {
-            setTimeout(updateFullscreenUI, 50);
-          }
+          setTimeout(updateFullscreenUI, 50);
         }
       });
 
