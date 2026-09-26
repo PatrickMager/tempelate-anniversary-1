@@ -544,20 +544,64 @@
     ========================== */
 
     .gallery-card {
-
       transition:
         transform .5s ease,
         box-shadow .5s ease;
-
     }
 
+    /* Abstract playful tilt for gallery cards on all screens (mobile, tablet, desktop) */
+    .gallery-card:nth-child(1) {
+      transform: rotate(-2deg);
+    }
+    .gallery-card:nth-child(2) {
+      transform: rotate(2.5deg);
+    }
+    .gallery-card:nth-child(3) {
+      transform: rotate(-2deg);
+    }
+    .gallery-card:nth-child(4) {
+      transform: rotate(2.5deg);
+    }
+    .gallery-card:nth-child(5) {
+      transform: rotate(-1.8deg);
+    }
 
     .gallery-card:hover {
-
+      transform: rotate(0deg) translateY(-6px) !important;
       box-shadow:
         0 25px 45px
         rgba(255, 105, 150, .20);
+    }
 
+
+    /* ==================================================
+       PHOTO DUMP (5 PHOTOS: 3 TOP, 2 CENTERED BELOW)
+    ================================================== */
+    @media (min-width: 768px) {
+      main .gallery-grid {
+        display: grid !important;
+        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+        gap: clamp(1.25rem, 2vw, 2rem) !important;
+        max-width: 1320px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .gallery-card:nth-child(1) {
+        grid-column: 1 / span 2 !important;
+      }
+      .gallery-card:nth-child(2) {
+        grid-column: 3 / span 2 !important;
+      }
+      .gallery-card:nth-child(3) {
+        grid-column: 5 / span 2 !important;
+      }
+      .gallery-card:nth-child(4) {
+        grid-column: 2 / span 2 !important;
+      }
+      .gallery-card:nth-child(5) {
+        grid-column: 4 / span 2 !important;
+      }
     }
 
 
@@ -777,8 +821,11 @@
       /* Photo dump gets the available horizontal space. */
       main .gallery-grid {
         width: 100% !important;
-        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-        gap: clamp(1rem, 1.8vw, 2rem) !important;
+        max-width: 1320px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+        gap: clamp(1.25rem, 2vw, 2rem) !important;
       }
 
       /* Story becomes genuinely wider on large monitors. */
@@ -916,16 +963,8 @@
       }
 
       main > section {
-        padding-top: clamp(3.5rem, 8vw, 5rem);
-        padding-bottom: clamp(3.5rem, 8vw, 5rem);
-      }
-
-      .gallery-card {
-        transform: none !important;
-      }
-
-      .gallery-card:hover {
-        transform: translateY(-4px) !important;
+        padding-top: clamp(1.75rem, 3.5vw, 2.5rem);
+        padding-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
       }
     }
 
@@ -970,9 +1009,22 @@
       }
 
       /* Gallery */
+      main .gallery-grid {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 1.5rem !important;
+        max-width: 380px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
       .gallery-card {
-        width: 100%;
-        min-width: 0;
+        grid-column: auto !important;
+        width: 100% !important;
+        max-width: min(360px, 88vw) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 0 !important;
       }
 
       .gallery-card p {
@@ -1060,8 +1112,8 @@
       }
 
       main > section {
-        padding-top: 3.25rem;
-        padding-bottom: 3.25rem;
+        padding-top: 1.75rem;
+        padding-bottom: 1.75rem;
       }
 
       .polaroid {
@@ -1090,6 +1142,8 @@
         margin-right: auto;
       }
 
+      .gallery-card.md\:mt-6,
+      .gallery-card.md\:mt-8,
       .gallery-card.md\:mt-10,
       .gallery-card.md\:mt-12,
       .gallery-card.md\:mt-14 {
@@ -1146,8 +1200,8 @@
       }
 
       main > section {
-        padding-top: 2.75rem;
-        padding-bottom: 2.75rem;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
       }
     }
 
@@ -1169,12 +1223,8 @@
       }
     }
 
-    /* Avoid hover-only interactions on touch devices. */
+    /* Avoid unwanted hover shift on touch devices. */
     @media (hover: none) {
-      .gallery-card:hover {
-        transform: none !important;
-      }
-
       .gallery-card:hover img {
         transform: none !important;
       }
@@ -1562,7 +1612,8 @@
     <section
       class="
         px-5
-        py-20
+        pt-12
+        pb-8
       "
     >
 
@@ -2022,7 +2073,8 @@
         relative
         z-10
         px-5
-        py-24
+        pt-8
+        pb-8
         overflow-hidden
         bg-white/30
       "
@@ -2074,7 +2126,7 @@
         <div
           class="
             text-center
-            mb-14
+            mb-8
           "
         >
 
@@ -2175,10 +2227,13 @@
           class="
             gallery-grid
             grid
-            grid-cols-2
-            md:grid-cols-4
+            grid-cols-1
+            md:grid-cols-6
             gap-5
+            md:gap-6
             items-start
+            max-w-[1320px]
+            mx-auto
           "
         >
 
@@ -2201,6 +2256,7 @@
               transition-all
               duration-500
               cursor-pointer
+              md:col-span-2
             "
             onclick="
               openGallery(
@@ -2276,13 +2332,14 @@
               pb-5
               rounded-2xl
               shadow-lg
-              rotate-[3deg]
+              rotate-[2.5deg]
               hover:rotate-0
               hover:-translate-y-2
               transition-all
               duration-500
               cursor-pointer
-              md:mt-10
+              md:mt-6
+              md:col-span-2
             "
             onclick="
               openGallery(
@@ -2358,12 +2415,13 @@
               pb-5
               rounded-2xl
               shadow-lg
-              rotate-[-3deg]
+              rotate-[-2deg]
               hover:rotate-0
               hover:-translate-y-2
               transition-all
               duration-500
               cursor-pointer
+              md:col-span-2
             "
             onclick="
               openGallery(
@@ -2438,13 +2496,14 @@
               pb-5
               rounded-2xl
               shadow-lg
-              rotate-[2deg]
+              rotate-[2.5deg]
               hover:rotate-0
               hover:-translate-y-2
               transition-all
               duration-500
               cursor-pointer
-              md:mt-14
+              md:col-span-2
+              md:col-start-2
             "
             onclick="
               openGallery(
@@ -2519,12 +2578,13 @@
               pb-5
               rounded-2xl
               shadow-lg
-              rotate-[2deg]
+              rotate-[-1.8deg]
               hover:rotate-0
               hover:-translate-y-2
               transition-all
               duration-500
               cursor-pointer
+              md:col-span-2
             "
             onclick="
               openGallery(
@@ -2585,232 +2645,6 @@
 
           </div>
 
-
-
-          <!-- FOTO 7 -->
-
-          <div
-            class="
-              gallery-card
-              group
-              relative
-              bg-white
-              p-3
-              pb-5
-              rounded-2xl
-              shadow-lg
-              rotate-[-3deg]
-              hover:rotate-0
-              hover:-translate-y-2
-              transition-all
-              duration-500
-              cursor-pointer
-              md:mt-12
-            "
-            onclick="
-              openGallery(
-                'foto7.webp',
-                'Momen yang ingin kuulang 💕'
-              )
-            "
-          >
-
-            <div
-              class="
-                absolute
-                -top-5
-                -right-3
-                z-20
-                text-3xl
-              "
-            >
-              💌
-            </div>
-
-
-            <div
-              class="
-                aspect-[3/4]
-                overflow-hidden
-                rounded-xl
-              "
-            >
-
-              <img
-                src="foto7.webp"
-                alt="A romantic moment"
-                class="
-                  w-full
-                  h-full
-                  object-cover
-                  group-hover:scale-110
-                  transition-transform
-                  duration-700
-                "
-              >
-
-            </div>
-
-
-            <p
-              class="
-                text-center
-                font-bold
-                text-purple-500
-                mt-4
-                text-sm
-              "
-            >
-              run it back? 💕
-            </p>
-
-          </div>
-
-
-
-          <!-- FOTO 8 -->
-
-          <div
-            class="
-              gallery-card
-              group
-              relative
-              bg-white
-              p-3
-              pb-5
-              rounded-2xl
-              shadow-lg
-              rotate-[3deg]
-              hover:rotate-0
-              hover:-translate-y-2
-              transition-all
-              duration-500
-              cursor-pointer
-            "
-            onclick="
-              openGallery(
-                'foto8.webp',
-                'There’s so much more lore... 🥹'
-              )
-            "
-          >
-
-            <div
-              class="
-                absolute
-                -top-5
-                left-4
-                z-20
-                text-3xl
-                animate-bounce
-              "
-            >
-              💖
-            </div>
-
-
-            <div
-              class="
-                aspect-[4/5]
-                overflow-hidden
-                rounded-xl
-              "
-            >
-
-              <img
-                src="foto8.webp"
-                alt="A favorite memory"
-                class="
-                  w-full
-                  h-full
-                  object-cover
-                  group-hover:scale-110
-                  transition-transform
-                  duration-700
-                "
-              >
-
-            </div>
-
-
-            <p
-              class="
-                text-center
-                font-bold
-                text-pink-500
-                mt-4
-                text-sm
-              "
-            >
-              to be continued... obviously 💖
-            </p>
-
-          </div>
-
-
-
-          <!-- CLOSING CARD -->
-
-          <div
-            class="
-              relative
-              flex
-              flex-col
-              items-center
-              justify-center
-              min-h-[240px]
-              bg-gradient-to-br
-              from-pink-100
-              to-purple-100
-              rounded-2xl
-              border-2
-              border-dashed
-              border-pink-300
-              p-6
-              text-center
-              rotate-[-1deg]
-              md:mt-8
-            "
-          >
-
-            <div
-              class="
-                text-5xl
-                animate-heartbeat
-              "
-            >
-              💕
-            </div>
-
-
-            <p
-              class="
-                font-bold
-                text-pink-500
-                mt-4
-              "
-            >
-              And our story
-
-              <br>
-
-              is still going...
-            </p>
-
-
-            <p
-              class="
-                text-xs
-                text-slate-500
-                mt-2
-              "
-            >
-              There are way too many
-              memories for one page. 😆
-            </p>
-
-          </div>
-
         </div>
 
 
@@ -2820,7 +2654,7 @@
         <div
           class="
             text-center
-            mt-14
+            mt-6
           "
         >
 
@@ -2869,7 +2703,8 @@
     <section
       class="
         px-5
-        py-20
+        pt-8
+        pb-8
       "
     >
 
@@ -2886,7 +2721,7 @@
         <div
           class="
             text-center
-            mb-12
+            mb-8
           "
         >
 
@@ -3405,7 +3240,8 @@
     <section
       class="
         px-5
-        py-24
+        pt-8
+        pb-12
       "
     >
 
@@ -3611,7 +3447,7 @@
     <section
       class="
         px-5
-        pb-24
+        pb-16
       "
     >
 
