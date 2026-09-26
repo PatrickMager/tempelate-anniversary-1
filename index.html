@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Happy anniversary, My Favorite Human! 💘</title>
+  <meta name="theme-color" content="#fdf2f8">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -47,9 +49,6 @@
 
             wiggle:
               "wiggle 2s ease-in-out infinite",
-
-            appear:
-              "appear .8s ease-out forwards",
 
           },
 
@@ -111,22 +110,6 @@
 
               "50%": {
                 transform: "rotate(3deg)",
-              },
-
-            },
-
-            appear: {
-
-              "0%": {
-                opacity: "0",
-                transform:
-                  "translateY(20px)",
-              },
-
-              "100%": {
-                opacity: "1",
-                transform:
-                  "translateY(0)",
               },
 
             },
@@ -434,7 +417,7 @@
     .accordion-content {
 
       max-height:
-        250px;
+        500px;
 
       padding-top:
         12px;
@@ -549,21 +532,18 @@
         box-shadow .5s ease;
     }
 
-    /* Abstract playful tilt for gallery cards on all screens (mobile, tablet, desktop) */
+    /* Abstract playful tilt for 4 gallery cards (all screens) */
     .gallery-card:nth-child(1) {
-      transform: rotate(-2deg);
+      transform: rotate(-1.8deg);
     }
     .gallery-card:nth-child(2) {
-      transform: rotate(2.5deg);
+      transform: rotate(2deg);
     }
     .gallery-card:nth-child(3) {
       transform: rotate(-2deg);
     }
     .gallery-card:nth-child(4) {
-      transform: rotate(2.5deg);
-    }
-    .gallery-card:nth-child(5) {
-      transform: rotate(-1.8deg);
+      transform: rotate(1.8deg);
     }
 
     .gallery-card:hover {
@@ -575,32 +555,22 @@
 
 
     /* ==================================================
-       PHOTO DUMP (5 PHOTOS: 3 TOP, 2 CENTERED BELOW)
+       PHOTO DUMP (4 PHOTOS: 1 ROW ON DESKTOP)
     ================================================== */
     @media (min-width: 768px) {
       main .gallery-grid {
         display: grid !important;
-        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
         gap: clamp(1.25rem, 2vw, 2rem) !important;
-        max-width: 1320px !important;
+        max-width: 1440px !important;
         margin-left: auto !important;
         margin-right: auto !important;
       }
 
-      .gallery-card:nth-child(1) {
-        grid-column: 1 / span 2 !important;
-      }
-      .gallery-card:nth-child(2) {
-        grid-column: 3 / span 2 !important;
-      }
-      .gallery-card:nth-child(3) {
-        grid-column: 5 / span 2 !important;
-      }
-      .gallery-card:nth-child(4) {
-        grid-column: 2 / span 2 !important;
-      }
-      .gallery-card:nth-child(5) {
-        grid-column: 4 / span 2 !important;
+      .gallery-card {
+        grid-column: span 1 !important;
+        width: 100% !important;
+        max-width: 100% !important;
       }
     }
 
@@ -652,22 +622,14 @@
 
 
     .gallery-modal-card {
-
-      transform:
-        scale(.9);
-
-      transition:
-        transform .3s ease;
-
+      width: min(100%, 480px);
+      max-width: min(92vw, 480px);
+      transform: scale(.92);
+      transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-
-    .gallery-modal.show
-    .gallery-modal-card {
-
-      transform:
-        scale(1);
-
+    .gallery-modal.show .gallery-modal-card {
+      transform: scale(1);
     }
 
 
@@ -754,6 +716,7 @@
         pointer-events: none !important;
         z-index: 2147483647 !important;
         opacity: 0;
+        transition: opacity .15s ease;
         transform: translate3d(-100px,-100px,0) translate(-50%,-50%);
         will-change: transform;
         display: block !important;
@@ -818,13 +781,13 @@
         max-width: 1000px !important;
       }
 
-      /* Photo dump gets the available horizontal space. */
+      /* Photo dump gets the available horizontal space: 4 photos in 1 row */
       main .gallery-grid {
         width: 100% !important;
-        max-width: 1320px !important;
+        max-width: 1440px !important;
         margin-left: auto !important;
         margin-right: auto !important;
-        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
         gap: clamp(1.25rem, 2vw, 2rem) !important;
       }
 
@@ -842,6 +805,10 @@
 
       main .max-w-6xl {
         max-width: 1550px !important;
+      }
+
+      main .gallery-grid {
+        max-width: 1520px !important;
       }
 
       main .max-w-4xl {
@@ -864,14 +831,7 @@
       }
     }
 
-    @media (max-width: 1023px) {
-      /* Return to the existing responsive widths below desktop. */
-      main .max-w-6xl,
-      main .max-w-4xl,
-      main .max-w-3xl {
-        width: 100%;
-      }
-    }
+
 
     /* ==================================================
        UNIVERSAL RESPONSIVE SYSTEM
@@ -953,6 +913,12 @@
 
     /* Tablet / small laptop */
     @media (max-width: 1023px) {
+      main .max-w-6xl,
+      main .max-w-4xl,
+      main .max-w-3xl {
+        width: 100%;
+      }
+
       .hero-content {
         width: min(100%, 920px);
       }
@@ -1008,12 +974,12 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      /* Gallery */
+      /* Gallery: 2 photos per row on mobile */
       main .gallery-grid {
         display: grid !important;
-        grid-template-columns: minmax(0, 1fr) !important;
-        gap: 1.5rem !important;
-        max-width: 380px !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: clamp(0.75rem, 2.5vw, 1.25rem) !important;
+        max-width: 100% !important;
         margin-left: auto !important;
         margin-right: auto !important;
       }
@@ -1021,9 +987,9 @@
       .gallery-card {
         grid-column: auto !important;
         width: 100% !important;
-        max-width: min(360px, 88vw) !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
         margin-top: 0 !important;
       }
 
@@ -1075,17 +1041,17 @@
       }
 
       .gallery-modal-card {
-        width: min(100%, 920px);
-        max-width: 100%;
-        max-height: 94dvh;
-        overflow-y: auto;
+        width: min(100%, 480px);
+        max-width: min(92vw, 480px);
+        max-height: 92dvh;
+        overflow: visible;
       }
 
       .gallery-modal-card img {
         width: 100%;
         height: auto;
         max-width: 100%;
-        max-height: 72dvh;
+        max-height: 62dvh;
         object-fit: contain;
       }
     }
@@ -1131,23 +1097,14 @@
         font-size: .72rem;
       }
 
-      /* One-column gallery on narrow phones prevents cramped cards. */
+      /* Gallery stays 2 photos per row on small phones */
       main .gallery-grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 0.75rem !important;
       }
 
       .gallery-card {
-        max-width: 360px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .gallery-card.md\:mt-6,
-      .gallery-card.md\:mt-8,
-      .gallery-card.md\:mt-10,
-      .gallery-card.md\:mt-12,
-      .gallery-card.md\:mt-14 {
-        margin-top: 0 !important;
+        max-width: 100% !important;
       }
 
       .counter-grid {
@@ -1235,9 +1192,7 @@
       .hero-content {
         transform: none !important;
       }
-    }
 
-    @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
@@ -1443,6 +1398,7 @@
 
       <div
         class="
+          genz-pill
           inline-flex
           items-center
           gap-2
@@ -1842,6 +1798,7 @@
             id="loveCounter"
             data-start-date="2024-02-14"
             class="
+              counter-grid
               grid
               grid-cols-2
               sm:grid-cols-4
@@ -2115,7 +2072,7 @@
       <div
         class="
           relative
-          max-w-6xl
+          max-w-7xl
           mx-auto
         "
       >
@@ -2220,19 +2177,20 @@
 
 
         <!-- =========================
-             PHOTO GRID
+             PHOTO GRID (4 PHOTOS: 1 ROW DESKTOP, 2 PER ROW MOBILE)
         ========================== -->
 
         <div
           class="
             gallery-grid
             grid
-            grid-cols-1
-            md:grid-cols-6
-            gap-5
+            grid-cols-2
+            md:grid-cols-4
+            gap-3
+            sm:gap-4
             md:gap-6
             items-start
-            max-w-[1320px]
+            max-w-[1440px]
             mx-auto
           "
         >
@@ -2246,17 +2204,18 @@
               group
               relative
               bg-white
-              p-3
-              pb-5
+              p-2.5
+              sm:p-3
+              pb-4
+              sm:pb-5
               rounded-2xl
               shadow-lg
-              rotate-[-2deg]
+              rotate-[-1.8deg]
               hover:rotate-0
               hover:-translate-y-2
               transition-all
               duration-500
               cursor-pointer
-              md:col-span-2
             "
             onclick="
               openGallery(
@@ -2269,10 +2228,13 @@
             <div
               class="
                 absolute
-                -top-5
-                -right-3
+                -top-3.5
+                -right-2
+                sm:-top-4
+                sm:-right-3
                 z-20
-                text-3xl
+                text-2xl
+                sm:text-3xl
                 rotate-12
               "
             >
@@ -2309,8 +2271,10 @@
                 text-center
                 font-bold
                 text-pink-500
-                mt-4
-                text-sm
+                mt-2.5
+                sm:mt-4
+                text-xs
+                sm:text-sm
               "
             >
               first date energy 💕
@@ -2328,18 +2292,19 @@
               group
               relative
               bg-white
-              p-3
-              pb-5
+              p-2.5
+              sm:p-3
+              pb-4
+              sm:pb-5
               rounded-2xl
               shadow-lg
-              rotate-[2.5deg]
+              rotate-[2deg]
               hover:rotate-0
               hover:-translate-y-2
               transition-all
               duration-500
               cursor-pointer
-              md:mt-6
-              md:col-span-2
+              md:mt-3
             "
             onclick="
               openGallery(
@@ -2352,10 +2317,13 @@
             <div
               class="
                 absolute
-                -top-4
-                -left-4
+                -top-3.5
+                -left-2
+                sm:-top-4
+                sm:-left-3
                 z-20
-                text-3xl
+                text-2xl
+                sm:text-3xl
                 animate-wiggle
               "
             >
@@ -2365,7 +2333,7 @@
 
             <div
               class="
-                aspect-[3/4]
+                aspect-[4/5]
                 overflow-hidden
                 rounded-xl
               "
@@ -2392,8 +2360,10 @@
                 text-center
                 font-bold
                 text-purple-500
-                mt-4
-                text-sm
+                mt-2.5
+                sm:mt-4
+                text-xs
+                sm:text-sm
               "
             >
               that smile >>> 🥰
@@ -2411,8 +2381,10 @@
               group
               relative
               bg-white
-              p-3
-              pb-5
+              p-2.5
+              sm:p-3
+              pb-4
+              sm:pb-5
               rounded-2xl
               shadow-lg
               rotate-[-2deg]
@@ -2421,7 +2393,6 @@
               transition-all
               duration-500
               cursor-pointer
-              md:col-span-2
             "
             onclick="
               openGallery(
@@ -2434,10 +2405,13 @@
             <div
               class="
                 absolute
-                -top-5
-                right-3
+                -top-3.5
+                right-2
+                sm:-top-4
+                sm:right-3
                 z-20
-                text-3xl
+                text-2xl
+                sm:text-3xl
               "
             >
               ✨
@@ -2473,8 +2447,10 @@
                 text-center
                 font-bold
                 text-orange-500
-                mt-4
-                text-sm
+                mt-2.5
+                sm:mt-4
+                text-xs
+                sm:text-sm
               "
             >
               tiny adventure 🌸
@@ -2492,18 +2468,19 @@
               group
               relative
               bg-white
-              p-3
-              pb-5
+              p-2.5
+              sm:p-3
+              pb-4
+              sm:pb-5
               rounded-2xl
               shadow-lg
-              rotate-[2.5deg]
+              rotate-[1.8deg]
               hover:rotate-0
               hover:-translate-y-2
               transition-all
               duration-500
               cursor-pointer
-              md:col-span-2
-              md:col-start-2
+              md:mt-3
             "
             onclick="
               openGallery(
@@ -2516,10 +2493,13 @@
             <div
               class="
                 absolute
-                -top-6
-                -right-4
+                -top-4
+                -right-2
+                sm:-top-5
+                sm:-right-3
                 z-20
-                text-3xl
+                text-2xl
+                sm:text-3xl
               "
             >
               👑
@@ -2528,7 +2508,7 @@
 
             <div
               class="
-                aspect-[3/4]
+                aspect-[4/5]
                 overflow-hidden
                 rounded-xl
               "
@@ -2555,92 +2535,13 @@
                 text-center
                 font-bold
                 text-rose-500
-                mt-4
-                text-sm
+                mt-2.5
+                sm:mt-4
+                text-xs
+                sm:text-sm
               "
             >
               us, no expiration date 💗
-            </p>
-
-          </div>
-
-
-
-          <!-- FOTO 6 -->
-
-          <div
-            class="
-              gallery-card
-              group
-              relative
-              bg-white
-              p-3
-              pb-5
-              rounded-2xl
-              shadow-lg
-              rotate-[-1.8deg]
-              hover:rotate-0
-              hover:-translate-y-2
-              transition-all
-              duration-500
-              cursor-pointer
-              md:col-span-2
-            "
-            onclick="
-              openGallery(
-                'foto6.webp',
-                'Hari biasa yang jadi istimewa 🌷'
-              )
-            "
-          >
-
-            <div
-              class="
-                absolute
-                -top-4
-                -left-3
-                z-20
-                text-3xl
-              "
-            >
-              🌼
-            </div>
-
-
-            <div
-              class="
-                aspect-[4/5]
-                overflow-hidden
-                rounded-xl
-              "
-            >
-
-              <img
-                src="foto6.webp"
-                alt="A sweet memory"
-                class="
-                  w-full
-                  h-full
-                  object-cover
-                  group-hover:scale-110
-                  transition-transform
-                  duration-700
-                "
-              >
-
-            </div>
-
-
-            <p
-              class="
-                text-center
-                font-bold
-                text-pink-500
-                mt-4
-                text-sm
-              "
-            >
-              just us being us 🌷
             </p>
 
           </div>
@@ -2787,6 +2688,7 @@
           >
 
             <button
+              type="button"
               class="
                 accordion-button
                 w-full
@@ -2899,6 +2801,7 @@
           >
 
             <button
+              type="button"
               class="
                 accordion-button
                 w-full
@@ -3011,6 +2914,7 @@
           >
 
             <button
+              type="button"
               class="
                 accordion-button
                 w-full
@@ -3125,6 +3029,7 @@
           >
 
             <button
+              type="button"
               class="
                 accordion-button
                 w-full
@@ -3380,6 +3285,7 @@
 
             <div
               class="
+                love-question-buttons
                 flex
                 flex-col
                 sm:flex-row
@@ -3599,7 +3505,7 @@
       love-modal
       fixed
       inset-0
-      z-[110]
+      z-[10000]
       flex
       items-center
       justify-center
@@ -3688,13 +3594,15 @@
       gallery-modal
       fixed
       inset-0
-      z-[100]
-      bg-slate-950/80
+      z-[10000]
+      bg-slate-950/85
       backdrop-blur-md
       flex
       items-center
       justify-center
-      p-5
+      p-4
+      sm:p-6
+      overflow-y-auto
     "
     onclick="closeGallery(event)"
   >
@@ -3704,57 +3612,85 @@
       class="
         gallery-modal-card
         relative
-        max-w-4xl
         w-full
+        max-w-[480px]
+        mx-auto
+        my-auto
       "
     >
-
-
-      <!-- Close button -->
-
-      <button
-        type="button"
-        id="galleryCloseButton"
-        aria-label="Close gallery"
-        class="
-          absolute
-          -top-4
-          -right-4
-          z-20
-          w-11
-          h-11
-          rounded-full
-          bg-white
-          text-pink-500
-          shadow-lg
-          font-bold
-          text-xl
-          hover:scale-110
-          transition
-        "
-      >
-        ×
-      </button>
-
-
 
       <!-- Image card -->
 
       <div
         class="
+          relative
           bg-white
           rounded-3xl
           p-3
+          sm:p-4
           shadow-2xl
         "
       >
 
+        <!-- Close button (positioned cleanly inside top-right corner of card) -->
+
+        <button
+          type="button"
+          id="galleryCloseButton"
+          aria-label="Close gallery"
+          class="
+            absolute
+            top-3
+            right-3
+            sm:top-4
+            sm:right-4
+            z-30
+            w-10
+            h-10
+            rounded-full
+            bg-white/90
+            hover:bg-white
+            text-slate-700
+            hover:text-pink-600
+            shadow-md
+            backdrop-blur-md
+            flex
+            items-center
+            justify-center
+            transition-all
+            duration-200
+            hover:scale-110
+            active:scale-90
+            cursor-pointer
+          "
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+
+
         <div
           class="
-            max-h-[75vh]
+            w-full
+            max-h-[62vh]
+            sm:max-h-[68vh]
             overflow-hidden
             rounded-2xl
-            bg-pink-50
+            bg-pink-50/60
+            flex
+            items-center
+            justify-center
           "
         >
 
@@ -3764,9 +3700,13 @@
             alt="Gallery kenangan"
             class="
               w-full
-              max-h-[75vh]
+              h-auto
+              max-h-[62vh]
+              sm:max-h-[68vh]
               object-contain
               mx-auto
+              rounded-2xl
+              block
             "
           >
 
@@ -3776,7 +3716,9 @@
         <div
           class="
             text-center
-            py-5
+            pt-4
+            pb-2
+            px-2
           "
         >
 
@@ -3784,11 +3726,11 @@
             id="galleryModalCaption"
             class="
               font-bold
-              text-xl
+              text-lg
+              sm:text-xl
               text-pink-500
             "
           ></p>
-
 
           <p
             class="
@@ -3849,26 +3791,14 @@
 
     function typeEffect() {
 
-      const currentPhrase =
-        phrases[phraseIndex];
-
+      const phraseChars = Array.from(phrases[phraseIndex]);
 
       if (!deleting) {
 
-        typewriter.textContent =
-          currentPhrase.substring(
-            0,
-            characterIndex + 1
-          );
-
-
         characterIndex++;
+        typewriter.textContent = phraseChars.slice(0, characterIndex).join("");
 
-
-        if (
-          characterIndex ===
-          currentPhrase.length
-        ) {
+        if (characterIndex >= phraseChars.length) {
 
           deleting = true;
 
@@ -3883,19 +3813,13 @@
 
       } else {
 
-        typewriter.textContent =
-          currentPhrase.substring(
-            0,
-            characterIndex - 1
-          );
-
-
         characterIndex--;
+        typewriter.textContent = phraseChars.slice(0, characterIndex).join("");
 
-
-        if (characterIndex === 0) {
+        if (characterIndex <= 0) {
 
           deleting = false;
+          characterIndex = 0;
 
           phraseIndex =
             (phraseIndex + 1)
@@ -3904,7 +3828,6 @@
         }
 
       }
-
 
       setTimeout(
         typeEffect,
@@ -3943,6 +3866,8 @@
 
 
     function createHeart() {
+
+      if (document.hidden) return;
 
       const heart =
         document.createElement("div");
@@ -4021,11 +3946,12 @@
       );
 
 
-    const startDate =
-      new Date(
-        counter.dataset.startDate
-        + "T00:00:00"
-      );
+    const dateParts = (counter?.dataset?.startDate || "2024-02-14").split("-");
+    const startDate = new Date(
+      parseInt(dateParts[0], 10),
+      parseInt(dateParts[1], 10) - 1,
+      parseInt(dateParts[2], 10)
+    );
 
 
     function calculateLoveTime() {
@@ -4390,12 +4316,12 @@
     function closeGallery(event) {
 
       // Close only when:
-      // 1) the close button is clicked, or
+      // 1) the close button (or its icon) is clicked, or
       // 2) the dark backdrop itself is clicked.
       if (
         event &&
         event.target !== galleryModal &&
-        event.target !== galleryCloseButton
+        !galleryCloseButton.contains(event.target)
       ) {
         return;
       }
@@ -4438,12 +4364,7 @@
 
     /* ==================================================
        CUSTOM CURSOR — PC ONLY
-       Native cursor is hidden only when a real mouse is present.
-    ================================================== */
-
-    /* ==================================================
-       CUSTOM CURSOR — PC ONLY
-       Lightweight: one requestAnimationFrame + transform only.
+       Lightweight: real-time mouse tracking + requestAnimationFrame
     ================================================== */
 
     (() => {
