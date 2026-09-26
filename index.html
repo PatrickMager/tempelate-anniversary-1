@@ -11,12 +11,14 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Font -->
+  <!-- Google Font — swap prevents invisible text while font loads -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap"
     rel="stylesheet"
   >
 
@@ -499,6 +501,15 @@
 
     }
 
+    /* Ensure modal and all children are always clickable */
+    #loveModal {
+      pointer-events: auto !important;
+    }
+
+    #loveModal * {
+      pointer-events: auto;
+    }
+
 
     .love-modal-card {
 
@@ -530,6 +541,7 @@
       transition:
         transform .5s ease,
         box-shadow .5s ease;
+      will-change: transform;
     }
 
     /* Abstract playful tilt for 4 gallery cards (all screens) */
@@ -654,10 +666,10 @@
       inset: 0;
       pointer-events: none;
       z-index: 1;
-      opacity: .16;
+      opacity: .12;
       background-image: radial-gradient(rgba(255,255,255,.9) 1px, transparent 1px);
-      background-size: 18px 18px;
-      mix-blend-mode: soft-light;
+      background-size: 22px 22px;
+      will-change: auto;
     }
 
     .genz-glow {
@@ -883,10 +895,17 @@
       min-width: 0;
     }
 
-    /* Prevent decorative elements from creating horizontal overflow. */
+    /* === Performance: let the browser skip layout/paint work for decorative elements === */
+    .heart-particle {
+      contain: layout style paint;
+    }
+
+    /* Prevent decorative elements from creating horizontal overflow.
+       Exclude interactive modals (#loveModal, #galleryModal) so their
+       buttons remain clickable. */
     .heart-particle,
     .hero-orbit,
-    body > div:not(#heartContainer) {
+    body > div:not(#heartContainer):not(#loveModal):not(#galleryModal) {
       pointer-events: none;
     }
 
@@ -1200,8 +1219,63 @@
       }
     }
 
-  
-    /* Fullscreen UI */
+    /* ==================================================
+       LOW-SPEC DEVICE OPTIMIZATIONS
+       Disable expensive effects on devices with limited GPU:
+       - backdrop-filter (blur) triggers GPU compositing per frame
+       - complex box-shadows cause repaint on scroll
+       - fixed background blobs cause constant compositing
+    ================================================== */
+
+    /* Phones under 480px are likely low-spec — simplify */
+    @media (max-width: 479px) {
+      .glass {
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+
+      body::before {
+        display: none;  /* Remove dot overlay — expensive on low-end */
+      }
+
+      .hero-orbit {
+        display: none;  /* Remove orbit animation ring */
+      }
+
+      /* Reduce decorative blur blobs */
+      .blur-3xl {
+        filter: blur(32px);
+        opacity: .2;
+      }
+
+      /* Simpler shadows */
+      .polaroid {
+        box-shadow: 0 8px 20px rgba(255, 105, 150, 0.12);
+      }
+
+      /* Reduce animation complexity */
+      .animate-float,
+      .animate-floatSlow {
+        animation-duration: 8s !important;
+      }
+
+      .sparkle {
+        animation: none !important;
+        opacity: .6;
+      }
+    }
+
+    /* Save battery: stop decorative animations when page not visible */
+    @media (prefers-reduced-data: reduce) {
+      .heart-particle,
+      .animate-bounce,
+      .animate-float,
+      .animate-floatSlow,
+      .sparkle {
+        animation: none !important;
+      }
+    }
+
     #fullscreenButton {
       position: fixed;
       right: max(1rem, env(safe-area-inset-right));
@@ -1664,6 +1738,8 @@
                 <img
                   src="foto1.webp"
                   alt="Our favorite photo"
+                  loading="lazy"
+                  decoding="async"
                   class="
                     w-full
                     h-full
@@ -2253,6 +2329,8 @@
               <img
                 src="foto2.webp"
                 alt="Our first date"
+                loading="lazy"
+                decoding="async"
                 class="
                   w-full
                   h-full
@@ -2342,6 +2420,8 @@
               <img
                 src="foto3.webp"
                 alt="A favorite memory"
+                loading="lazy"
+                decoding="async"
                 class="
                   w-full
                   h-full
@@ -2429,6 +2509,8 @@
               <img
                 src="foto4.webp"
                 alt="A little adventure"
+                loading="lazy"
+                decoding="async"
                 class="
                   w-full
                   h-full
@@ -2517,6 +2599,8 @@
               <img
                 src="foto5.webp"
                 alt="A romantic memory"
+                loading="lazy"
+                decoding="async"
                 class="
                   w-full
                   h-full
@@ -3564,6 +3648,8 @@
       <button
         onclick="closeLoveMessage()"
         class="
+          relative
+          z-10
           mt-7
           px-7
           py-3
@@ -3573,7 +3659,9 @@
           text-white
           font-bold
           transition
+          active:scale-95
         "
+        style="touch-action: manipulation;"
       >
         okay, come here. virtual hug 🤗
       </button>
@@ -3788,8 +3876,15 @@
 
     let deleting = false;
 
+    let typewriterPaused = false;
+
 
     function typeEffect() {
+
+      if (typewriterPaused || document.hidden) {
+        setTimeout(typeEffect, 200);
+        return;
+      }
 
       const phraseChars = Array.from(phrases[phraseIndex]);
 
@@ -3804,7 +3899,7 @@
 
           setTimeout(
             typeEffect,
-            1800
+            2000
           );
 
           return;
@@ -3831,7 +3926,7 @@
 
       setTimeout(
         typeEffect,
-        deleting ? 45 : 75
+        deleting ? 50 : 85
       );
 
     }
@@ -3857,17 +3952,19 @@
       "💕",
       "💗",
       "💖",
-      "💘",
-      "💝",
       "🌸",
       "✨"
 
     ];
 
+    /* Performance: cap max simultaneous hearts for low-spec devices */
+    const MAX_HEARTS = 8;
+    let heartCount = 0;
 
     function createHeart() {
 
       if (document.hidden) return;
+      if (heartCount >= MAX_HEARTS) return;
 
       const heart =
         document.createElement("div");
@@ -3891,19 +3988,20 @@
 
 
       heart.style.fontSize =
-        (Math.random() * 18 + 12)
+        (Math.random() * 16 + 14)
         + "px";
 
 
+      const duration = Math.random() * 6 + 8;
       heart.style.animationDuration =
-        (Math.random() * 7 + 7)
-        + "s";
+        duration + "s";
 
 
       heart.style.animationDelay =
-        Math.random() * 3
+        Math.random() * 2
         + "s";
 
+      heartCount++;
 
       heartContainer.appendChild(
         heart
@@ -3911,29 +4009,40 @@
 
 
       setTimeout(
-        () => heart.remove(),
-        16000
+        () => {
+          heart.remove();
+          heartCount--;
+        },
+        (duration + 3) * 1000
       );
 
     }
 
-
-    setInterval(
+    /* Slower spawn rate for better performance: every 2.5s instead of 650ms */
+    let heartInterval = setInterval(
       createHeart,
-      650
+      2500
     );
+
+    /* Pause hearts when tab is hidden */
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        clearInterval(heartInterval);
+      } else {
+        heartInterval = setInterval(createHeart, 2500);
+      }
+    });
 
 
     for (
       let i = 0;
-      i < 12;
+      i < 4;
       i++
     ) {
 
       createHeart();
 
     }
-
 
 
     /* ==================================================
