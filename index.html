@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color: #fff9ef;">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -1342,47 +1342,79 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
     }
 
-    /* Fullscreen background fix: eliminates black screen during transitions */
-    :fullscreen {
-      background-color: #fff9ef !important;
-      background: #fff9ef !important;
-    }
-
-    :-webkit-full-screen {
-      background-color: #fff9ef !important;
-      background: #fff9ef !important;
-    }
-
+    /* ==================================================
+       FULLSCREEN STYLING (ZERO BLACK SCREEN & INSTANT MOBILE)
+    ================================================== */
     ::backdrop {
       background-color: #fff9ef !important;
-      background: #fff9ef !important;
+      background-image: linear-gradient(135deg, #fff0f7 0%, #fff9ef 50%, #eee9ff 100%) !important;
+      background-attachment: fixed !important;
+    }
+
+    html::backdrop,
+    :fullscreen::backdrop {
+      background-color: #fff9ef !important;
+      background-image: linear-gradient(135deg, #fff0f7 0%, #fff9ef 50%, #eee9ff 100%) !important;
+      background-attachment: fixed !important;
     }
 
     ::-webkit-backdrop {
       background-color: #fff9ef !important;
-      background: #fff9ef !important;
+      background-image: linear-gradient(135deg, #fff0f7 0%, #fff9ef 50%, #eee9ff 100%) !important;
+      background-attachment: fixed !important;
     }
 
-    *::backdrop {
+    html::-webkit-backdrop,
+    :-webkit-full-screen::backdrop {
       background-color: #fff9ef !important;
-      background: #fff9ef !important;
+      background-image: linear-gradient(135deg, #fff0f7 0%, #fff9ef 50%, #eee9ff 100%) !important;
+      background-attachment: fixed !important;
     }
 
-    html:fullscreen,
-    body:fullscreen,
-    html:-webkit-full-screen,
-    body:-webkit-full-screen {
+    :fullscreen,
+    html:fullscreen {
       background-color: #fff9ef !important;
+      background-image: linear-gradient(135deg, #fff0f7 0%, #fff9ef 50%, #eee9ff 100%) !important;
+      background-attachment: fixed !important;
       width: 100% !important;
       min-height: 100% !important;
     }
 
-    /* Fallback / App Mode styling */
+    :fullscreen body,
+    html:fullscreen body {
+      background-color: #fff9ef !important;
+      background-image: linear-gradient(135deg, #fff0f7 0%, #fff9ef 50%, #eee9ff 100%) !important;
+      background-attachment: fixed !important;
+      width: 100% !important;
+      min-height: 100% !important;
+    }
+
+    :-webkit-full-screen,
+    html:-webkit-full-screen {
+      background-color: #fff9ef !important;
+      background-image: linear-gradient(135deg, #fff0f7 0%, #fff9ef 50%, #eee9ff 100%) !important;
+      background-attachment: fixed !important;
+      width: 100% !important;
+      min-height: 100% !important;
+    }
+
+    :-webkit-full-screen body,
+    html:-webkit-full-screen body {
+      background-color: #fff9ef !important;
+      background-image: linear-gradient(135deg, #fff0f7 0%, #fff9ef 50%, #eee9ff 100%) !important;
+      background-attachment: fixed !important;
+      width: 100% !important;
+      min-height: 100% !important;
+    }
+
     html.is-fullscreen,
     body.is-fullscreen {
       width: 100% !important;
       min-height: 100dvh !important;
       background-color: #fff9ef !important;
+      background-image: linear-gradient(135deg, #fff0f7 0%, #fff9ef 50%, #eee9ff 100%) !important;
+      background-attachment: fixed !important;
+      overflow-x: hidden !important;
     }
 
     #fullscreenButton {
@@ -1402,16 +1434,24 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-    }
-
-    #fullscreenButton:hover {
-      transform: translateY(-3px) scale(1.04);
-      background: rgba(255,255,255,.95);
-      box-shadow: 0 14px 36px rgba(190,24,93,.22);
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: pointer;
     }
 
     #fullscreenButton:active {
-      transform: scale(.94);
+      transform: scale(.90) !important;
+      background: rgba(255, 235, 245, 0.98) !important;
+    }
+
+    @media (hover: hover) {
+      #fullscreenButton:hover {
+        transform: translateY(-3px) scale(1.04);
+        background: rgba(255,255,255,.95);
+        box-shadow: 0 14px 36px rgba(190,24,93,.22);
+      }
     }
 
     #fullscreenButton svg {
@@ -1665,6 +1705,9 @@
 
       <a
         href="#our-story"
+        id="heroScrollButton"
+        onclick="event.preventDefault(); document.getElementById('our-story')?.scrollIntoView({ behavior: 'smooth' });"
+        style="touch-action: manipulation;"
         class="
           inline-flex
           items-center
@@ -4642,9 +4685,8 @@
 
 
     /* ==================================================
-       ADAPTIVE FULLSCREEN (OPSI 1)
-       Mobile: Seamless Immersive App Mode (0ms delay, 0% layar hitam)
-       Desktop: Native HTML5 Fullscreen API + Shortcut Tombol 'F' & 'Esc'
+       INSTANT FULLSCREEN CONTROLLER (MOBILE & DESKTOP)
+       0ms instant response, zero black screen on mobile & desktop
     ================================================== */
 
     (() => {
@@ -4661,22 +4703,22 @@
         window.innerWidth <= 768 ||
         (window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
 
-      let mobileFullscreenActive = false;
+      let isImmersiveFallbackActive = false;
 
       const getNativeFullscreenElement = () =>
         document.fullscreenElement ||
         document.webkitFullscreenElement ||
+        document.webkitCurrentFullScreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement ||
         null;
 
       const isFullscreenActive = () => {
-        if (isMobile) {
-          return mobileFullscreenActive;
-        }
-        return !!getNativeFullscreenElement();
+        return !!getNativeFullscreenElement() || isImmersiveFallbackActive || document.documentElement.classList.contains("is-fullscreen");
       };
 
-      const updateFullscreenUI = () => {
-        const active = isFullscreenActive();
+      const updateFullscreenUI = (forcedActive) => {
+        const active = typeof forcedActive === "boolean" ? forcedActive : isFullscreenActive();
 
         document.documentElement.classList.toggle("is-fullscreen", active);
         document.body.classList.toggle("is-fullscreen", active);
@@ -4697,135 +4739,125 @@
         button.setAttribute(
           "title",
           active
-            ? (isMobile ? "Keluar layar penuh" : "Exit fullscreen (F)")
-            : (isMobile ? "Layar penuh" : "Fullscreen (F)")
+            ? (isMobile ? "Keluar layar penuh" : "Keluar layar penuh (Esc / F)")
+            : (isMobile ? "Layar penuh" : "Layar penuh (F)")
         );
       };
 
-      /* Mobile: Mode Imersif Mulus (0ms latensi, tanpa layar hitam Android WindowManager) */
-      const enterMobileFullscreen = () => {
-        mobileFullscreenActive = true;
-        try {
-          history.pushState({ fullscreenMode: true }, "");
-        } catch (e) {}
-        updateFullscreenUI();
-      };
+      const enterFullscreen = async () => {
+        // 1. Respon instan (0ms): pasang styling & update icon sebelum operasi asinkron
+        document.documentElement.classList.add("is-fullscreen");
+        document.body.classList.add("is-fullscreen");
+        updateFullscreenUI(true);
 
-      const exitMobileFullscreen = () => {
-        mobileFullscreenActive = false;
-        updateFullscreenUI();
-      };
-
-      const toggleMobileFullscreen = () => {
-        if (mobileFullscreenActive) {
-          if (history.state && history.state.fullscreenMode) {
-            history.back();
-          } else {
-            exitMobileFullscreen();
-          }
-        } else {
-          enterMobileFullscreen();
-        }
-      };
-
-      // Listener tombol/gesture 'Back' Android agar keluar fullscreen secara alami tanpa reload/pindah web
-      window.addEventListener("popstate", () => {
-        if (mobileFullscreenActive) {
-          mobileFullscreenActive = false;
-          updateFullscreenUI();
-        }
-      });
-
-      /* Desktop: Native HTML5 Fullscreen */
-      const enterDesktopFullscreen = () => {
+        // 2. Panggil native Fullscreen API tanpa opsi yang merusak window
         const element = document.documentElement;
-
         try {
           if (element.requestFullscreen) {
-            return element.requestFullscreen();
+            await element.requestFullscreen();
+            isImmersiveFallbackActive = false;
+            return;
           }
-
           if (element.webkitRequestFullscreen) {
             element.webkitRequestFullscreen();
-            return Promise.resolve();
+            isImmersiveFallbackActive = false;
+            return;
+          }
+          if (element.webkitRequestFullScreen) {
+            element.webkitRequestFullScreen();
+            isImmersiveFallbackActive = false;
+            return;
+          }
+          if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+            isImmersiveFallbackActive = false;
+            return;
+          }
+          if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+            isImmersiveFallbackActive = false;
+            return;
           }
 
-          alert("Fullscreen is not supported by this browser.");
-          return Promise.reject(new Error("Fullscreen API not supported."));
+          // Fallback halus untuk browser tanpa native Fullscreen API (seperti iPhone Safari)
+          isImmersiveFallbackActive = true;
         } catch (error) {
-          console.warn("Could not enter fullscreen:", error);
-          return Promise.reject(error);
+          console.warn("Native fullscreen mode unavailable, using seamless immersive fallback:", error);
+          isImmersiveFallbackActive = true;
         }
       };
 
-      const exitDesktopFullscreen = () => {
+      const exitFullscreen = async () => {
+        isImmersiveFallbackActive = false;
         try {
-          if (document.exitFullscreen) {
-            return document.exitFullscreen();
+          if (getNativeFullscreenElement()) {
+            if (document.exitFullscreen) {
+              await document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+              await document.webkitExitFullscreen();
+            } else if (document.webkitCancelFullScreen) {
+              await document.webkitCancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+              await document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+              await document.msExitFullscreen();
+            }
           }
-
-          if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-            return Promise.resolve();
-          }
-
-          return Promise.resolve();
         } catch (error) {
-          console.warn("Could not exit fullscreen:", error);
-          return Promise.reject(error);
+          console.warn("Could not exit native fullscreen:", error);
+        } finally {
+          document.documentElement.classList.remove("is-fullscreen");
+          document.body.classList.remove("is-fullscreen");
+          updateFullscreenUI(false);
         }
       };
 
-      const toggleDesktopFullscreen = () => {
-        if (getNativeFullscreenElement()) {
-          exitDesktopFullscreen().catch(() => {});
-        } else {
-          enterDesktopFullscreen().catch((error) => {
-            console.warn(
-              "Fullscreen was blocked by the browser. Use the fullscreen button or check browser permissions.",
-              error
-            );
-          });
-        }
-      };
-
-      /* Adaptif: Mobile ke Immersive, Desktop ke Native */
       const toggleFullscreen = () => {
-        if (isMobile) {
-          toggleMobileFullscreen();
+        if (isFullscreenActive()) {
+          exitFullscreen();
         } else {
-          toggleDesktopFullscreen();
+          enterFullscreen();
         }
       };
 
-      /* Klik Tombol Fullscreen */
+      /* Klik Tombol Fullscreen — respon instan tanpa delay */
       button.addEventListener("click", (event) => {
         event.preventDefault();
         toggleFullscreen();
       });
 
-      /* Long-press (tekan 750ms) pada mobile jika pengguna ingin mencoba native OS fullscreen */
-      let pressTimer = null;
-      button.addEventListener("touchstart", () => {
-        pressTimer = setTimeout(() => {
-          if (isMobile && !getNativeFullscreenElement()) {
-            enterDesktopFullscreen().catch(() => {});
+      /* Handler Tombol Awal (Hero Scroll) agar scroll mulus & tidak keluar fullscreen */
+      const heroButton = document.getElementById("heroScrollButton") || document.querySelector('a[href="#our-story"]');
+      if (heroButton) {
+        heroButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          const target = document.getElementById("our-story");
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
           }
-        }, 750);
-      }, { passive: true });
+        });
+      }
 
-      button.addEventListener("touchend", () => {
-        clearTimeout(pressTimer);
-      }, { passive: true });
+      /* Sinkronisasi event fullscreen native browser (baik mobile maupun desktop) */
+      const handleNativeFullscreenChange = () => {
+        const isNative = !!getNativeFullscreenElement();
+        if (!isNative && !isImmersiveFallbackActive) {
+          document.documentElement.classList.remove("is-fullscreen");
+          document.body.classList.remove("is-fullscreen");
+          updateFullscreenUI(false);
+        } else {
+          document.documentElement.classList.add("is-fullscreen");
+          document.body.classList.add("is-fullscreen");
+          updateFullscreenUI(true);
+        }
+      };
 
-      button.addEventListener("touchcancel", () => {
-        clearTimeout(pressTimer);
-      }, { passive: true });
+      document.addEventListener("fullscreenchange", handleNativeFullscreenChange);
+      document.addEventListener("webkitfullscreenchange", handleNativeFullscreenChange);
+      document.addEventListener("mozfullscreenchange", handleNativeFullscreenChange);
+      document.addEventListener("MSFullscreenChange", handleNativeFullscreenChange);
 
-      /*
-       * Keyboard shortcut (Desktop):
-       * event.code === "KeyF"
-       */
+      /* Keyboard shortcut (Desktop): 'F' toggle, 'Esc' sync */
       const handleFullscreenKey = (event) => {
         const tag = event.target?.tagName?.toLowerCase();
 
@@ -4846,18 +4878,9 @@
 
       window.addEventListener("keydown", handleFullscreenKey, true);
 
-      /* Sinkronisasi event fullscreen native browser (khusus Desktop / Long-press) */
-      document.addEventListener("fullscreenchange", () => {
-        if (!isMobile) updateFullscreenUI();
-      });
-      document.addEventListener("webkitfullscreenchange", () => {
-        if (!isMobile) updateFullscreenUI();
-      });
-
-      /* Browser Esc keluar fullscreen native; perbarui UI */
       window.addEventListener("keyup", (event) => {
-        if (event.code === "Escape" && !isMobile) {
-          setTimeout(updateFullscreenUI, 50);
+        if (event.code === "Escape") {
+          setTimeout(handleNativeFullscreenChange, 50);
         }
       });
 
